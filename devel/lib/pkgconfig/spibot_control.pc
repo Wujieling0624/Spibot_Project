@@ -1,8 +1,0 @@
-prefix=/root/spibot_ws/devel
-
-Name: spibot_control
-Description: Description of spibot_control
-Version: 0.0.1
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

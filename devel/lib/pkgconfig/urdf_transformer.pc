@@ -1,8 +1,0 @@
-prefix=/root/spibot_ws/devel
-
-Name: urdf_transformer
-Description: Description of urdf_transformer
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

@@ -1,8 +1,0 @@
-prefix=/root/spibot_ws/devel
-
-Name: sipder_robot
-Description: Description of sipder_robot
-Version: 1.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

@@ -1,8 +1,0 @@
-prefix=/root/spibot_ws/devel
-
-Name: spibot_model
-Description: Description of spibot_model
-Version: 1.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
