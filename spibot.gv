@@ -1,0 +1,62 @@
+digraph G {
+node [shape=box];
+"dummy" [label="dummy"];
+"base_link" [label="base_link"];
+"camera" [label="camera"];
+"hip1" [label="hip1"];
+"thigh1" [label="thigh1"];
+"shank1" [label="shank1"];
+"foot1" [label="foot1"];
+"hip2" [label="hip2"];
+"thigh2" [label="thigh2"];
+"shank2" [label="shank2"];
+"foot2" [label="foot2"];
+"hip3" [label="hip3"];
+"thigh3" [label="thigh3"];
+"shank3" [label="shank3"];
+"foot3" [label="foot3"];
+"hip4" [label="hip4"];
+"thigh4" [label="thigh4"];
+"shank4" [label="shank4"];
+"foot4" [label="foot4"];
+"lidar" [label="lidar"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"dummy" -> "dummy_joint" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"dummy_joint" -> "base_link"
+"base_link" -> "base2camera" [label="xyz: 0.00063297 0.17702 0.084 \nrpy: -1.5708 4.23516e-22 -3.14159"]
+"base2camera" -> "camera"
+"base_link" -> "base2hip1" [label="xyz: 0.11 -0.11 0.112 \nrpy: 0 0 -0.7854"]
+"base2hip1" -> "hip1"
+"hip1" -> "hip2thigh1" [label="xyz: 0.07 -0.0015 0.03 \nrpy: -1.5708 -0.53703 -6.46056e-17"]
+"hip2thigh1" -> "thigh1"
+"thigh1" -> "thigh2shank1" [label="xyz: 0.23 0 0 \nrpy: 0 -0 2.1078"]
+"thigh2shank1" -> "shank1"
+"shank1" -> "shank2foot1" [label="xyz: 0.36572 0 0.00075 \nrpy: 0 -1.5708 -3.1416"]
+"shank2foot1" -> "foot1"
+"base_link" -> "base2hip2" [label="xyz: 0.11 0.11 0.112 \nrpy: 0 -0 1.5708"]
+"base2hip2" -> "hip2"
+"hip2" -> "hip2thigh2" [label="xyz: 0.048437 -0.050558 0.03 \nrpy: -1.5708 -0.53703 -0.7854"]
+"hip2thigh2" -> "thigh2"
+"thigh2" -> "thigh2shank2" [label="xyz: 0.23 0 0 \nrpy: 0 -0 2.1078"]
+"thigh2shank2" -> "shank2"
+"shank2" -> "shank2foot2" [label="xyz: 0.36572 0 0.00075 \nrpy: 0 -1.5708 -3.1416"]
+"shank2foot2" -> "foot2"
+"base_link" -> "base2hip3" [label="xyz: -0.11 0.11 0.112 \nrpy: 0 -0 2.3562"]
+"base2hip3" -> "hip3"
+"hip3" -> "hip2thigh3" [label="xyz: 0.07 -0.0015 0.03 \nrpy: -1.5708 -0.53703 -6.46056e-17"]
+"hip2thigh3" -> "thigh3"
+"thigh3" -> "thigh2shank3" [label="xyz: 0.23 0 0 \nrpy: 0 -0 2.1078"]
+"thigh2shank3" -> "shank3"
+"shank3" -> "shank2foot3" [label="xyz: 0.36572 0 0.00075 \nrpy: 0 1.5708 -0"]
+"shank2foot3" -> "foot3"
+"base_link" -> "base2hip4" [label="xyz: -0.11 -0.11 0.112 \nrpy: 0 0 -2.3562"]
+"base2hip4" -> "hip4"
+"hip4" -> "hip2thigh4" [label="xyz: 0.07 -0.0015 0.03 \nrpy: -1.5708 -0.53703 -6.46056e-17"]
+"hip2thigh4" -> "thigh4"
+"thigh4" -> "thigh2shank4" [label="xyz: 0.23 0 0 \nrpy: 0 -0 2.1078"]
+"thigh2shank4" -> "shank4"
+"shank4" -> "shank2foot4" [label="xyz: 0.36572 0 0.00075 \nrpy: 0 1.5708 -0"]
+"shank2foot4" -> "foot4"
+"base_link" -> "base2lidar" [label="xyz: 8.7201e-05 0.038511 -0.000556 \nrpy: 3.14159 -0 -3.14159"]
+"base2lidar" -> "lidar"
+}

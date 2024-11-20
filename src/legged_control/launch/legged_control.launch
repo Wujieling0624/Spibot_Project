@@ -1,0 +1,16 @@
+<launch>
+
+    <include file="$(find sipder_robot)/launch/display.launch" />
+
+    <!-- Load joint controller configurations from YAML file to parameter server -->
+    <rosparam file="$(find legged_control)/config/robot_control.yaml" command="load" />
+
+    <!-- load the controllers -->
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/spibot_gazebo" args="joint_state_controller
+    hip1_controller thigh1_controller shank1_controller
+    hip2_controller thigh2_controller shank2_controller
+    hip3_controller thigh3_controller shank3_controller            
+    hip4_controller thigh4_controller shank4_controller"/>
+
+
+</launch>

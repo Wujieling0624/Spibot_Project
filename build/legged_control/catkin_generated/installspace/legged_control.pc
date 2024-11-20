@@ -1,0 +1,8 @@
+prefix=/root/spibot_ws/install
+
+Name: legged_control
+Description: Description of legged_control
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

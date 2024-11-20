@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <gazebo reference="base_link">
+        <material>Gazebo/White</material>
+    </gazebo>
+
+    <gazebo reference="camera">
+        <material>Gazebo/DarkGrey</material>
+    </gazebo>
+
+    <gazebo reference="lidar">
+        <material>Gazebo/Indigo</material>
+    </gazebo>
+
+    <gazebo reference="hip1">
+        <mu1>0.3</mu1>
+        <mu2>0.3</mu2>
+        <material>Gazebo/RedBright</material>
+    </gazebo>
+
+    <gazebo reference="hip2">
+        <mu1>0.3</mu1>
+        <mu2>0.3</mu2>
+        <material>Gazebo/RedBright</material>
+    </gazebo>
+
+    <gazebo reference="hip3">
+        <mu1>0.3</mu1>
+        <mu2>0.3</mu2>
+        <material>Gazebo/RedBright</material>
+    </gazebo>
+
+    <gazebo reference="hip4">
+        <mu1>0.3</mu1>
+        <mu2>0.3</mu2>
+        <material>Gazebo/RedBright</material>
+    </gazebo>
+
+    <gazebo reference="thigh1">
+        <mu1>0.3</mu1>
+        <mu2>0.3</mu2>
+        <self_collide>1</self_collide>
+        <material>Gazebo/Green</material>
+    </gazebo>
+
+    <gazebo reference="thigh2">
+        <mu1>0.3</mu1>
+        <mu2>0.3</mu2>
+        <self_collide>1</self_collide>
+        <material>Gazebo/Green</material>
+    </gazebo>
+
+    <gazebo reference="thigh3">
+        <mu1>0.3</mu1>
+        <mu2>0.3</mu2>
+        <self_collide>1</self_collide>
+        <material>Gazebo/Green</material>
+    </gazebo>
+
+    <gazebo reference="thigh4">
+        <mu1>0.3</mu1>
+        <mu2>0.3</mu2>
+        <self_collide>1</self_collide>
+        <material>Gazebo/Green</material>
+    </gazebo>
+
+    <gazebo reference="shank1">
+        <mu1>0.3</mu1>
+        <mu2>0.3</mu2>
+        <self_collide>1</self_collide>
+        <material>Gazebo/Turquoise</material>
+    </gazebo>
+
+    <gazebo reference="shank2">
+        <mu1>0.3</mu1>
+        <mu2>0.3</mu2>
+        <self_collide>1</self_collide>
+        <material>Gazebo/Turquoise</material>
+    </gazebo>
+
+    <gazebo reference="shank3">
+        <mu1>0.3</mu1>
+        <mu2>0.3</mu2>
+        <self_collide>1</self_collide>
+        <material>Gazebo/Turquoise</material>
+    </gazebo>
+
+    <gazebo reference="shank4">
+        <mu1>0.3</mu1>
+        <mu2>0.3</mu2>
+        <self_collide>1</self_collide>
+        <material>Gazebo/Turquoise</material>
+    </gazebo>
+
+    <gazebo reference="foot1">
+        <mu1>1.0</mu1>        <!-- 静摩擦系数 -->
+        <mu2>1.0</mu2>        <!-- 动摩擦系数 -->
+        <!-- <minDepth>0.003</minDepth> -->
+        <self_collide>1</self_collide>
+        <material>Gazebo/SkyBlue</material>
+    </gazebo>
+
+    <gazebo reference="foot2">
+        <mu1>1.0</mu1>        <!-- 静摩擦系数 -->
+        <mu2>1.0</mu2>        <!-- 动摩擦系数 -->
+        <!-- <minDepth>0.003</minDepth> -->
+        <self_collide>1</self_collide>
+        <material>Gazebo/SkyBlue</material>
+    </gazebo>
+
+    <gazebo reference="foot3">
+        <mu1>1.0</mu1>        <!-- 静摩擦系数 -->
+        <mu2>1.0</mu2>        <!-- 动摩擦系数 -->
+        <!-- <minDepth>0.003</minDepth> -->
+        <self_collide>1</self_collide>
+        <material>Gazebo/SkyBlue</material>
+    </gazebo>
+
+    <gazebo reference="foot4">
+        <mu1>1.0</mu1>        <!-- 静摩擦系数 -->
+        <mu2>1.0</mu2>        <!-- 动摩擦系数 -->
+        <!-- <minDepth>0.003</minDepth> -->
+        <self_collide>1</self_collide>
+        <material>Gazebo/SkyBlue</material>
+    </gazebo>
+
+</robot>

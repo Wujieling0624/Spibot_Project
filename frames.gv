@@ -1,0 +1,26 @@
+digraph G {
+"base_link" -> "camera"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"dummy" -> "base_link"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"base_link" -> "lidar"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"world" -> "dummy"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"base_link" -> "hip1"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10.204\nBuffer length: 4.9\nMost recent transform: 270.763\nOldest transform: 265.863\n"];
+"base_link" -> "hip2"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10.204\nBuffer length: 4.9\nMost recent transform: 270.763\nOldest transform: 265.863\n"];
+"base_link" -> "hip3"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10.204\nBuffer length: 4.9\nMost recent transform: 270.763\nOldest transform: 265.863\n"];
+"base_link" -> "hip4"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10.204\nBuffer length: 4.9\nMost recent transform: 270.763\nOldest transform: 265.863\n"];
+"hip1" -> "thigh1"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10.204\nBuffer length: 4.9\nMost recent transform: 270.763\nOldest transform: 265.863\n"];
+"hip2" -> "thigh2"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10.204\nBuffer length: 4.9\nMost recent transform: 270.763\nOldest transform: 265.863\n"];
+"hip3" -> "thigh3"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10.204\nBuffer length: 4.9\nMost recent transform: 270.763\nOldest transform: 265.863\n"];
+"hip4" -> "thigh4"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10.204\nBuffer length: 4.9\nMost recent transform: 270.763\nOldest transform: 265.863\n"];
+"shank1" -> "foot1"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10.204\nBuffer length: 4.9\nMost recent transform: 270.763\nOldest transform: 265.863\n"];
+"thigh1" -> "shank1"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10.204\nBuffer length: 4.9\nMost recent transform: 270.763\nOldest transform: 265.863\n"];
+"shank2" -> "foot2"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10.204\nBuffer length: 4.9\nMost recent transform: 270.763\nOldest transform: 265.863\n"];
+"thigh2" -> "shank2"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10.204\nBuffer length: 4.9\nMost recent transform: 270.763\nOldest transform: 265.863\n"];
+"shank3" -> "foot3"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10.204\nBuffer length: 4.9\nMost recent transform: 270.763\nOldest transform: 265.863\n"];
+"thigh3" -> "shank3"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10.204\nBuffer length: 4.9\nMost recent transform: 270.763\nOldest transform: 265.863\n"];
+"shank4" -> "foot4"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10.204\nBuffer length: 4.9\nMost recent transform: 270.763\nOldest transform: 265.863\n"];
+"thigh4" -> "shank4"[label=" Broadcaster: /robot_state_publisher\nAverage rate: 10.204\nBuffer length: 4.9\nMost recent transform: 270.763\nOldest transform: 265.863\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 270.832"[ shape=plaintext ] ;
+}->"world";
+}

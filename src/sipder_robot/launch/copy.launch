@@ -1,0 +1,9 @@
+<launch>
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find sipder_robot)/worlds/box_house.world"/>
+  </include>
+</launch>
+
+
+
+

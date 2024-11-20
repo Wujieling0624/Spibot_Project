@@ -1,0 +1,204 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:property name="PI" value="3.1415926535897931"/>
+
+    <xacro:property name="base_com_x" value="9.5983E-05"/>
+    <xacro:property name="base_com_y" value="-0.0053069"/>
+    <xacro:property name="base_com_z" value="0.074681"/>
+    <xacro:property name="base_mass" value="2.8003"/>
+    <xacro:property name="base_ixx" value="0.0051964"/>
+    <xacro:property name="base_ixy" value="1.4763E-06"/>
+    <xacro:property name="base_ixz" value="-1.4439E-06"/>
+    <xacro:property name="base_iyy" value="0.0055771"/>
+    <xacro:property name="base_iyz" value="2.0006E-07"/>
+    <xacro:property name="base_izz" value="0.010212"/>
+
+    <xacro:property name="hip1_com_x" value="0.030542"/>
+    <xacro:property name="hip1_com_y" value="-0.027829"/>
+    <xacro:property name="hip1_com_z" value="0.01669"/>
+    <xacro:property name="hip1_mass" value="0.030452"/>
+    <xacro:property name="hip1_ixx" value="1.0281E-05"/>
+    <xacro:property name="hip1_ixy" value="9.4587E-07"/>
+    <xacro:property name="hip1_ixz" value="-3.6642E-06"/>
+    <xacro:property name="hip1_iyy" value="2.4586E-05"/>
+    <xacro:property name="hip1_iyz" value="7.6559E-07"/>
+    <xacro:property name="hip1_izz" value="2.3255E-05"/>
+
+    <xacro:property name="hip2_com_x" value="0.030542"/>
+    <xacro:property name="hip2_com_y" value="-0.0278"/>
+    <xacro:property name="hip2_com_z" value="0.01669"/>
+    <xacro:property name="hip2_mass" value="0.030452"/>
+    <xacro:property name="hip2_ixx" value="1.02807622326647E-05"/>
+    <xacro:property name="hip2_ixy" value="9.45874793500637E-07"/>
+    <xacro:property name="hip2_ixz" value="-3.66419389380111E-06"/>
+    <xacro:property name="hip2_iyy" value="2.4586379837906E-05"/>
+    <xacro:property name="hip2_iyz" value="7.65596387369829E-07"/>
+    <xacro:property name="hip2_izz" value="2.32546447006646E-05"/>
+
+    <xacro:property name="hip3_com_x" value="0.03054"/>
+    <xacro:property name="hip3_com_y" value="-0.0278"/>
+    <xacro:property name="hip3_com_z" value="0.0166899"/>
+    <xacro:property name="hip3_mass" value="0.03045"/>
+    <xacro:property name="hip3_ixx" value="1.02807543656808E-05"/>
+    <xacro:property name="hip3_ixy" value="9.45871271693215E-07"/>
+    <xacro:property name="hip3_ixz" value="-3.66419156962914E-06"/>
+    <xacro:property name="hip3_iyy" value="2.45863839494372E-05"/>
+    <xacro:property name="hip3_iyz" value="7.65590783313748E-07"/>
+    <xacro:property name="hip3_izz" value="2.32546439357208E-05"/>
+
+    <xacro:property name="hip4_com_x" value="0.02754"/>
+    <xacro:property name="hip4_com_y" value="-0.03479"/>
+    <xacro:property name="hip4_com_z" value="0.0196899"/>
+    <xacro:property name="hip4_mass" value="0.03045"/>
+    <xacro:property name="hip4_ixx" value="1.02807543656808E-05"/>
+    <xacro:property name="hip4_ixy" value="9.45871273575032E-07"/>
+    <xacro:property name="hip4_ixz" value="-3.66419156914335E-06"/>
+    <xacro:property name="hip4_iyy" value="2.45863839486507E-05"/>
+    <xacro:property name="hip4_iyz" value="7.65590783997688E-07"/>
+    <xacro:property name="hip4_izz" value="2.3254643936507E-05"/>
+    
+    <xacro:property name="thigh1_com_x" value="0.11489"/>
+    <xacro:property name="thigh1_com_y" value="9.5371E-05"/>
+    <xacro:property name="thigh1_com_z" value="-0.0056875"/>
+    <xacro:property name="thigh1_mass" value="0.60857"/>
+    <xacro:property name="thigh1_ixx" value="0.0002871"/>
+    <xacro:property name="thigh1_ixy" value="-1.1416E-07"/>
+    <xacro:property name="thigh1_ixz" value="-4.4479E-08"/>
+    <xacro:property name="thigh1_iyy" value="0.0013103"/>
+    <xacro:property name="thigh1_iyz" value="8.1337E-08"/>
+    <xacro:property name="thigh1_izz" value="0.0015428"/>
+    
+    <xacro:property name="shank1_com_x" value="0.13117"/>
+    <xacro:property name="shank1_com_y" value="2.9976E-15"/>
+    <xacro:property name="shank1_com_z" value="-0.010092"/>
+    <xacro:property name="shank1_mass" value="0.081935"/>
+    <xacro:property name="shank1_ixx" value="1.8823E-05"/>
+    <xacro:property name="shank1_ixy" value="1.1047E-19"/>
+    <xacro:property name="shank1_ixz" value="1.433E-19"/>
+    <xacro:property name="shank1_iyy" value="0.00031144"/>
+    <xacro:property name="shank1_iyz" value="-2.3039E-19"/>
+    <xacro:property name="shank1_izz" value="0.00031833"/>
+    
+    <xacro:property name="foot1_com_x" value="-5.0263E-06"/>
+    <xacro:property name="foot1_com_y" value="-3.7565E-06"/>
+    <xacro:property name="foot1_com_z" value="0.0058146"/>
+    <xacro:property name="foot1_mass" value="0.15496"/>
+    <xacro:property name="foot1_ixx" value="0.00010348"/>
+    <xacro:property name="foot1_ixy" value="4.8068E-09"/>
+    <xacro:property name="foot1_ixz" value="-6.6695E-10"/>
+    <xacro:property name="foot1_iyy" value="0.00010349"/>
+    <xacro:property name="foot1_iyz" value="8.8051E-10"/>
+    <xacro:property name="foot1_izz" value="0.00016262"/>
+
+    <xacro:property name="thigh2_com_x" value="0.11489"/>
+    <xacro:property name="thigh2_com_y" value="9.5371E-05"/>
+    <xacro:property name="thigh2_com_z" value="-0.0056875"/>
+    <xacro:property name="thigh2_mass" value="0.60857"/>
+    <xacro:property name="thigh2_ixx" value="0.0002871"/>
+    <xacro:property name="thigh2_ixy" value="-1.1416E-07"/>
+    <xacro:property name="thigh2_ixz" value="-4.4479E-08"/>
+    <xacro:property name="thigh2_iyy" value="0.0013103"/>
+    <xacro:property name="thigh2_iyz" value="8.1337E-08"/>
+    <xacro:property name="thigh2_izz" value="0.0015428"/>
+
+    <xacro:property name="shank2_com_x" value="0.13117"/>
+    <xacro:property name="shank2_com_y" value="-1.1102E-16"/>
+    <xacro:property name="shank2_com_z" value="-0.010092"/>
+    <xacro:property name="shank2_mass" value="0.081935"/>
+    <xacro:property name="shank2_ixx" value="1.8823E-05"/>
+    <xacro:property name="shank2_ixy" value="1.1765E-19"/>
+    <xacro:property name="shank2_ixz" value="1.4556E-19"/>
+    <xacro:property name="shank2_iyy" value="0.00031144"/>
+    <xacro:property name="shank2_iyz" value="-2.3039E-19"/>
+    <xacro:property name="shank2_izz" value="0.00031833"/>
+
+    <xacro:property name="foot2_com_x" value="-6.261E-06"/>
+    <xacro:property name="foot2_com_y" value="-7.1023E-07"/>
+    <xacro:property name="foot2_com_z" value="0.0058163"/>
+    <xacro:property name="foot2_mass" value="0.15495"/>
+    <xacro:property name="foot2_ixx" value="0.00010349"/>
+    <xacro:property name="foot2_ixy" value="6.309E-09"/>
+    <xacro:property name="foot2_ixz" value="-1.5247E-10"/>
+    <xacro:property name="foot2_iyy" value="0.0013103"/>
+    <xacro:property name="foot2_iyz" value="1.118E-09"/>
+    <xacro:property name="foot2_izz" value="0.00016262"/>
+
+    <xacro:property name="thigh3_com_x" value="0.11489"/>
+    <xacro:property name="thigh3_com_y" value="9.5371E-05"/>
+    <xacro:property name="thigh3_com_z" value="-0.0056875"/>
+    <xacro:property name="thigh3_mass" value="0.60857"/>
+    <xacro:property name="thigh3_ixx" value="0.0002871"/>
+    <xacro:property name="thigh3_ixy" value="-1.1416E-07"/>
+    <xacro:property name="thigh3_ixz" value="-4.4479E-08"/>
+    <xacro:property name="thigh3_iyy" value="0.0013103"/>
+    <xacro:property name="thigh3_iyz" value="8.1337E-08"/>
+    <xacro:property name="thigh3_izz" value="0.0015428"/>
+
+    <xacro:property name="shank3_com_x" value="0.13117"/>
+    <xacro:property name="shank3_com_y" value="-4.7184E-15"/>
+    <xacro:property name="shank3_com_z" value="-0.010092"/>
+    <xacro:property name="shank3_mass" value="0.081935"/>
+    <xacro:property name="shank3_ixx" value="1.8823E-05"/>
+    <xacro:property name="shank3_ixy" value="1.4305E-19"/>
+    <xacro:property name="shank3_ixz" value="8.5825E-20"/>
+    <xacro:property name="shank3_iyy" value="0.00031144"/>
+    <xacro:property name="shank3_iyz" value="-2.7105E-20"/>
+    <xacro:property name="shank3_izz" value="0.00031833"/>
+
+    <xacro:property name="foot3_com_x" value="-2.0374E-06"/>
+    <xacro:property name="foot3_com_y" value="-5.9535E-06"/>
+    <xacro:property name="foot3_com_z" value="0.0058152"/>
+    <xacro:property name="foot3_mass" value="0.15495"/>
+    <xacro:property name="foot3_ixx" value="0.00010348"/>
+    <xacro:property name="foot3_ixy" value="-2.4176E-09"/>
+    <xacro:property name="foot3_ixz" value="-1.0478E-09"/>
+    <xacro:property name="foot3_iyy" value="0.00010349"/>
+    <xacro:property name="foot3_iyz" value="3.5161E-10"/>
+    <xacro:property name="foot3_izz" value="0.00016262"/>
+
+    <xacro:property name="thigh4_com_x" value="0.11511"/>
+    <xacro:property name="thigh4_com_y" value="-9.5371E-05"/>
+    <xacro:property name="thigh4_com_z" value="-0.0056875"/>
+    <xacro:property name="thigh4_mass" value="0.60857"/>
+    <xacro:property name="thigh4_ixx" value="0.0002871"/>
+    <xacro:property name="thigh4_ixy" value="-1.1416E-07"/>
+    <xacro:property name="thigh4_ixz" value="4.4479E-08"/>
+    <xacro:property name="thigh4_iyy" value="0.0013103"/>
+    <xacro:property name="thigh4_iyz" value="-8.1337E-08"/>
+    <xacro:property name="thigh4_izz" value="0.0015428"/>
+
+    <xacro:property name="shank4_com_x" value="0.13117"/>
+    <xacro:property name="shank4_com_y" value="6.3838E-15"/>
+    <xacro:property name="shank4_com_z" value="-0.010092"/>
+    <xacro:property name="shank4_mass" value="0.081935"/>
+    <xacro:property name="shank4_ixx" value="1.8823E-05"/>
+    <xacro:property name="shank4_ixy" value="-1.0405E-19"/>
+    <xacro:property name="shank4_ixz" value="-1.52E-19"/>
+    <xacro:property name="shank4_iyy" value="0.00031144"/>
+    <xacro:property name="shank4_iyz" value="-8.1315E-20"/>
+    <xacro:property name="shank4_izz" value="0.00031833"/>
+
+    <xacro:property name="foot4_com_x" value="-2.342E-06"/>
+    <xacro:property name="foot4_com_y" value="-5.8217E-06"/>
+    <xacro:property name="foot4_com_z" value="0.0058146"/>
+    <xacro:property name="foot4_mass" value="0.15496"/>
+    <xacro:property name="foot4_ixx" value="0.00010348"/>
+    <xacro:property name="foot4_ixy" value="-1.8468E-09"/>
+    <xacro:property name="foot4_ixz" value="-1.0274E-09"/>
+    <xacro:property name="foot4_iyy" value="0.0001035"/>
+    <xacro:property name="foot4_iyz" value="4.0565E-10"/>
+    <xacro:property name="foot4_izz" value="0.00016262"/>
+
+    <xacro:property name="lidar_com_x" value="-6.179E-05"/>
+    <xacro:property name="lidar_com_y" value="-2.4592E-05"/>
+    <xacro:property name="lidar_com_z" value="0.031978"/>
+    <xacro:property name="lidar_mass" value="0.1152"/>
+    <xacro:property name="lidar_ixx" value="3.8374E-05"/>
+    <xacro:property name="lidar_ixy" value="-5.0651E-06"/>
+    <xacro:property name="lidar_ixz" value="5.6483E-08"/>
+    <xacro:property name="lidar_iyy" value="4.8506E-05"/>
+    <xacro:property name="lidar_iyz" value="2.5161E-08"/>
+    <xacro:property name="lidar_izz" value="6.975E-05"/>
+
+</robot>

@@ -1,0 +1,1 @@
+/usr/bin/c++     -rdynamic CMakeFiles/broadcastTransforms.dir/src/joint_transform.cpp.o  -o /root/spibot_ws/devel/lib/spibot_control/broadcastTransforms   -L/usr/lib/x86_64-linux-gnu/pkgconfig/../../../lib/x86_64-linux-gnu/gazebo-11/plugins  -L/usr/lib/x86_64-linux-gnu/gazebo-11/plugins 

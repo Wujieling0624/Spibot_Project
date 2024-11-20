@@ -1,0 +1,9 @@
+<launch>
+
+    <include file="$(find legged_control)/launch/legged_control.launch" />
+    <node pkg="spibot_control" type="spibot_move_noetic" name="spibot_move_noetic" />
+    <!-- <node pkg="spibot_control" type="spibot_joint_move_noetic" name="spibot_joint_move_noetic" /> -->
+    <!-- <node pkg="urdf_transformer" type="urdf_transformer" name="urdf_transformer" /> -->
+    <!-- <node pkg="spibot_control" type="grippers_control" name="grippers_control" /> -->
+
+</launch>

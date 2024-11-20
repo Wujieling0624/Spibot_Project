@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC    -shared -Wl,-soname,libspibot_trajectory.so -o /root/spibot_ws/devel/lib/libspibot_trajectory.so CMakeFiles/spibot_trajectory.dir/src/move_trajectory.cpp.o   -L/usr/lib/x86_64-linux-gnu/pkgconfig/../../../lib/x86_64-linux-gnu/gazebo-11/plugins  -L/usr/lib/x86_64-linux-gnu/gazebo-11/plugins 

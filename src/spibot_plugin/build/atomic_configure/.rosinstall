@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /root/spibot_ws/src/spibot_plugin/build/devel/setup.sh
