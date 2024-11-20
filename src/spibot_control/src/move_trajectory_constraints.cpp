@@ -16,7 +16,7 @@ std::array<float, 3> BR_Forward_Trajectory(double passTime, int periodCnt)
     }
     else if (passTime > (periodCnt + 1 / 2.0f) * swingPeriod && passTime <= (periodCnt + 2 / 3.0f) * swingPeriod)
     {
-        leg_is_moving.data = 0;
+        leg_is_moving.data = BR_leg;
         if (passTime > (periodCnt + 1 / 2.0f) * swingPeriod && passTime <= (periodCnt + 1 / 2.0f + 1 / 24.0f) * swingPeriod)
         {
             // ROS_INFO("step1");
@@ -71,7 +71,7 @@ std::array<float, 3> BL_Forward_Trajectory(double passTime, int periodCnt)
     BL_traj[2] = z_stretch;
     if (passTime > periodCnt * swingPeriod && passTime <= (periodCnt + 1 / 6.0f) * swingPeriod)
     {
-        leg_is_moving.data = 3;
+        leg_is_moving.data = BL_leg;
         if (passTime > periodCnt * swingPeriod && passTime <= (periodCnt + 1 / 24.0f) * swingPeriod)
         {
             // ROS_INFO("step1");
@@ -128,7 +128,7 @@ std::array<float, 3> FL_Forward_Trajectory(double passTime, int periodCnt)
     }
     else if (passTime > (periodCnt + 1 / 6.0f) * swingPeriod && passTime <= (periodCnt + 1 / 3.0f) * swingPeriod)
     {
-        leg_is_moving.data = 2;
+        leg_is_moving.data = FL_leg;
         if (passTime > (periodCnt + 1 / 6.0f) * swingPeriod && passTime <= (periodCnt + 1 / 6.0f + 1 / 24.0f) * swingPeriod)
         {
             // ROS_INFO("step1");
@@ -190,7 +190,7 @@ std::array<float, 3> FR_Forward_Trajectory(double passTime, int periodCnt)
     }
     else if (passTime > (periodCnt + 2 / 3.0f) * swingPeriod && passTime <= (periodCnt + 5 / 6.0f) * swingPeriod)
     {
-        leg_is_moving.data = 1;
+        leg_is_moving.data = FR_leg;
         if (passTime > (periodCnt + 2 / 3.0f) * swingPeriod && passTime <= (periodCnt + 2 / 3.0f + 1 / 24.0f) * swingPeriod)
         {
             // ROS_INFO("step1");
@@ -222,3 +222,5 @@ std::array<float, 3> FR_Forward_Trajectory(double passTime, int periodCnt)
     rad[0] = -rad[0];
     return rad;
 }
+
+

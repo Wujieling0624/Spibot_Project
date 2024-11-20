@@ -18,6 +18,7 @@
 #include <unordered_map>
 #include <Eigen/Dense>
 #include <functional> // 为了 std::hash
+#include "common/const.h"
 
 // 自定义哈希函数对象，用于 std::pair<std::string, std::string>
 struct PairHash
@@ -33,6 +34,7 @@ struct PairHash
 std::unordered_map<std::pair<std::string, std::string>, Eigen::Matrix4d, PairHash, std::equal_to<std::pair<std::string, std::string>>> transformMap; // 使用自定义哈希函数和相等比较器的 unordered_map
 
 // 声明全局变量
+extern std_msgs::Int32 leg_is_moving;
 extern Eigen::Matrix4d Odom2base_matrix;
 extern Eigen::Matrix4d base2hip1_matrix, hip2thigh1_matrix, thigh2shank1_matrix;
 extern Eigen::Matrix4d base2hip2_matrix, hip2thigh2_matrix, thigh2shank2_matrix;

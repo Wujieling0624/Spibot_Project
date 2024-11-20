@@ -21,7 +21,7 @@
     </gazebo>
 
     <plugin name="triangle_draw_plugin" filename="libTriangleDrawPlugin.so">
-        <topicName>/Triangle_Point</topicName>
+        <topicName>/triangle_Point</topicName>
     </plugin>
 
 </robot>

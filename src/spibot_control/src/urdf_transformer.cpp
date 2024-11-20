@@ -1,5 +1,29 @@
 #include "urdf_transformer.h" // 包含头文件
 
+// 声明全局变量
+ros::Publisher triangle_pub;
+// 定义三个点的坐标，回调函数legIsMovingCallback用
+std::vector<geometry_msgs::Point> triangle_points;
+
+// 提取Odom2foot1_matrix\Odom2foot2_matrix\Odom2foot3_matrix\Odom2foot4_matrix第4列的前3行数据
+std::vector<geometry_msgs::Point> triangle_add_data(Eigen::Matrix4d matrix1, Eigen::Matrix4d matrix2, Eigen::Matrix4d matrix3)
+{
+    std::vector<geometry_msgs::Point> points(3);
+    points[0].x = matrix1(0, 3);
+    points[0].y = matrix1(1, 3);
+    // points[0].z = matrix1(2, 3);
+    points[0].z = 0;
+    points[1].x = matrix2(0, 3);
+    points[1].y = matrix2(1, 3);
+    // points[1].z = matrix2(2, 3);
+    points[1].z = 0;
+    points[2].x = matrix3(0, 3);
+    points[2].y = matrix3(1, 3);
+    // points[2].z = matrix3(2, 3);
+    points[2].z = 0;
+    return points;
+}
+
 // 将geometry_msgs::Transform转换为4x4齐次变换矩阵（Eigen::Matrix4d）
 Eigen::Matrix4d transformToEigenMatrix4d(const geometry_msgs::Transform &transform)
 {
@@ -71,8 +95,7 @@ void tfCallback(const tf2_msgs::TFMessage::ConstPtr &msg)
     hip2thigh4_matrix = findTransform("hip4", "thigh4");
     thigh2shank4_matrix = findTransform("thigh4", "shank4");
     // 使用 matrix 进行进一步处理
-    std::cout << "Found transform:\n"
-              << base2hip1_matrix << std::endl;
+    // std::cout << "Found transform:\n" << base2hip1_matrix << std::endl;
 }
 
 Eigen::Matrix4d Odom2base_matrix;
@@ -112,8 +135,7 @@ void odomCallback(const nav_msgs::Odometry::ConstPtr &odom)
     Odom2foot2_matrix = Odom2shank2_matrix * shank2foot2_matrix;
     Odom2foot3_matrix = Odom2shank3_matrix * shank2foot3_matrix;
     Odom2foot4_matrix = Odom2shank4_matrix * shank2foot4_matrix;
-    std::cout << "Odom2foot1_matrix:\n"
-              << Odom2foot1_matrix << std::endl;
+    // std::cout << "Odom2foot1_matrix:\n" << Odom2foot1_matrix << std::endl;
 }
 
 Eigen::Matrix4d shank2foot1_matrix, shank2foot2_matrix, shank2foot3_matrix, shank2foot4_matrix;
@@ -131,29 +153,68 @@ void tfstatic_Callback(const tf2_msgs::TFMessage::ConstPtr &msg)
     shank2foot3_matrix = findTransform("shank3", "foot3");
     shank2foot4_matrix = findTransform("shank4", "foot4");
     // 使用 matrix 进行进一步处理
-    std::cout << "Found transform:\n"
-              << shank2foot4_matrix << std::endl;
+    // std::cout << "Found transform:\n" << shank2foot4_matrix << std::endl;
 }
 
 void legIsMovingCallback(const std_msgs::Int32::ConstPtr &msg)
 {
     ROS_INFO("Received leg_is_moving: %d", msg->data);
+
+    switch (msg->data)
+    {
+    case BR_leg:
+        std::cout << "0\n"
+                  << std::endl;
+        triangle_points = triangle_add_data(Odom2foot2_matrix, Odom2foot3_matrix, Odom2foot4_matrix);
+        break;
+    case FR_leg:
+        std::cout << "1\n"
+                  << std::endl;
+        triangle_points = triangle_add_data(Odom2foot1_matrix, Odom2foot3_matrix, Odom2foot4_matrix);
+        break;
+    case FL_leg:
+        std::cout << "2\n"
+                  << std::endl;
+        triangle_points = triangle_add_data(Odom2foot1_matrix, Odom2foot2_matrix, Odom2foot4_matrix);
+        break;
+    case BL_leg:
+        std::cout << "3\n"
+                  << std::endl;
+        triangle_points = triangle_add_data(Odom2foot1_matrix, Odom2foot2_matrix, Odom2foot3_matrix);
+        break;
+    default:
+        std::cout << "4\n"
+                  << std::endl;
+        break;
+    }
 }
 
 int main(int argc, char *argv[])
 {
     ros::init(argc, argv, "matrix_creator");
     ros::NodeHandle nh;
-
+    ros::Rate loop_rate(10);
+    // 创建发布者，发布到话题：/triangle_Point
+    //注意：发布信息的话题首字母需要小写，否则rostopic没有看到话题
+    triangle_pub = nh.advertise<geometry_msgs::Point>("/triangle_Point", 10);
     // 订阅 /tf 话题
     ros::Subscriber robot_sub = nh.subscribe("/tf", 100, tfCallback);
     // 订阅 /tf_static 话题
     ros::Subscriber robot_static_sub = nh.subscribe("/tf_static", 100, tfstatic_Callback);
     // 订阅 /Odometry 话题，并传递回调函数指针
     ros::Subscriber odom_sub = nh.subscribe("/Odometry", 100, odomCallback);
-    // 订阅 /leg_is_moving 话题
+    // 订阅 /leg_is_moving 话题,发布三个固定腿的位置
     ros::Subscriber leg_state_sub = nh.subscribe("/leg_is_moving", 10, legIsMovingCallback);
-
-    ros::spin();
+    while (ros::ok())
+    {
+        // 发布点
+        for (const auto &p : triangle_points)
+        {
+            triangle_pub.publish(p);
+            std::cout << "Point: x=" << p.x << ", y=" << p.y << ", z=" << p.z << std::endl;
+        }
+        ros::spinOnce();
+        loop_rate.sleep();
+    }
     return 0;
 }

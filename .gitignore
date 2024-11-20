@@ -1,0 +1,26 @@
+# ROS build files
+/build/
+devel/
+install/
+
+# ROS log files
+*.log
+
+# CMake files
+CMakeFiles/
+CMakeCache.txt
+Makefile
+cmake_install.cmake
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+
+# Other common files to ignore
+*.swp
+*.swo
+*.DS_Store
+
+# Ignore all Markdown files
+*.md
