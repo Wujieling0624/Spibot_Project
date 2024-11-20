@@ -1,2 +1,0 @@
-legged_control:sipder_robot:spibot_control:spibot_plugin
--DCATKIN_DEVEL_PREFIX=/root/spibot_ws/devel -DCMAKE_INSTALL_PREFIX=/root/spibot_ws/install -G Unix Makefiles

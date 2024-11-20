@@ -1,8 +1,0 @@
-prefix=/root/spibot_ws/install
-
-Name: spibot_plugin
-Description: Description of spibot_plugin
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: roscpp std_msgs sensor_msgs
