@@ -150,7 +150,7 @@
       </geometry>
     </collision>
   </link>
-  <joint name="shank2foot1" type="fixed">
+  <joint name="shank2foot1" type="revolute">
     <origin xyz="0.36572 0 0.00075" rpy="-1.5818 -1.5708 -1.5598" />
     <parent link="shank1" />
     <child link="foot1" />
@@ -265,7 +265,7 @@
       </geometry>
     </collision>
   </link>
-  <joint name="shank2foot2" type="fixed">
+  <joint name="shank2foot2" type="revolute">
     <origin xyz="0.36572 0 0.00075" rpy="-1.5718 -1.5708 -1.5698" />
     <parent link="shank2" />
     <child link="foot2" />
@@ -495,7 +495,7 @@
       </geometry>
     </collision>
   </link>
-  <joint name="shank2foot4" type="fixed">
+  <joint name="shank2foot4" type="revolute">
     <origin xyz="0.36572 0 0.00075" rpy="0 1.5708 0" />
     <parent link="shank4" />
     <child link="foot4" />

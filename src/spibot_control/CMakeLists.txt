@@ -10,6 +10,7 @@ find_package(catkin REQUIRED COMPONENTS
   genmsg
   geometry_msgs
   gazebo_ros
+  gazebo_msgs
   joint_state_controller
   nav_msgs
   robot_state_publisher
@@ -56,22 +57,20 @@ target_include_directories(baselink_twist PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src
 # 添加C++可执行文件（ROS节点）  
 add_executable(spibot_joint_move_noetic src/joint_publisher.cpp)
 add_executable(spibot_move_noetic src/joint_publisher_constrains.cpp)
-add_executable(Draw src/Draw.cpp)  
 
 # 链接C库到你的ROS节点 
 target_link_libraries(spibot_joint_move_noetic ${catkin_LIBRARIES} spibot_trajectory)
 target_link_libraries(spibot_move_noetic ${catkin_LIBRARIES} spibot_trajectory_with_constraint baselink_twist)
-target_link_libraries(Draw ${catkin_LIBRARIES} spibot_trajectory_with_constraint)
 
 # 设置包含目录以找到C头文件  
 target_include_directories(spibot_joint_move_noetic PRIVATE ${catkin_INCLUDE_DIRS} ${CMAKE_CURRENT_SOURCE_DIR}/src)  
 target_include_directories(spibot_move_noetic PRIVATE ${catkin_INCLUDE_DIRS} ${CMAKE_CURRENT_SOURCE_DIR}/src)  
-target_include_directories(Draw PRIVATE ${catkin_INCLUDE_DIRS} ${CMAKE_CURRENT_SOURCE_DIR}/src)  
-
-add_executable(grippers_control src/grippers_control.cpp)  
-target_link_libraries(grippers_control ${catkin_LIBRARIES})
-target_include_directories(grippers_control PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)  
 
 add_executable(urdf_transformer src/urdf_transformer.cpp)  
 target_link_libraries(urdf_transformer ${catkin_LIBRARIES})
 target_include_directories(urdf_transformer PUBLIC ${catkin_INCLUDE_DIRS} ${CMAKE_CURRENT_SOURCE_DIR}/include)  
+
+add_executable(apply_body_wrench_force_node src/apply_body_wrench_force.cpp)
+target_link_libraries(apply_body_wrench_force_node ${catkin_LIBRARIES})
+
+

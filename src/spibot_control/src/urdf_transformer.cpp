@@ -12,15 +12,12 @@ std_msgs::Float32MultiArray triangle_add_data(Eigen::Matrix4d matrix1, Eigen::Ma
     points.data.push_back(matrix1(0, 3));
     points.data.push_back(matrix1(1, 3));
     points.data.push_back(matrix1(2, 3));
-    // points.data.push_back(0.0);
     points.data.push_back(matrix2(0, 3));
     points.data.push_back(matrix2(1, 3));
     points.data.push_back(matrix2(2, 3));
-    // points.data.push_back(0.0);
     points.data.push_back(matrix3(0, 3));
     points.data.push_back(matrix3(1, 3));
     points.data.push_back(matrix3(2, 3));
-    // points.data.push_back(0.0);
     return points;
 }
 
@@ -72,6 +69,7 @@ Eigen::Matrix4d base2hip1_matrix, hip2thigh1_matrix, thigh2shank1_matrix;
 Eigen::Matrix4d base2hip2_matrix, hip2thigh2_matrix, thigh2shank2_matrix;
 Eigen::Matrix4d base2hip3_matrix, hip2thigh3_matrix, thigh2shank3_matrix;
 Eigen::Matrix4d base2hip4_matrix, hip2thigh4_matrix, thigh2shank4_matrix;
+Eigen::Matrix4d shank2foot1_matrix, shank2foot2_matrix, shank2foot3_matrix, shank2foot4_matrix;
 // 回调函数实现
 void tfCallback(const tf2_msgs::TFMessage::ConstPtr &msg)
 {
@@ -94,8 +92,29 @@ void tfCallback(const tf2_msgs::TFMessage::ConstPtr &msg)
     base2hip4_matrix = findTransform("base_link", "hip4");
     hip2thigh4_matrix = findTransform("hip4", "thigh4");
     thigh2shank4_matrix = findTransform("thigh4", "shank4");
+    shank2foot1_matrix = findTransform("shank1", "foot1");
+    shank2foot2_matrix = findTransform("shank2", "foot2");
+    shank2foot3_matrix = findTransform("shank3", "foot3");
+    shank2foot4_matrix = findTransform("shank4", "foot4");
     // 使用 matrix 进行进一步处理
     // std::cout << "Found transform:\n" << base2hip1_matrix << std::endl;
+}
+
+void tfstatic_Callback(const tf2_msgs::TFMessage::ConstPtr &msg)
+{
+    for (const auto &tf : msg->transforms)
+    {
+        std::pair<std::string, std::string> key = {tf.header.frame_id, tf.child_frame_id};
+        Eigen::Matrix4d transform_matrix = transformToEigenMatrix4d(tf.transform);
+        // 更新或插入变换关系
+        transformMap[key] = transform_matrix;
+    }
+    shank2foot1_matrix = findTransform("shank1", "foot1");
+    shank2foot2_matrix = findTransform("shank2", "foot2");
+    shank2foot3_matrix = findTransform("shank3", "foot3");
+    shank2foot4_matrix = findTransform("shank4", "foot4");
+    // 使用 matrix 进行进一步处理
+    // std::cout << "Found transform:\n" << shank2foot4_matrix << std::endl;
 }
 
 Eigen::Matrix4d Odom2base_matrix;
@@ -138,24 +157,6 @@ void odomCallback(const nav_msgs::Odometry::ConstPtr &odom)
     // std::cout << "Odom2foot1_matrix:\n" << Odom2foot1_matrix << std::endl;
 }
 
-Eigen::Matrix4d shank2foot1_matrix, shank2foot2_matrix, shank2foot3_matrix, shank2foot4_matrix;
-void tfstatic_Callback(const tf2_msgs::TFMessage::ConstPtr &msg)
-{
-    for (const auto &tf : msg->transforms)
-    {
-        std::pair<std::string, std::string> key = {tf.header.frame_id, tf.child_frame_id};
-        Eigen::Matrix4d transform_matrix = transformToEigenMatrix4d(tf.transform);
-        // 更新或插入变换关系
-        transformMap[key] = transform_matrix;
-    }
-    shank2foot1_matrix = findTransform("shank1", "foot1");
-    shank2foot2_matrix = findTransform("shank2", "foot2");
-    shank2foot3_matrix = findTransform("shank3", "foot3");
-    shank2foot4_matrix = findTransform("shank4", "foot4");
-    // 使用 matrix 进行进一步处理
-    // std::cout << "Found transform:\n" << shank2foot4_matrix << std::endl;
-}
-
 void legIsMovingCallback(const std_msgs::Int32::ConstPtr &msg)
 {
     ROS_INFO("Received leg_is_moving: %d", msg->data);
@@ -188,20 +189,20 @@ int main(int argc, char *argv[])
     ros::init(argc, argv, "matrix_creator");
     ros::NodeHandle nh;
     ros::Rate loop_rate(100);
-    // 创建发布者，发布到话题：/triangle_points
+    // 创建发布者，发布到话题：/spibot_gazebo/draw/triangle_points
     // 注意：发布信息的话题首字母需要小写，否则rostopic没有看到话题
-    triangle_pub = nh.advertise<std_msgs::Float32MultiArray>("/triangle_points", 10);
+    triangle_pub = nh.advertise<std_msgs::Float32MultiArray>("/spibot_gazebo/draw/triangle_points", 10);
     // 订阅 /tf 话题
     ros::Subscriber robot_sub = nh.subscribe("/tf", 100, tfCallback);
     // 订阅 /tf_static 话题
     ros::Subscriber robot_static_sub = nh.subscribe("/tf_static", 100, tfstatic_Callback);
     // 订阅 /Odometry 话题，并传递回调函数指针
     ros::Subscriber odom_sub = nh.subscribe("/Odometry", 100, odomCallback);
-    // 订阅 /leg_is_moving 话题,发布三个固定腿的位置
-    ros::Subscriber leg_state_sub = nh.subscribe("/leg_is_moving", 10, legIsMovingCallback);
+    // 订阅 /spibot_gazebo/states/leg_is_moving 话题,发布三个固定腿的位置
+    ros::Subscriber leg_state_sub = nh.subscribe("/spibot_gazebo/states/leg_is_moving", 10, legIsMovingCallback);
     while (ros::ok())
     {
-        //可以在/triangle_points话题查看数据triangle_points
+        // 可以在/spibot_gazebo/draw/triangle_points话题查看数据triangle_points
         triangle_pub.publish(triangle_points);
         ros::spinOnce();
         loop_rate.sleep();

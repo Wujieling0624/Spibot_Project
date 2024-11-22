@@ -29,17 +29,6 @@
         <dynamics damping="0.0" friction="10"/>
     </joint>
 
-    <gazebo>
-        <plugin name="gazebo_ros_vacuum_gripper" filename="libgazebo_ros_vacuum_gripper.so">
-            <robotNamespace>/spibot_vacuum_gripper1</robotNamespace>
-            <bodyName>vacuum_gripper1</bodyName>
-            <topicName>BR_suction_state</topicName>
-            <maxForce>400</maxForce>
-            <maxDistance>5.05</maxDistance>
-            <minDistance>0.01</minDistance>
-        </plugin>
-    </gazebo>
-
     <gazebo reference="vacuum_gripper1">
         <mu1>50</mu1>
         <mu2>50</mu2>
@@ -76,17 +65,6 @@
         <limit effort="50" velocity="50" lower="0" upper="0" />
         <dynamics damping="0.0" friction="10"/>
     </joint>
-
-    <gazebo>
-        <plugin name="gazebo_ros_vacuum_gripper" filename="libgazebo_ros_vacuum_gripper.so">
-            <robotNamespace>/spibot_vacuum_gripper2</robotNamespace>
-            <bodyName>vacuum_gripper2</bodyName>
-            <topicName>FR_suction_state</topicName>
-            <maxForce>400</maxForce>
-            <maxDistance>5.05</maxDistance>
-            <minDistance>0.01</minDistance>
-        </plugin>
-    </gazebo>
 
     <gazebo reference="vacuum_gripper2">
         <mu1>50</mu1>
@@ -125,17 +103,6 @@
         <dynamics damping="0.0" friction="10"/>
     </joint>
 
-    <gazebo>
-        <plugin name="gazebo_ros_vacuum_gripper" filename="libgazebo_ros_vacuum_gripper.so">
-            <robotNamespace>/spibot_vacuum_gripper3</robotNamespace>
-            <bodyName>vacuum_gripper3</bodyName>
-            <topicName>FL_suction_state</topicName>
-            <maxForce>400</maxForce>
-            <maxDistance>5.05</maxDistance>
-            <minDistance>0.01</minDistance>
-        </plugin>
-    </gazebo>
-
     <gazebo reference="vacuum_gripper3">
         <mu1>50</mu1>
         <mu2>50</mu2>
@@ -172,17 +139,6 @@
         <limit effort="50" velocity="50" lower="0" upper="0" />
         <dynamics damping="0.0" friction="10"/>
     </joint>
-
-    <gazebo>
-        <plugin name="gazebo_ros_vacuum_gripper" filename="libgazebo_ros_vacuum_gripper.so">
-            <robotNamespace>/spibot_vacuum_gripper4</robotNamespace>
-            <bodyName>vacuum_gripper4</bodyName>
-            <topicName>BL_suction_state</topicName>
-            <maxForce>400</maxForce>
-            <maxDistance>5.05</maxDistance>
-            <minDistance>0.01</minDistance>
-        </plugin>
-    </gazebo>
 
     <gazebo reference="vacuum_gripper4">
         <mu1>50</mu1>

@@ -36,7 +36,7 @@
   <gazebo reference="root">
     <visual>
       <plugin filename="libdraw_triangle.so" name="drawtrianglePlugin">
-        <topicName>/triangle_points</topicName>
+        <topicName>/spibot_gazebo/draw/triangle_points</topicName>
       </plugin>
     </visual>
   </gazebo>

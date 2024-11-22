@@ -14,8 +14,9 @@ const int swingPeriod = 9;       // 摆腿周期
 const float swingRaduis = 0.15f; // 摆腿半径
 
 // 定义一个枚举类型表示机器人的腿
-enum LEG_NAME
+enum LegName
 {
+    None,   // 单纯为了凑数
     BR_leg, // 左前腿
     FR_leg, // 左后腿
     FL_leg, // 右前腿
@@ -67,7 +68,7 @@ Eigen::Matrix3d rotationMatrixZ(double rad)
     return R;
 }
 
-std::array<float, 3> Leg_decision(LEG_NAME leg_name, std::array<float, 3> rad)
+std::array<float, 3> Leg_decision(LegName leg_name, std::array<float, 3> rad)
 {
     switch (leg_name)
     {

@@ -586,65 +586,43 @@
         </collision>
     </link>
 
-    <joint name="shank2foot1" type="fixed">
+    <!-- type="revolute" : 发布连杆关系的话题就是在/tf -->
+    <!-- type="fixed" : 发布连杆关系的话题就是在/tf_static -->
+    
+    <joint name="shank2foot1" type="revolute">
         <origin xyz="0.36572 0 0.00075" rpy="-1.5818 -1.5708 -1.5598" />
         <parent link="shank1" />
         <child link="foot1" />
         <axis xyz="0 0 -1" />
+        <limit effort="50" velocity="50" lower="0" upper="0" />
+        <dynamics damping="0.0" friction="10"/>
     </joint>
 
-    <joint name="shank2foot2" type="fixed">
+    <joint name="shank2foot2" type="revolute">
         <origin xyz="0.36572 0 0.00075" rpy="-1.5718 -1.5708 -1.5698" />
         <parent link="shank2" />
         <child link="foot2" />
         <axis xyz="0 0 -1" />
+        <limit effort="50" velocity="50" lower="0" upper="0" />
+        <dynamics damping="0.0" friction="10"/>
     </joint>
 
-    <joint name="shank2foot3" type="fixed">
+    <joint name="shank2foot3" type="revolute">
         <origin xyz="0.36572 0 0.00075" rpy="0 1.5708 0" />
         <parent link="shank3" />
         <child link="foot3" />
         <axis xyz="0 0 -1" />
+        <limit effort="50" velocity="50" lower="0" upper="0" />
+        <dynamics damping="0.0" friction="10"/>
     </joint>
 
-    <joint name="shank2foot4" type="fixed">
+    <joint name="shank2foot4" type="revolute">
         <origin xyz="0.36572 0 0.00075" rpy="0 1.5708 0" />
         <parent link="shank4" />
         <child link="foot4" />
         <axis xyz="0 0 -1" />
+        <limit effort="50" velocity="50" lower="0" upper="0" />
+        <dynamics damping="0.0" friction="10"/>
     </joint>
-
-    <!-- 定义球铰链关节 -->
-    <!-- <joint name="shank2foot1" type="revolute">
-        <origin xyz="0.36572 0 0.00075" rpy="-1.5818 -1.5708 -1.5598"/>
-        <parent link="shank1"/>
-        <child link="foot1"/>
-        <axis xyz="0 0 0"/>
-        <limit lower="-3.14" upper="3.14" effort="500" velocity="40" />
-    </joint>
-
-    <joint name="shank2foot2" type="revolute">
-        <origin xyz="0.36572 0 0.00075" rpy="-1.5718 -1.5708 -1.5698"/>
-        <parent link="shank2"/>
-        <child link="foot2"/>
-        <axis xyz="0 0 0"/>
-        <limit lower="-3.14" upper="3.14" effort="500" velocity="40" />
-    </joint>
-
-    <joint name="shank2foot3" type="revolute">
-        <origin xyz="0.36572 0 0.00075" rpy="0 1.5708 0"/>
-        <parent link="shank3"/>
-        <child link="foot3"/>
-        <axis xyz="0 0 0"/>
-        <limit lower="-3.14" upper="3.14" effort="500" velocity="40" />
-    </joint>
-
-    <joint name="shank2foot4" type="revolute">
-        <origin xyz="0.36572 0 0.00075" rpy="0 1.5708 0"/>
-        <parent link="shank4"/>
-        <child link="foot4"/>
-        <axis xyz="0 0 0"/>
-        <limit lower="-3.14" upper="3.14" effort="500" velocity="40" />
-    </joint> -->
-
+    
 </robot>

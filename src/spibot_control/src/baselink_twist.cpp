@@ -1,6 +1,6 @@
 #include "baselink_twist.h"
 
-std::array<float, 3> base_trajectroy(double passTime, int periodCnt, LEG_NAME leg_name)
+std::array<float, 3> base_trajectroy(double passTime, int periodCnt, LegName leg_name)
 {
     float traj[3];
     std::array<float, 3> rad;
@@ -15,7 +15,7 @@ std::array<float, 3> base_trajectroy(double passTime, int periodCnt, LEG_NAME le
     return rad;
 }
 
-std::array<float, 3> base_updown(double passTime, int periodCnt, LEG_NAME leg_name)
+std::array<float, 3> base_updown(double passTime, int periodCnt, LegName leg_name)
 {
     float traj[3];
     std::array<float, 3> rad;
@@ -40,7 +40,7 @@ std::array<float, 3> base_updown(double passTime, int periodCnt, LEG_NAME leg_na
     return rad;
 }
 
-std::array<float, 3> base_twist(double passTime, int periodCnt, LEG_NAME leg_name)
+std::array<float, 3> base_twist(double passTime, int periodCnt, LegName leg_name)
 {
     float traj[3];
     Eigen::Vector3d pos{0.0, y_offset, z_offset};
