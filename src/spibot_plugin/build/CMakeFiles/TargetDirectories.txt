@@ -2,7 +2,6 @@
 /root/spibot_ws/src/spibot_plugin/build/CMakeFiles/list_install_components.dir
 /root/spibot_ws/src/spibot_plugin/build/CMakeFiles/rebuild_cache.dir
 /root/spibot_ws/src/spibot_plugin/build/CMakeFiles/test.dir
-/root/spibot_ws/src/spibot_plugin/build/CMakeFiles/TriangleDrawPlugin.dir
 /root/spibot_ws/src/spibot_plugin/build/CMakeFiles/visualization_msgs_generate_messages_py.dir
 /root/spibot_ws/src/spibot_plugin/build/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir
 /root/spibot_ws/src/spibot_plugin/build/CMakeFiles/visualization_msgs_generate_messages_lisp.dir

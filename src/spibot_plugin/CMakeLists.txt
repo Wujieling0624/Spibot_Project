@@ -58,9 +58,6 @@ link_directories(/usr/lib/x86_64-linux-gnu)  # Adjust this path if necessary
 add_library(draw_traj SHARED src/draw_traj_plugin.cc)
 target_link_libraries(draw_traj ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
 
-add_library(TriangleDrawPlugin SHARED src/TriangleDrawPlugin.cc)
-target_link_libraries(TriangleDrawPlugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
-
 add_library(draw_triangle SHARED src/draw_triangle_plugin.cc)
 target_link_libraries(draw_triangle ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
 

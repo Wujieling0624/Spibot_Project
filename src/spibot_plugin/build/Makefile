@@ -168,19 +168,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named TriangleDrawPlugin
-
-# Build rule for target.
-TriangleDrawPlugin: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 TriangleDrawPlugin
-.PHONY : TriangleDrawPlugin
-
-# fast build rule for target.
-TriangleDrawPlugin/fast:
-	$(MAKE) -f CMakeFiles/TriangleDrawPlugin.dir/build.make CMakeFiles/TriangleDrawPlugin.dir/build
-.PHONY : TriangleDrawPlugin/fast
-
-#=============================================================================
 # Target rules for targets named visualization_msgs_generate_messages_py
 
 # Build rule for target.
@@ -1480,33 +1467,6 @@ gtest/fast:
 	$(MAKE) -f gtest/googletest/CMakeFiles/gtest.dir/build.make gtest/googletest/CMakeFiles/gtest.dir/build
 .PHONY : gtest/fast
 
-src/TriangleDrawPlugin.o: src/TriangleDrawPlugin.cc.o
-
-.PHONY : src/TriangleDrawPlugin.o
-
-# target to build an object file
-src/TriangleDrawPlugin.cc.o:
-	$(MAKE) -f CMakeFiles/TriangleDrawPlugin.dir/build.make CMakeFiles/TriangleDrawPlugin.dir/src/TriangleDrawPlugin.cc.o
-.PHONY : src/TriangleDrawPlugin.cc.o
-
-src/TriangleDrawPlugin.i: src/TriangleDrawPlugin.cc.i
-
-.PHONY : src/TriangleDrawPlugin.i
-
-# target to preprocess a source file
-src/TriangleDrawPlugin.cc.i:
-	$(MAKE) -f CMakeFiles/TriangleDrawPlugin.dir/build.make CMakeFiles/TriangleDrawPlugin.dir/src/TriangleDrawPlugin.cc.i
-.PHONY : src/TriangleDrawPlugin.cc.i
-
-src/TriangleDrawPlugin.s: src/TriangleDrawPlugin.cc.s
-
-.PHONY : src/TriangleDrawPlugin.s
-
-# target to generate assembly for a file
-src/TriangleDrawPlugin.cc.s:
-	$(MAKE) -f CMakeFiles/TriangleDrawPlugin.dir/build.make CMakeFiles/TriangleDrawPlugin.dir/src/TriangleDrawPlugin.cc.s
-.PHONY : src/TriangleDrawPlugin.cc.s
-
 src/draw_traj_plugin.o: src/draw_traj_plugin.cc.o
 
 .PHONY : src/draw_traj_plugin.o
@@ -1571,7 +1531,6 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... test"
-	@echo "... TriangleDrawPlugin"
 	@echo "... visualization_msgs_generate_messages_py"
 	@echo "... visualization_msgs_generate_messages_nodejs"
 	@echo "... visualization_msgs_generate_messages_lisp"
@@ -1675,9 +1634,6 @@ help:
 	@echo "... gmock"
 	@echo "... gtest_main"
 	@echo "... gtest"
-	@echo "... src/TriangleDrawPlugin.o"
-	@echo "... src/TriangleDrawPlugin.i"
-	@echo "... src/TriangleDrawPlugin.s"
 	@echo "... src/draw_traj_plugin.o"
 	@echo "... src/draw_traj_plugin.i"
 	@echo "... src/draw_traj_plugin.s"
