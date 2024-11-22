@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="base_traj">
 
- <link name="world" />
+  <link name="world" />
   <joint name="world_joint" type="fixed">
     <parent link="world" />
     <child link = "root" />
@@ -23,7 +23,7 @@
     </inertial>
   </link>
 
-    <!--Note that the "topicName" is the topic name in launch file, it should be the same. 
+  <!--Note that the "topicName" is the topic name in launch file, it should be the same. 
 	Here, topicName is "Odometry" and so do it in the libgazebo_ros_p3d-->
   <gazebo reference="root">
     <visual>
@@ -32,7 +32,13 @@
       </plugin>
     </visual>
   </gazebo>
-
-
+  
+  <gazebo reference="root">
+    <visual>
+      <plugin filename="libdraw_triangle.so" name="drawtrianglePlugin">
+        <topicName>/triangle_points</topicName>
+      </plugin>
+    </visual>
+  </gazebo>
 
 </robot>

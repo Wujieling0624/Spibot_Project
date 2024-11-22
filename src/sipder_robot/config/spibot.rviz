@@ -24,7 +24,7 @@ Panels:
   - Class: rviz/Time
     Name: Time
     SyncMode: 0
-    SyncSource: ""
+    SyncSource: Image
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -53,18 +53,142 @@ Visualization Manager:
     - Alpha: 1
       Class: rviz/RobotModel
       Collision Enabled: false
-      Enabled: false
+      Enabled: true
       Links:
         All Links Enabled: true
         Expand Joint Details: false
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
+        base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        camera:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        dummy:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        foot1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        foot2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        foot3:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        foot4:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        hip1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        hip2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        hip3:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        hip4:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        lidar:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        shank1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        shank2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        shank3:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        shank4:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thigh1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thigh2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thigh3:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        thigh4:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        vacuum_gripper1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        vacuum_gripper2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        vacuum_gripper3:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        vacuum_gripper4:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        world:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
       Name: RobotModel
       Robot Description: robot_description
       TF Prefix: ""
       Update Interval: 0
-      Value: false
+      Value: true
       Visual Enabled: true
     - Class: rviz/TF
       Enabled: true
@@ -73,6 +197,48 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
+        base_link:
+          Value: true
+        camera:
+          Value: true
+        dummy:
+          Value: true
+        foot1:
+          Value: true
+        foot2:
+          Value: true
+        foot3:
+          Value: true
+        foot4:
+          Value: true
+        hip1:
+          Value: true
+        hip2:
+          Value: true
+        hip3:
+          Value: true
+        hip4:
+          Value: true
+        lidar:
+          Value: true
+        shank1:
+          Value: true
+        shank2:
+          Value: true
+        shank3:
+          Value: true
+        shank4:
+          Value: true
+        thigh1:
+          Value: true
+        thigh2:
+          Value: true
+        thigh3:
+          Value: true
+        thigh4:
+          Value: true
+        world:
+          Value: true
       Marker Alpha: 1
       Marker Scale: 0.10000000149011612
       Name: TF
@@ -80,7 +246,33 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        {}
+        world:
+          dummy:
+            base_link:
+              camera:
+                {}
+              hip1:
+                thigh1:
+                  shank1:
+                    foot1:
+                      {}
+              hip2:
+                thigh2:
+                  shank2:
+                    foot2:
+                      {}
+              hip3:
+                thigh3:
+                  shank3:
+                    foot3:
+                      {}
+              hip4:
+                thigh4:
+                  shank4:
+                    foot4:
+                      {}
+              lidar:
+                {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -248,9 +440,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.4247964322566986
+      Pitch: 1.0347964763641357
       Target Frame: <Fixed Frame>
-      Yaw: 4.790409088134766
+      Yaw: 4.725409507751465
     Saved: ~
 Window Geometry:
   Displays:
@@ -270,5 +462,5 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 1520
-  X: 221
-  Y: 65
+  X: 189
+  Y: 33

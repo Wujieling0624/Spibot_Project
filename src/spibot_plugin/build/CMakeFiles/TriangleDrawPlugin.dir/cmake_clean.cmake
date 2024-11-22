@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/TriangleDrawPlugin.dir/src/TriangleDrawPlugin.cpp.o"
+  "CMakeFiles/TriangleDrawPlugin.dir/src/TriangleDrawPlugin.cc.o"
   "devel/lib/libTriangleDrawPlugin.pdb"
   "devel/lib/libTriangleDrawPlugin.so"
 )

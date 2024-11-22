@@ -10,7 +10,7 @@
     <gazebo>
         <plugin name="p3d_base_controller" filename="libgazebo_ros_p3d.so">
             <alwaysOn>true</alwaysOn>
-            <updateRate>50.0</updateRate>
+            <updateRate>100.0</updateRate>
             <bodyName>base_link</bodyName>            <!-- 替换为你的基坐标系名称 -->
             <topicName>/Odometry</topicName>            <!-- 自定义的话题名称 -->
             <gaussianNoise>0.01</gaussianNoise>            <!-- 可选，添加高斯噪声 -->
@@ -19,9 +19,5 @@
             <rpyOffsets>0 0 0</rpyOffsets>            <!-- 可选，旋转偏移量 -->
         </plugin>
     </gazebo>
-
-    <plugin name="triangle_draw_plugin" filename="libTriangleDrawPlugin.so">
-        <topicName>/triangle_Point</topicName>
-    </plugin>
 
 </robot>

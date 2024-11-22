@@ -45,7 +45,7 @@ int main(int argc, char **argv)
         publishers[i] = nh.advertise<std_msgs::Float64>(joint_names[i], 1);
     }
     startTime = getTimeSecond(); // 获取系统开始时间
-    ros::Rate loop_rate(50);
+    ros::Rate loop_rate(100);
     std::array<float, 3> BR_rads = {-0, 0, 0}; // 1
     std::array<float, 3> FR_rads = {-0, 0, 0}; // 2
     std::array<float, 3> FL_rads = {-0, 0, 0}; // 3
@@ -67,10 +67,14 @@ int main(int argc, char **argv)
         FL_rads = FL_Forward_Trajectory(passTime, periodCnt);
         BL_rads = BL_Forward_Trajectory(passTime, periodCnt);
 
+        // BR_rads = {-0, 0, 0}; // 1
+        // FR_rads = {-0, 0, 0}; // 2
+        // FL_rads = {-0, 0, 0}; // 3
+        // BL_rads = {-0, 0, 0}; // 4
         // ROS_INFO("hip_theta = %f,thigh_theta = %f,shank_theta = %f \n", BR_rads[0], BR_rads[1], BR_rads[2]);
         leg_state_pub.publish(leg_is_moving);
         ROS_INFO(" Published leg_is_moving: %d \n ", leg_is_moving.data);
-        
+
         // Leg radian publish
         pubLegRadian(publishers, 0, BR_rads); // BR Controllers
         pubLegRadian(publishers, 1, FR_rads); // FR Controllers
@@ -131,6 +135,3 @@ void JointStateUpdate(ros::Publisher joint_state_pub, std::array<float, 3> BR_ra
 
     joint_state_pub.publish(joint_state);
 }
-
-
-

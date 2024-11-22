@@ -15,6 +15,7 @@
 #include <iostream>
 #include <string>
 #include "std_msgs/Int32.h"
+#include "std_msgs/Float32MultiArray.h"
 #include <unordered_map>
 #include <Eigen/Dense>
 #include <functional> // 为了 std::hash

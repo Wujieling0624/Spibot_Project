@@ -54,6 +54,7 @@ CMAKE_BINARY_DIR = /root/spibot_ws/src/spibot_plugin/build
 
 # The main recursive "all" target.
 all: CMakeFiles/TriangleDrawPlugin.dir/all
+all: CMakeFiles/draw_triangle.dir/all
 all: CMakeFiles/draw_traj.dir/all
 all: gtest/all
 
@@ -104,6 +105,7 @@ clean: CMakeFiles/gazebo_msgs_generate_messages_nodejs.dir/clean
 clean: CMakeFiles/nodelet_generate_messages_eus.dir/clean
 clean: CMakeFiles/nav_msgs_generate_messages_nodejs.dir/clean
 clean: CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
+clean: CMakeFiles/draw_triangle.dir/clean
 clean: CMakeFiles/std_msgs_generate_messages_py.dir/clean
 clean: CMakeFiles/tests.dir/clean
 clean: CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
@@ -1274,6 +1276,33 @@ sensor_msgs_generate_messages_cpp: CMakeFiles/sensor_msgs_generate_messages_cpp.
 CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean:
 	$(MAKE) -f CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
 .PHONY : CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/draw_triangle.dir
+
+# All Build rule for target.
+CMakeFiles/draw_triangle.dir/all:
+	$(MAKE) -f CMakeFiles/draw_triangle.dir/build.make CMakeFiles/draw_triangle.dir/depend
+	$(MAKE) -f CMakeFiles/draw_triangle.dir/build.make CMakeFiles/draw_triangle.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/spibot_ws/src/spibot_plugin/build/CMakeFiles --progress-num=5,6 "Built target draw_triangle"
+.PHONY : CMakeFiles/draw_triangle.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/draw_triangle.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/spibot_ws/src/spibot_plugin/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/draw_triangle.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/spibot_ws/src/spibot_plugin/build/CMakeFiles 0
+.PHONY : CMakeFiles/draw_triangle.dir/rule
+
+# Convenience name for target.
+draw_triangle: CMakeFiles/draw_triangle.dir/rule
+
+.PHONY : draw_triangle
+
+# clean rule for target.
+CMakeFiles/draw_triangle.dir/clean:
+	$(MAKE) -f CMakeFiles/draw_triangle.dir/build.make CMakeFiles/draw_triangle.dir/clean
+.PHONY : CMakeFiles/draw_triangle.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/std_msgs_generate_messages_py.dir
@@ -2822,7 +2851,7 @@ gtest/googlemock/CMakeFiles/gmock_main.dir/all: gtest/googlemock/CMakeFiles/gmoc
 gtest/googlemock/CMakeFiles/gmock_main.dir/all: gtest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f gtest/googlemock/CMakeFiles/gmock_main.dir/build.make gtest/googlemock/CMakeFiles/gmock_main.dir/depend
 	$(MAKE) -f gtest/googlemock/CMakeFiles/gmock_main.dir/build.make gtest/googlemock/CMakeFiles/gmock_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/spibot_ws/src/spibot_plugin/build/CMakeFiles --progress-num=7,8 "Built target gmock_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/spibot_ws/src/spibot_plugin/build/CMakeFiles --progress-num=9,10 "Built target gmock_main"
 .PHONY : gtest/googlemock/CMakeFiles/gmock_main.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2849,7 +2878,7 @@ gtest/googlemock/CMakeFiles/gmock_main.dir/clean:
 gtest/googlemock/CMakeFiles/gmock.dir/all: gtest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f gtest/googlemock/CMakeFiles/gmock.dir/build.make gtest/googlemock/CMakeFiles/gmock.dir/depend
 	$(MAKE) -f gtest/googlemock/CMakeFiles/gmock.dir/build.make gtest/googlemock/CMakeFiles/gmock.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/spibot_ws/src/spibot_plugin/build/CMakeFiles --progress-num=5,6 "Built target gmock"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/spibot_ws/src/spibot_plugin/build/CMakeFiles --progress-num=7,8 "Built target gmock"
 .PHONY : gtest/googlemock/CMakeFiles/gmock.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2876,7 +2905,7 @@ gtest/googlemock/CMakeFiles/gmock.dir/clean:
 gtest/googletest/CMakeFiles/gtest_main.dir/all: gtest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f gtest/googletest/CMakeFiles/gtest_main.dir/build.make gtest/googletest/CMakeFiles/gtest_main.dir/depend
 	$(MAKE) -f gtest/googletest/CMakeFiles/gtest_main.dir/build.make gtest/googletest/CMakeFiles/gtest_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/spibot_ws/src/spibot_plugin/build/CMakeFiles --progress-num=11,12 "Built target gtest_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/spibot_ws/src/spibot_plugin/build/CMakeFiles --progress-num=13,14 "Built target gtest_main"
 .PHONY : gtest/googletest/CMakeFiles/gtest_main.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2903,7 +2932,7 @@ gtest/googletest/CMakeFiles/gtest_main.dir/clean:
 gtest/googletest/CMakeFiles/gtest.dir/all:
 	$(MAKE) -f gtest/googletest/CMakeFiles/gtest.dir/build.make gtest/googletest/CMakeFiles/gtest.dir/depend
 	$(MAKE) -f gtest/googletest/CMakeFiles/gtest.dir/build.make gtest/googletest/CMakeFiles/gtest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/spibot_ws/src/spibot_plugin/build/CMakeFiles --progress-num=9,10 "Built target gtest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/spibot_ws/src/spibot_plugin/build/CMakeFiles --progress-num=11,12 "Built target gtest"
 .PHONY : gtest/googletest/CMakeFiles/gtest.dir/all
 
 # Build rule for subdir invocation for target.

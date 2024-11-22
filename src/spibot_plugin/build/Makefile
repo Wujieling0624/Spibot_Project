@@ -675,6 +675,19 @@ sensor_msgs_generate_messages_cpp/fast:
 .PHONY : sensor_msgs_generate_messages_cpp/fast
 
 #=============================================================================
+# Target rules for targets named draw_triangle
+
+# Build rule for target.
+draw_triangle: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 draw_triangle
+.PHONY : draw_triangle
+
+# fast build rule for target.
+draw_triangle/fast:
+	$(MAKE) -f CMakeFiles/draw_triangle.dir/build.make CMakeFiles/draw_triangle.dir/build
+.PHONY : draw_triangle/fast
+
+#=============================================================================
 # Target rules for targets named std_msgs_generate_messages_py
 
 # Build rule for target.
@@ -1467,32 +1480,32 @@ gtest/fast:
 	$(MAKE) -f gtest/googletest/CMakeFiles/gtest.dir/build.make gtest/googletest/CMakeFiles/gtest.dir/build
 .PHONY : gtest/fast
 
-src/TriangleDrawPlugin.o: src/TriangleDrawPlugin.cpp.o
+src/TriangleDrawPlugin.o: src/TriangleDrawPlugin.cc.o
 
 .PHONY : src/TriangleDrawPlugin.o
 
 # target to build an object file
-src/TriangleDrawPlugin.cpp.o:
-	$(MAKE) -f CMakeFiles/TriangleDrawPlugin.dir/build.make CMakeFiles/TriangleDrawPlugin.dir/src/TriangleDrawPlugin.cpp.o
-.PHONY : src/TriangleDrawPlugin.cpp.o
+src/TriangleDrawPlugin.cc.o:
+	$(MAKE) -f CMakeFiles/TriangleDrawPlugin.dir/build.make CMakeFiles/TriangleDrawPlugin.dir/src/TriangleDrawPlugin.cc.o
+.PHONY : src/TriangleDrawPlugin.cc.o
 
-src/TriangleDrawPlugin.i: src/TriangleDrawPlugin.cpp.i
+src/TriangleDrawPlugin.i: src/TriangleDrawPlugin.cc.i
 
 .PHONY : src/TriangleDrawPlugin.i
 
 # target to preprocess a source file
-src/TriangleDrawPlugin.cpp.i:
-	$(MAKE) -f CMakeFiles/TriangleDrawPlugin.dir/build.make CMakeFiles/TriangleDrawPlugin.dir/src/TriangleDrawPlugin.cpp.i
-.PHONY : src/TriangleDrawPlugin.cpp.i
+src/TriangleDrawPlugin.cc.i:
+	$(MAKE) -f CMakeFiles/TriangleDrawPlugin.dir/build.make CMakeFiles/TriangleDrawPlugin.dir/src/TriangleDrawPlugin.cc.i
+.PHONY : src/TriangleDrawPlugin.cc.i
 
-src/TriangleDrawPlugin.s: src/TriangleDrawPlugin.cpp.s
+src/TriangleDrawPlugin.s: src/TriangleDrawPlugin.cc.s
 
 .PHONY : src/TriangleDrawPlugin.s
 
 # target to generate assembly for a file
-src/TriangleDrawPlugin.cpp.s:
-	$(MAKE) -f CMakeFiles/TriangleDrawPlugin.dir/build.make CMakeFiles/TriangleDrawPlugin.dir/src/TriangleDrawPlugin.cpp.s
-.PHONY : src/TriangleDrawPlugin.cpp.s
+src/TriangleDrawPlugin.cc.s:
+	$(MAKE) -f CMakeFiles/TriangleDrawPlugin.dir/build.make CMakeFiles/TriangleDrawPlugin.dir/src/TriangleDrawPlugin.cc.s
+.PHONY : src/TriangleDrawPlugin.cc.s
 
 src/draw_traj_plugin.o: src/draw_traj_plugin.cc.o
 
@@ -1520,6 +1533,33 @@ src/draw_traj_plugin.s: src/draw_traj_plugin.cc.s
 src/draw_traj_plugin.cc.s:
 	$(MAKE) -f CMakeFiles/draw_traj.dir/build.make CMakeFiles/draw_traj.dir/src/draw_traj_plugin.cc.s
 .PHONY : src/draw_traj_plugin.cc.s
+
+src/draw_triangle_plugin.o: src/draw_triangle_plugin.cc.o
+
+.PHONY : src/draw_triangle_plugin.o
+
+# target to build an object file
+src/draw_triangle_plugin.cc.o:
+	$(MAKE) -f CMakeFiles/draw_triangle.dir/build.make CMakeFiles/draw_triangle.dir/src/draw_triangle_plugin.cc.o
+.PHONY : src/draw_triangle_plugin.cc.o
+
+src/draw_triangle_plugin.i: src/draw_triangle_plugin.cc.i
+
+.PHONY : src/draw_triangle_plugin.i
+
+# target to preprocess a source file
+src/draw_triangle_plugin.cc.i:
+	$(MAKE) -f CMakeFiles/draw_triangle.dir/build.make CMakeFiles/draw_triangle.dir/src/draw_triangle_plugin.cc.i
+.PHONY : src/draw_triangle_plugin.cc.i
+
+src/draw_triangle_plugin.s: src/draw_triangle_plugin.cc.s
+
+.PHONY : src/draw_triangle_plugin.s
+
+# target to generate assembly for a file
+src/draw_triangle_plugin.cc.s:
+	$(MAKE) -f CMakeFiles/draw_triangle.dir/build.make CMakeFiles/draw_triangle.dir/src/draw_triangle_plugin.cc.s
+.PHONY : src/draw_triangle_plugin.cc.s
 
 # Help Target
 help:
@@ -1570,6 +1610,7 @@ help:
 	@echo "... nodelet_generate_messages_eus"
 	@echo "... nav_msgs_generate_messages_nodejs"
 	@echo "... sensor_msgs_generate_messages_cpp"
+	@echo "... draw_triangle"
 	@echo "... std_msgs_generate_messages_py"
 	@echo "... install"
 	@echo "... tests"
@@ -1640,6 +1681,9 @@ help:
 	@echo "... src/draw_traj_plugin.o"
 	@echo "... src/draw_traj_plugin.i"
 	@echo "... src/draw_traj_plugin.s"
+	@echo "... src/draw_triangle_plugin.o"
+	@echo "... src/draw_triangle_plugin.i"
+	@echo "... src/draw_triangle_plugin.s"
 .PHONY : help
 
 

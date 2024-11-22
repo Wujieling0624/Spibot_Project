@@ -41,6 +41,7 @@
 /root/spibot_ws/src/spibot_plugin/build/CMakeFiles/nodelet_generate_messages_eus.dir
 /root/spibot_ws/src/spibot_plugin/build/CMakeFiles/nav_msgs_generate_messages_nodejs.dir
 /root/spibot_ws/src/spibot_plugin/build/CMakeFiles/sensor_msgs_generate_messages_cpp.dir
+/root/spibot_ws/src/spibot_plugin/build/CMakeFiles/draw_triangle.dir
 /root/spibot_ws/src/spibot_plugin/build/CMakeFiles/std_msgs_generate_messages_py.dir
 /root/spibot_ws/src/spibot_plugin/build/CMakeFiles/install.dir
 /root/spibot_ws/src/spibot_plugin/build/CMakeFiles/tests.dir

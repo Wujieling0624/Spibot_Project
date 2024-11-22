@@ -57,27 +57,27 @@ include CMakeFiles/TriangleDrawPlugin.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/TriangleDrawPlugin.dir/flags.make
 
-CMakeFiles/TriangleDrawPlugin.dir/src/TriangleDrawPlugin.cpp.o: CMakeFiles/TriangleDrawPlugin.dir/flags.make
-CMakeFiles/TriangleDrawPlugin.dir/src/TriangleDrawPlugin.cpp.o: ../src/TriangleDrawPlugin.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/spibot_ws/src/spibot_plugin/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/TriangleDrawPlugin.dir/src/TriangleDrawPlugin.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TriangleDrawPlugin.dir/src/TriangleDrawPlugin.cpp.o -c /root/spibot_ws/src/spibot_plugin/src/TriangleDrawPlugin.cpp
+CMakeFiles/TriangleDrawPlugin.dir/src/TriangleDrawPlugin.cc.o: CMakeFiles/TriangleDrawPlugin.dir/flags.make
+CMakeFiles/TriangleDrawPlugin.dir/src/TriangleDrawPlugin.cc.o: ../src/TriangleDrawPlugin.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/spibot_ws/src/spibot_plugin/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/TriangleDrawPlugin.dir/src/TriangleDrawPlugin.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TriangleDrawPlugin.dir/src/TriangleDrawPlugin.cc.o -c /root/spibot_ws/src/spibot_plugin/src/TriangleDrawPlugin.cc
 
-CMakeFiles/TriangleDrawPlugin.dir/src/TriangleDrawPlugin.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TriangleDrawPlugin.dir/src/TriangleDrawPlugin.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/spibot_ws/src/spibot_plugin/src/TriangleDrawPlugin.cpp > CMakeFiles/TriangleDrawPlugin.dir/src/TriangleDrawPlugin.cpp.i
+CMakeFiles/TriangleDrawPlugin.dir/src/TriangleDrawPlugin.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TriangleDrawPlugin.dir/src/TriangleDrawPlugin.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/spibot_ws/src/spibot_plugin/src/TriangleDrawPlugin.cc > CMakeFiles/TriangleDrawPlugin.dir/src/TriangleDrawPlugin.cc.i
 
-CMakeFiles/TriangleDrawPlugin.dir/src/TriangleDrawPlugin.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TriangleDrawPlugin.dir/src/TriangleDrawPlugin.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/spibot_ws/src/spibot_plugin/src/TriangleDrawPlugin.cpp -o CMakeFiles/TriangleDrawPlugin.dir/src/TriangleDrawPlugin.cpp.s
+CMakeFiles/TriangleDrawPlugin.dir/src/TriangleDrawPlugin.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TriangleDrawPlugin.dir/src/TriangleDrawPlugin.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/spibot_ws/src/spibot_plugin/src/TriangleDrawPlugin.cc -o CMakeFiles/TriangleDrawPlugin.dir/src/TriangleDrawPlugin.cc.s
 
 # Object files for target TriangleDrawPlugin
 TriangleDrawPlugin_OBJECTS = \
-"CMakeFiles/TriangleDrawPlugin.dir/src/TriangleDrawPlugin.cpp.o"
+"CMakeFiles/TriangleDrawPlugin.dir/src/TriangleDrawPlugin.cc.o"
 
 # External object files for target TriangleDrawPlugin
 TriangleDrawPlugin_EXTERNAL_OBJECTS =
 
-devel/lib/libTriangleDrawPlugin.so: CMakeFiles/TriangleDrawPlugin.dir/src/TriangleDrawPlugin.cpp.o
+devel/lib/libTriangleDrawPlugin.so: CMakeFiles/TriangleDrawPlugin.dir/src/TriangleDrawPlugin.cc.o
 devel/lib/libTriangleDrawPlugin.so: CMakeFiles/TriangleDrawPlugin.dir/build.make
 devel/lib/libTriangleDrawPlugin.so: /opt/ros/noetic/lib/libvision_reconfigure.so
 devel/lib/libTriangleDrawPlugin.so: /opt/ros/noetic/lib/libgazebo_ros_utils.so
