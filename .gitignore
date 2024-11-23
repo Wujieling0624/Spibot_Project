@@ -24,3 +24,5 @@ __pycache__/
 
 # Ignore all Markdown files
 *.md
+
+src/spibot_plugin/src/*.md
