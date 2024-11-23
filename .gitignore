@@ -24,4 +24,4 @@ __pycache__/
 
 # Ignore all Markdown files
 *.md
-
+*.png
