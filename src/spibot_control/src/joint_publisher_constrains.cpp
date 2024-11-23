@@ -37,7 +37,7 @@ int main(int argc, char **argv)
     ros::init(argc, argv, "spibot_move_publisher");
     ros::NodeHandle nh;
 
-    ros::Publisher leg_state_pub = nh.advertise<std_msgs::Int32>("/spibot_gazebo/state/leg_is_moving", 10);
+    ros::Publisher leg_state_pub = nh.advertise<std_msgs::Int32>("/spibot_gazebo/states/leg_is_moving", 10);
     ros::Publisher joint_state_pub = nh.advertise<sensor_msgs::JointState>("/joint_states", 10); // 创建一个发布者，发布到/joint_state话题
     ros::Publisher suction1_state_pub = nh.advertise<std_msgs::Bool>("/spibot_gazebo/command/suction1", 10);
     ros::Publisher suction2_state_pub = nh.advertise<std_msgs::Bool>("/spibot_gazebo/command/suction2", 10);
@@ -60,11 +60,11 @@ int main(int argc, char **argv)
         passTime = currentTime - startTime;                  // 程序开始到现在系统经历时间
         int periodCnt = (int)(1.0 * passTime / swingPeriod); // 第0,1,2,.....周期
 
-        suction1_switch.data = false; // 每次循环前吸盘关闭
-        suction2_switch.data = false; // 每次循环前吸盘关闭
-        suction3_switch.data = false; // 每次循环前吸盘关闭
-        suction4_switch.data = false; // 每次循环前吸盘关闭
-
+        suction1_switch.data = true; // 每次循环前吸盘开启
+        suction2_switch.data = true; // 每次循环前吸盘开启
+        suction3_switch.data = true; // 每次循环前吸盘开启
+        suction4_switch.data = true; // 每次循环前吸盘开启
+        
         // BR_rads = base_trajectroy(passTime, periodCnt, BR_leg);
         // FR_rads = base_trajectroy(passTime, periodCnt, FR_leg);
         // FL_rads = base_trajectroy(passTime, periodCnt, FL_leg);

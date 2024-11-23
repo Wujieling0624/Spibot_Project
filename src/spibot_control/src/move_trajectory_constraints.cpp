@@ -19,7 +19,7 @@ std::array<float, 3> BR_Forward_Trajectory(double passTime, int periodCnt)
     else if (passTime > (periodCnt + 1 / 2.0f) * swingPeriod && passTime <= (periodCnt + 2 / 3.0f) * swingPeriod)
     {
         leg_is_moving.data = BR_leg;
-        suction1_switch.data = true;
+        suction1_switch.data = false;
         if (passTime > (periodCnt + 1 / 2.0f) * swingPeriod && passTime <= (periodCnt + 1 / 2.0f + 1 / 24.0f) * swingPeriod)
         {
             // ROS_INFO("step1");
@@ -69,7 +69,7 @@ std::array<float, 3> BL_Forward_Trajectory(double passTime, int periodCnt)
     if (passTime > periodCnt * swingPeriod && passTime <= (periodCnt + 1 / 6.0f) * swingPeriod)
     {
         leg_is_moving.data = BL_leg;
-        suction4_switch.data = true;
+        suction4_switch.data = false;
         if (passTime > periodCnt * swingPeriod && passTime <= (periodCnt + 1 / 24.0f) * swingPeriod)
         {
             // ROS_INFO("step1");
@@ -117,7 +117,7 @@ std::array<float, 3> FL_Forward_Trajectory(double passTime, int periodCnt)
     else if (passTime > (periodCnt + 1 / 6.0f) * swingPeriod && passTime <= (periodCnt + 1 / 3.0f) * swingPeriod)
     {
         leg_is_moving.data = FL_leg;
-        suction3_switch.data = true;
+        suction3_switch.data = false;
         if (passTime > (periodCnt + 1 / 6.0f) * swingPeriod && passTime <= (periodCnt + 1 / 6.0f + 1 / 24.0f) * swingPeriod)
         {
             // ROS_INFO("step1");
@@ -168,7 +168,7 @@ std::array<float, 3> FR_Forward_Trajectory(double passTime, int periodCnt)
     else if (passTime > (periodCnt + 2 / 3.0f) * swingPeriod && passTime <= (periodCnt + 5 / 6.0f) * swingPeriod)
     {
         leg_is_moving.data = FR_leg;
-        suction2_switch.data = true;
+        suction2_switch.data = false;
         if (passTime > (periodCnt + 2 / 3.0f) * swingPeriod && passTime <= (periodCnt + 2 / 3.0f + 1 / 24.0f) * swingPeriod)
         {
             // ROS_INFO("step1");
