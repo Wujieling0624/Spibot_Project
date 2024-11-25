@@ -1,0 +1,8 @@
+prefix=/root/spibot_ws/install
+
+Name: spider_gazebo
+Description: Description of spider_gazebo
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

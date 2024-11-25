@@ -13,19 +13,19 @@ void applyBodyWrenchClient(std::string body_name, bool flag)
     srv.request.reference_frame = "world";
     if (flag)
     {
-        srv.request.wrench.torque.x = 0;
-        srv.request.wrench.torque.y = 0;
-        srv.request.wrench.torque.z = -5;
+        srv.request.wrench.force.x = 0;
+        srv.request.wrench.force.y = 0;
+        srv.request.wrench.force.z = -100;
     }
     else
     {
-        srv.request.wrench.torque.x = 0;
-        srv.request.wrench.torque.y = 0;
-        srv.request.wrench.torque.z = 0;
+        srv.request.wrench.force.x = 0;
+        srv.request.wrench.force.y = 0;
+        srv.request.wrench.force.z = 0;
     }
-    srv.request.wrench.force.x = 0;
-    srv.request.wrench.force.y = 0;
-    srv.request.wrench.force.z = 0;
+    srv.request.wrench.torque.x = 0;
+    srv.request.wrench.torque.y = 0;
+    srv.request.wrench.torque.z = 0;
     srv.request.reference_point.x = 0;
     srv.request.reference_point.y = 0;
     srv.request.reference_point.z = 0;
@@ -100,8 +100,6 @@ void Sucker4CMDCallback(const std_msgs::Bool::ConstPtr &msg)
         applyBodyWrenchClient(Sucker4_bodyname, false);
     }
 }
-
-
 
 int main(int argc, char *argv[])
 {
