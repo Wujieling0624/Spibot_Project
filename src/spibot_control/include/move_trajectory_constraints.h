@@ -23,10 +23,10 @@ const float x_stretch = L * sin(-hip_start_rad);      // 腿沿x轴延展长度�
 const float z_stretch = l3 - l2 * sin(leg_start_rad); // 腿沿z轴延展长度计算
 
 extern std_msgs::Int32 leg_is_moving;
-extern std_msgs::Bool suction1_switch;
-extern std_msgs::Bool suction2_switch;
-extern std_msgs::Bool suction3_switch;
-extern std_msgs::Bool suction4_switch;
+extern std_msgs::Bool sucker1_switch;
+extern std_msgs::Bool sucker2_switch;
+extern std_msgs::Bool sucker3_switch;
+extern std_msgs::Bool sucker4_switch;
 
 std::array<float, 3> PosToTheta(float xd, float yd, float zd);
 std::array<float, 3> BR_Forward_Trajectory(double passTime, int periodCnt);

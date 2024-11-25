@@ -18,7 +18,7 @@
     <arg name="headless" value="false"/>
   </include>
 
-  <arg name="user_debug" default="true"/>
+  <arg name="user_debug" default="false"/>
   <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find sipder_robot)/xacro/spibot_with_sensors.xacro' DEBUG:=$(arg user_debug)"/>
   
   <!-- 加入风机叶片后就取消注释 -->

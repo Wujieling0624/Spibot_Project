@@ -6,6 +6,6 @@
     <xacro:include filename="gazebo/kinect.xacro"/>
     <!-- <xacro:include filename="$(find sipder_robot)/xacro/gazebo/laser.xacro"/> -->
     <xacro:include filename="gazebo/imu.xacro"/>
-    <xacro:include filename="gazebo/foot_suction_cups.xacro"/>
+    <xacro:include filename="gazebo/foot_add_grippers.xacro"/>
 </robot>
 

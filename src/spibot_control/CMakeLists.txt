@@ -4,9 +4,9 @@ project(spibot_control)
 ## Compile as C++11, supported in ROS Kinetic and newer
 add_compile_options(-std=c++17)
 
-find_package(catkin REQUIRED COMPONENTS
-  Eigen3
+find_package(catkin REQUIRED COMPONENTS 
   controller_manager
+  Eigen3
   genmsg
   geometry_msgs
   gazebo_ros

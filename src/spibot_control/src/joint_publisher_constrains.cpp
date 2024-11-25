@@ -39,16 +39,16 @@ int main(int argc, char **argv)
 
     ros::Publisher leg_state_pub = nh.advertise<std_msgs::Int32>("/spibot_gazebo/states/leg_is_moving", 10);
     ros::Publisher joint_state_pub = nh.advertise<sensor_msgs::JointState>("/joint_states", 10); // 创建一个发布者，发布到/joint_state话题
-    ros::Publisher suction1_state_pub = nh.advertise<std_msgs::Bool>("/spibot_gazebo/command/suction1", 10);
-    ros::Publisher suction2_state_pub = nh.advertise<std_msgs::Bool>("/spibot_gazebo/command/suction2", 10);
-    ros::Publisher suction3_state_pub = nh.advertise<std_msgs::Bool>("/spibot_gazebo/command/suction3", 10);
-    ros::Publisher suction4_state_pub = nh.advertise<std_msgs::Bool>("/spibot_gazebo/command/suction4", 10);
+    ros::Publisher sucker1_cmd_pub = nh.advertise<std_msgs::Bool>("/spibot_gazebo/command/sucker1", 10);
+    ros::Publisher sucker2_cmd_pub = nh.advertise<std_msgs::Bool>("/spibot_gazebo/command/sucker2", 10);
+    ros::Publisher sucker3_cmd_pub = nh.advertise<std_msgs::Bool>("/spibot_gazebo/command/sucker3", 10);
+    ros::Publisher sucker4_cmd_pub = nh.advertise<std_msgs::Bool>("/spibot_gazebo/command/sucker4", 10);
 
     ros::Publisher publishers[num_joint_topics]; // 创建发布者数组
     for (int i = 0; i < num_joint_topics; ++i)
         publishers[i] = nh.advertise<std_msgs::Float64>(joint_names[i], 1);
     startTime = getTimeSecond(); // 获取系统开始时间
-    ros::Rate loop_rate(100);
+    ros::Rate loop_rate(50);
     std::array<float, 3> BR_rads = {-0, 0, 0}; // 1
     std::array<float, 3> FR_rads = {-0, 0, 0}; // 2
     std::array<float, 3> FL_rads = {-0, 0, 0}; // 3
@@ -60,10 +60,10 @@ int main(int argc, char **argv)
         passTime = currentTime - startTime;                  // 程序开始到现在系统经历时间
         int periodCnt = (int)(1.0 * passTime / swingPeriod); // 第0,1,2,.....周期
 
-        suction1_switch.data = true; // 每次循环前吸盘开启
-        suction2_switch.data = true; // 每次循环前吸盘开启
-        suction3_switch.data = true; // 每次循环前吸盘开启
-        suction4_switch.data = true; // 每次循环前吸盘开启
+        sucker1_switch.data = true; // 每次循环前吸盘开启
+        sucker2_switch.data = true; // 每次循环前吸盘开启
+        sucker3_switch.data = true; // 每次循环前吸盘开启
+        sucker4_switch.data = true; // 每次循环前吸盘开启
         
         // BR_rads = base_trajectroy(passTime, periodCnt, BR_leg);
         // FR_rads = base_trajectroy(passTime, periodCnt, FR_leg);
@@ -83,15 +83,15 @@ int main(int argc, char **argv)
         // ROS_INFO("hip_theta = %f,thigh_theta = %f,shank_theta = %f \n", BR_rads[0], BR_rads[1], BR_rads[2]);
 
         leg_state_pub.publish(leg_is_moving);
-        suction1_state_pub.publish(suction1_switch);
-        suction2_state_pub.publish(suction2_switch);
-        suction3_state_pub.publish(suction3_switch);
-        suction4_state_pub.publish(suction4_switch);
+        sucker1_cmd_pub.publish(sucker1_switch);
+        sucker2_cmd_pub.publish(sucker2_switch);
+        sucker3_cmd_pub.publish(sucker3_switch);
+        sucker4_cmd_pub.publish(sucker4_switch);
         ROS_INFO(" Published leg_is_moving: %d \n ", leg_is_moving.data);
-        ROS_INFO(" Published suction1_cmd: %d \n ", suction1_switch.data);
-        ROS_INFO(" Published suction2_cmd: %d \n ", suction2_switch.data);
-        ROS_INFO(" Published suction3_cmd: %d \n ", suction3_switch.data);
-        ROS_INFO(" Published suction4_cmd: %d \n ", suction4_switch.data);
+        ROS_INFO(" Published sucker1_cmd: %d \n ", sucker1_switch.data);
+        ROS_INFO(" Published sucker2_cmd: %d \n ", sucker2_switch.data);
+        ROS_INFO(" Published sucker3_cmd: %d \n ", sucker3_switch.data);
+        ROS_INFO(" Published sucker4_cmd: %d \n ", sucker4_switch.data);
 
         // Leg radian publish
         pubLegRadian(publishers, 0, BR_rads); // BR Controllers

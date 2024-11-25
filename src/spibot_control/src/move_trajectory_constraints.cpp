@@ -2,10 +2,10 @@
 // # 0-->BR Controllers/1-->FR Controllers/2-->FL Controllers/3-->BL Controllers
 
 std_msgs::Int32 leg_is_moving;
-std_msgs::Bool suction1_switch;
-std_msgs::Bool suction2_switch;
-std_msgs::Bool suction3_switch;
-std_msgs::Bool suction4_switch;
+std_msgs::Bool sucker1_switch;
+std_msgs::Bool sucker2_switch;
+std_msgs::Bool sucker3_switch;
+std_msgs::Bool sucker4_switch;
 
 std::array<float, 3> BR_Forward_Trajectory(double passTime, int periodCnt)
 {
@@ -19,7 +19,7 @@ std::array<float, 3> BR_Forward_Trajectory(double passTime, int periodCnt)
     else if (passTime > (periodCnt + 1 / 2.0f) * swingPeriod && passTime <= (periodCnt + 2 / 3.0f) * swingPeriod)
     {
         leg_is_moving.data = BR_leg;
-        suction1_switch.data = false;
+        sucker1_switch.data = false;
         if (passTime > (periodCnt + 1 / 2.0f) * swingPeriod && passTime <= (periodCnt + 1 / 2.0f + 1 / 24.0f) * swingPeriod)
         {
             // ROS_INFO("step1");
@@ -69,7 +69,7 @@ std::array<float, 3> BL_Forward_Trajectory(double passTime, int periodCnt)
     if (passTime > periodCnt * swingPeriod && passTime <= (periodCnt + 1 / 6.0f) * swingPeriod)
     {
         leg_is_moving.data = BL_leg;
-        suction4_switch.data = false;
+        sucker4_switch.data = false;
         if (passTime > periodCnt * swingPeriod && passTime <= (periodCnt + 1 / 24.0f) * swingPeriod)
         {
             // ROS_INFO("step1");
@@ -117,7 +117,7 @@ std::array<float, 3> FL_Forward_Trajectory(double passTime, int periodCnt)
     else if (passTime > (periodCnt + 1 / 6.0f) * swingPeriod && passTime <= (periodCnt + 1 / 3.0f) * swingPeriod)
     {
         leg_is_moving.data = FL_leg;
-        suction3_switch.data = false;
+        sucker3_switch.data = false;
         if (passTime > (periodCnt + 1 / 6.0f) * swingPeriod && passTime <= (periodCnt + 1 / 6.0f + 1 / 24.0f) * swingPeriod)
         {
             // ROS_INFO("step1");
@@ -168,7 +168,7 @@ std::array<float, 3> FR_Forward_Trajectory(double passTime, int periodCnt)
     else if (passTime > (periodCnt + 2 / 3.0f) * swingPeriod && passTime <= (periodCnt + 5 / 6.0f) * swingPeriod)
     {
         leg_is_moving.data = FR_leg;
-        suction2_switch.data = false;
+        sucker2_switch.data = false;
         if (passTime > (periodCnt + 2 / 3.0f) * swingPeriod && passTime <= (periodCnt + 2 / 3.0f + 1 / 24.0f) * swingPeriod)
         {
             // ROS_INFO("step1");

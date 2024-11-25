@@ -28,7 +28,6 @@ catkin_package(
   sensor_msgs
 )
 
-## Build the suction_cup_gazebo_plugin library  
 include_directories(  
   include  
   ${catkin_INCLUDE_DIRS}  
