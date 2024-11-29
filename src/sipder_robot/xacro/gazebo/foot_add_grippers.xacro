@@ -30,8 +30,8 @@
     </joint>
 
     <gazebo reference="vacuum_gripper1">
-        <mu1>50</mu1>
-        <mu2>50</mu2>
+        <mu1>500</mu1>
+        <mu2>500</mu2>
         <minDepth>0.003</minDepth>
         <maxVel>0</maxVel>
         <kp>1000000.0</kp>
@@ -67,8 +67,8 @@
     </joint>
 
     <gazebo reference="vacuum_gripper2">
-        <mu1>50</mu1>
-        <mu2>50</mu2>
+        <mu1>500</mu1>
+        <mu2>500</mu2>
         <minDepth>0.003</minDepth>
         <maxVel>0</maxVel>
         <kp>1000000.0</kp>
@@ -104,8 +104,8 @@
     </joint>
 
     <gazebo reference="vacuum_gripper3">
-        <mu1>50</mu1>
-        <mu2>50</mu2>
+        <mu1>500</mu1>
+        <mu2>500</mu2>
         <minDepth>0.003</minDepth>
         <maxVel>0</maxVel>
         <kp>1000000.0</kp>
@@ -141,8 +141,8 @@
     </joint>
 
     <gazebo reference="vacuum_gripper4">
-        <mu1>50</mu1>
-        <mu2>50</mu2>
+        <mu1>500</mu1>
+        <mu2>500</mu2>
         <minDepth>0.003</minDepth>
         <maxVel>0</maxVel>
         <kp>1000000.0</kp>

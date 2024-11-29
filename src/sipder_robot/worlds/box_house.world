@@ -452,16 +452,6 @@
           <wrench>0.010615 -0.006191 -9.78231 0 -0 0</wrench>
         </link>
       </model>
-      <model name='unit_box_2'>
-        <pose>-0.36 0.36 0.006667 3.4e-05 6e-06 -2e-06</pose>
-        <scale>0.10251 0.071479 0.013331</scale>
-        <link name='link'>
-          <pose>-0.36 0.36 0.006667 3.4e-05 6e-06 -2e-06</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>-0.019629 0.013687 -0.224267 1.08877 -0.197566 3.14159</acceleration>
-          <wrench>-0.019629 0.013687 -0.224267 0 -0 0</wrench>
-        </link>
-      </model>
       <model name='unit_cylinder'>
         <pose>-4.57746 0.509884 0.499998 3e-06 4e-06 -0</pose>
         <scale>1 1 1</scale>
@@ -710,59 +700,6 @@
           <material>
             <script>
               <name>Gazebo/Grey</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-            </script>
-          </material>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-    </model>
-    <model name='unit_box_2'>
-      <pose>0.914303 1.53633 0.5 0 -0 0</pose>
-      <link name='link'>
-        <inertial>
-          <mass>1</mass>
-          <inertia>
-            <ixx>0.166667</ixx>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyy>0.166667</iyy>
-            <iyz>0</iyz>
-            <izz>0.166667</izz>
-          </inertia>
-          <pose>0 0 0 0 -0 0</pose>
-        </inertial>
-        <collision name='collision'>
-          <geometry>
-            <box>
-              <size>0.999997 0.999998 0.999989</size>
-            </box>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-        </collision>
-        <visual name='visual'>
-          <geometry>
-            <box>
-              <size>0.999997 0.999998 0.999989</size>
-            </box>
-          </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Red</name>
               <uri>file://media/materials/scripts/gazebo.material</uri>
             </script>
           </material>

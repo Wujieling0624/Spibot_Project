@@ -140,9 +140,6 @@ std::array<float, 3> BR_Joint2Theta(std::array<float, 3> traj)
   BR_rad0 = raw_rads[0];
   BR_rad1 = -raw_rads[1];
   BR_rad2 = raw_rads[2];
-  // BR_rad0 = 0;
-  // BR_rad1 = 0;
-  // BR_rad2 = 0;
   return {BR_rad0, BR_rad1, BR_rad2};
 }
 
@@ -153,9 +150,6 @@ std::array<float, 3> FR_Joint2Theta(std::array<float, 3> traj)
   FR_rad0 = -raw_rads[0];
   FR_rad1 = raw_rads[1];
   FR_rad2 = raw_rads[2];
-  // FR_rad0 = 0;
-  // FR_rad1 = 0;
-  // FR_rad2 = 0;
   return {FR_rad0, FR_rad1, FR_rad2};
 }
 
@@ -166,9 +160,6 @@ std::array<float, 3> FL_Joint2Theta(std::array<float, 3> traj)
   FL_rad0 = -raw_rads[0];
   FL_rad1 = raw_rads[1];
   FL_rad2 = -raw_rads[2];
-  // FL_rad0 = 0;
-  // FL_rad1 = 0;
-  // FL_rad2 = 0;
   return {FL_rad0, FL_rad1, FL_rad2};
 }
 
@@ -179,8 +170,5 @@ std::array<float, 3> BL_Joint2Theta(std::array<float, 3> traj)
   BL_rad0 = raw_rads[0];
   BL_rad1 = raw_rads[1];
   BL_rad2 = -raw_rads[2];
-  // BL_rad0 = 0;
-  // BL_rad1 = 0;
-  // BL_rad2 = 0;
   return {BL_rad0, BL_rad1, BL_rad2};
 }

@@ -60,6 +60,44 @@ std::array<float, 3> BR_Forward_Trajectory(double passTime, int periodCnt)
     return rad;
 }
 
+std::array<float, 3> _BR_Forward_Trajectory(double passTime, int periodCnt)
+{
+    float BR_traj[3];
+    std::array<float, 3> rad;
+    BR_traj[1] = y_bias; // 沿直线前后摆动
+    if (passTime > (periodCnt + 1 / 6.0f) * swingPeriod && passTime <= (periodCnt + 1 / 3.0f) * swingPeriod)
+    {
+        BR_traj[0] = (-6.0f * swingRaduis / swingPeriod) * (passTime - swingPeriod / 6.0f - periodCnt * swingPeriod) - x_bias;
+        BR_traj[2] = 0 + z_bias;
+    }
+    else if (passTime > (periodCnt + 1 / 3.0f) * swingPeriod && passTime <= (periodCnt + 1 / 2.0f) * swingPeriod)
+    {
+        leg_is_moving.data = BR_leg;
+        sucker1_switch.data = false;
+        BR_traj[0] = -swingRaduis * cos(w1 * passTime) - x_bias;
+        // BR_traj[1] = y_bias + 0.05f * sin(w1 * passTime);
+        BR_traj[2] = -swingRaduis * sin(w1 * passTime) + z_bias;
+    }
+    else if (passTime > (periodCnt + 1 / 2.0f) * swingPeriod && passTime <= (periodCnt + 2 / 3.0f) * swingPeriod)
+    {
+        BR_traj[0] = swingRaduis - x_bias;
+        BR_traj[2] = 0 + z_bias;
+    }
+    else if (passTime > (periodCnt + 2 / 3.0f) * swingPeriod && passTime <= (periodCnt + 5 / 6.0f) * swingPeriod)
+    {
+        BR_traj[0] = (-6.0f * swingRaduis / swingPeriod) * (passTime - 5 * swingPeriod / 6.0f - periodCnt * swingPeriod) - x_bias;
+        BR_traj[2] = 0 + z_bias;
+    }
+    else
+    {
+        BR_traj[0] = 0 - x_bias;
+        BR_traj[2] = 0 + z_bias;
+    }
+    rad = PosToTheta(BR_traj[0], BR_traj[1], BR_traj[2]);
+    rad[1] = -rad[1];
+    return rad;
+}
+
 std::array<float, 3> BL_Forward_Trajectory(double passTime, int periodCnt)
 {
     float BL_traj[3];
@@ -101,6 +139,44 @@ std::array<float, 3> BL_Forward_Trajectory(double passTime, int periodCnt)
         BL_traj[0] = 0;
     else
         BL_traj[0] = (-6.0f * x_stretch / swingPeriod) * (passTime - (periodCnt + 5 / 6.0f) * swingPeriod);
+    rad = PosToTheta(BL_traj[0], BL_traj[1], BL_traj[2]);
+    rad[2] = -rad[2];
+    return rad;
+}
+
+std::array<float, 3> _BL_Forward_Trajectory(double passTime, int periodCnt)
+{
+    float BL_traj[3];
+    std::array<float, 3> rad;
+    BL_traj[1] = y_bias;
+    if (passTime > 1.0f * periodCnt * swingPeriod && passTime <= (periodCnt + 1 / 6.0f) * swingPeriod)
+    {
+        BL_traj[0] = swingRaduis - x_bias;
+        BL_traj[2] = 0 + z_bias;
+    }
+    else if (passTime > (periodCnt + 1 / 6.0f) * swingPeriod && passTime <= (periodCnt + 1 / 3.0f) * swingPeriod)
+    {
+        BL_traj[0] = (-6.0f * swingRaduis / swingPeriod) * (passTime - swingPeriod / 3.0f - periodCnt * swingPeriod) - x_bias;
+        BL_traj[2] = 0 + z_bias;
+    }
+    else if (passTime > (periodCnt + 2 / 3.0f) * swingPeriod && passTime <= (periodCnt + 5 / 6.0f) * swingPeriod)
+    {
+        BL_traj[0] = (-6.0f * swingRaduis / swingPeriod) * (passTime - 2 * swingPeriod / 3.0f - periodCnt * swingPeriod) - x_bias;
+        BL_traj[2] = 0 + z_bias;
+    }
+    else if (passTime > (periodCnt + 5 / 6.0f) * swingPeriod && passTime <= (periodCnt + 1.0f) * swingPeriod)
+    {
+        leg_is_moving.data = BL_leg;
+        sucker4_switch.data = false;
+        BL_traj[0] = swingRaduis * cos(w1 * passTime) - x_bias;
+        // BL_traj[1] = y_bias - 0.05f * sin(w1 * passTime);
+        BL_traj[2] = swingRaduis * sin(w1 * passTime) + z_bias;
+    }
+    else
+    {
+        BL_traj[0] = 0 - x_bias;
+        BL_traj[2] = 0 + z_bias;
+    }
     rad = PosToTheta(BL_traj[0], BL_traj[1], BL_traj[2]);
     rad[2] = -rad[2];
     return rad;
@@ -153,6 +229,45 @@ std::array<float, 3> FL_Forward_Trajectory(double passTime, int periodCnt)
     return rad;
 }
 
+std::array<float, 3> _FL_Forward_Trajectory(double passTime, int periodCnt)
+{
+    float FL_traj[3];
+    std::array<float, 3> rad;
+    FL_traj[1] = y_bias;
+    if (passTime > 1.0f * periodCnt * swingPeriod && passTime <= (periodCnt + 1 / 6.0f) * swingPeriod)
+    {
+        leg_is_moving.data = FL_leg;
+        sucker3_switch.data = false;
+        FL_traj[0] = -swingRaduis * cos(w1 * passTime) + x_bias;
+        // FL_traj[1] = y_bias + 0.05f * sin(w1 * passTime);
+        FL_traj[2] = -swingRaduis * sin(w1 * passTime) + z_bias;
+    }
+    else if (passTime > (periodCnt + 1 / 6.0f) * swingPeriod && passTime <= (periodCnt + 1 / 3.0f) * swingPeriod)
+    {
+        FL_traj[0] = (-6.0f * swingRaduis / swingPeriod) * (passTime - swingPeriod / 3.0f - periodCnt * swingPeriod) + x_bias;
+        FL_traj[2] = 0 + z_bias;
+    }
+    else if (passTime > (periodCnt + 1 / 3.0f) * swingPeriod && passTime <= (periodCnt + 2 / 3.0f) * swingPeriod)
+    {
+        FL_traj[0] = 0 + x_bias;
+        FL_traj[2] = 0 + z_bias;
+    }
+    else if (passTime > (periodCnt + 2 / 3.0f) * swingPeriod && passTime <= (periodCnt + 5 / 6.0f) * swingPeriod)
+    {
+        FL_traj[0] = (-6.0f * swingRaduis / swingPeriod) * (passTime - 2 * swingPeriod / 3.0f - periodCnt * swingPeriod) + x_bias;
+        FL_traj[2] = 0 + z_bias;
+    }
+    else
+    {
+        FL_traj[0] = -swingRaduis + x_bias;
+        FL_traj[2] = 0 + z_bias;
+    }
+    rad = PosToTheta(FL_traj[0], FL_traj[1], FL_traj[2]);
+    rad[0] = -rad[0];
+    rad[2] = -rad[2];
+    return rad;
+}
+
 std::array<float, 3> FR_Forward_Trajectory(double passTime, int periodCnt)
 {
     float FR_traj[3];
@@ -194,6 +309,44 @@ std::array<float, 3> FR_Forward_Trajectory(double passTime, int periodCnt)
     }
     else
         FR_traj[0] = (-6.0f * x_stretch / swingPeriod) * (passTime - (periodCnt + 1.0f) * swingPeriod);
+    rad = PosToTheta(FR_traj[0], FR_traj[1], FR_traj[2]);
+    rad[0] = -rad[0];
+    return rad;
+}
+
+std::array<float, 3> _FR_Forward_Trajectory(double passTime, int periodCnt)
+{
+    float FR_traj[3];
+    std::array<float, 3> rad;
+    FR_traj[1] = y_bias;
+    if (passTime > (periodCnt + 1 / 6.0f) * swingPeriod && passTime <= (periodCnt + 1 / 3.0f) * swingPeriod)
+    {
+        FR_traj[0] = (-6.0f * swingRaduis / swingPeriod) * (passTime - (1 / 6.0f + periodCnt) * swingPeriod) + x_bias;
+        FR_traj[2] = 0 + z_bias;
+    }
+    else if (passTime > (periodCnt + 1 / 3.0f) * swingPeriod && passTime <= (periodCnt + 1 / 2.0f) * swingPeriod)
+    {
+        FR_traj[0] = -swingRaduis + x_bias;
+        FR_traj[2] = 0 + z_bias;
+    }
+    else if (passTime > (periodCnt + 1 / 2.0f) * swingPeriod && passTime <= (periodCnt + 2 / 3.0f) * swingPeriod)
+    {
+        leg_is_moving.data = FR_leg;
+        sucker2_switch.data = false;
+        FR_traj[0] = swingRaduis * cos(w1 * passTime) + x_bias;
+        // FR_traj[1] = y_bias - 0.05f * sin(w1 * passTime);
+        FR_traj[2] = swingRaduis * sin(w1 * passTime) + z_bias;
+    }
+    else if (passTime > (periodCnt + 2 / 3.0f) * swingPeriod && passTime <= (periodCnt + 5 / 6.0f) * swingPeriod)
+    {
+        FR_traj[0] = (-6.0f * swingRaduis / swingPeriod) * (passTime - (5 / 6.0f + periodCnt) * swingPeriod) + x_bias;
+        FR_traj[2] = 0 + z_bias;
+    }
+    else
+    {
+        FR_traj[0] = 0 + x_bias;
+        FR_traj[2] = 0 + z_bias;
+    }
     rad = PosToTheta(FR_traj[0], FR_traj[1], FR_traj[2]);
     rad[0] = -rad[0];
     return rad;

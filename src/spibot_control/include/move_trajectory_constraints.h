@@ -22,6 +22,11 @@ const float y_stretch = L * cos(hip_start_rad);       // 腿沿y轴延展长度�
 const float x_stretch = L * sin(-hip_start_rad);      // 腿沿x轴延展长度计算
 const float z_stretch = l3 - l2 * sin(leg_start_rad); // 腿沿z轴延展长度计算
 
+const float w1 = (2 * pi) / (1.0 * subPeriod);
+float y_bias = 0.25f; // 腿展开多长
+float x_bias = 0.1f; // x轴偏移量
+float z_bias = 0.2f;  // z轴偏移量
+
 extern std_msgs::Int32 leg_is_moving;
 extern std_msgs::Bool sucker1_switch;
 extern std_msgs::Bool sucker2_switch;
@@ -33,5 +38,9 @@ std::array<float, 3> BR_Forward_Trajectory(double passTime, int periodCnt);
 std::array<float, 3> BL_Forward_Trajectory(double passTime, int periodCnt);
 std::array<float, 3> FL_Forward_Trajectory(double passTime, int periodCnt);
 std::array<float, 3> FR_Forward_Trajectory(double passTime, int periodCnt);
+std::array<float, 3> _BR_Forward_Trajectory(double passTime, int periodCnt);
+std::array<float, 3> _FR_Forward_Trajectory(double passTime, int periodCnt);
+std::array<float, 3> _FL_Forward_Trajectory(double passTime, int periodCnt);
+std::array<float, 3> _BL_Forward_Trajectory(double passTime, int periodCnt);
 
 #endif //

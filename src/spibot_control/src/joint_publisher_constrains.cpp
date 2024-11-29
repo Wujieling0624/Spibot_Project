@@ -65,16 +65,17 @@ int main(int argc, char **argv)
         sucker3_switch.data = true; // 每次循环前吸盘开启
         sucker4_switch.data = true; // 每次循环前吸盘开启
         
+        // 下面代码要用时取消#include "baselink_twist.h"注释
         // BR_rads = base_trajectroy(passTime, periodCnt, BR_leg);
         // FR_rads = base_trajectroy(passTime, periodCnt, FR_leg);
         // FL_rads = base_trajectroy(passTime, periodCnt, FL_leg);
         // BL_rads = base_trajectroy(passTime, periodCnt, BL_leg);
 
-        // 下面代码要用时取消include注释，在其中定义leg_is_moving变量
-        BR_rads = BR_Forward_Trajectory(passTime, periodCnt);
-        FR_rads = FR_Forward_Trajectory(passTime, periodCnt);
-        FL_rads = FL_Forward_Trajectory(passTime, periodCnt);
-        BL_rads = BL_Forward_Trajectory(passTime, periodCnt);
+        // 下面代码要用时取消#include "move_trajectory_constraints.h"注释，在其中定义leg_is_moving变量
+        BR_rads = _BR_Forward_Trajectory(passTime, periodCnt);
+        FR_rads = _FR_Forward_Trajectory(passTime, periodCnt);
+        FL_rads = _FL_Forward_Trajectory(passTime, periodCnt);
+        BL_rads = _BL_Forward_Trajectory(passTime, periodCnt);
 
         // BR_rads = {-0, 0, 0}; // 1
         // FR_rads = {-0, 0, 0}; // 2
