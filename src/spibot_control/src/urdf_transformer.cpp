@@ -196,8 +196,8 @@ int main(int argc, char *argv[])
     ros::Subscriber robot_sub = nh.subscribe("/tf", 100, tfCallback);
     // 订阅 /tf_static 话题
     ros::Subscriber robot_static_sub = nh.subscribe("/tf_static", 100, tfstatic_Callback);
-    // 订阅 /Odometry 话题，并传递回调函数指针
-    ros::Subscriber odom_sub = nh.subscribe("/Odometry", 100, odomCallback);
+    // 订阅 /odometry 话题，并传递回调函数指针
+    ros::Subscriber odom_sub = nh.subscribe("/odometry", 100, odomCallback);
     // 订阅 /spibot_gazebo/states/leg_is_moving 话题,发布三个固定腿的位置
     ros::Subscriber leg_state_sub = nh.subscribe("/spibot_gazebo/states/leg_is_moving", 10, legIsMovingCallback);
     while (ros::ok())

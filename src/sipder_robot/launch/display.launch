@@ -4,9 +4,6 @@
   <!-- 会发布一个/joint_states话题，由rviz的/robot_state_publisher节点订阅，但是只会发布0角度，
   需要注释掉joint_state_publisher，自己发布rviz话题，实现机器人在rviz中的同步运动，不注释掉会有数据冲突 -->
   <!-- <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" /> -->
-  
-  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen"/>
-  <node name="rviz" pkg="rviz" type="rviz" respawn="false" output="screen" args="-d $(find sipder_robot)/config/spibot.rviz" />
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <!-- 用box_house1.world会造成机器人无法接触悬挂状态 -->
@@ -20,15 +17,19 @@
 
   <arg name="user_debug" default="false"/>
   <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find sipder_robot)/xacro/spibot_with_sensors.xacro' DEBUG:=$(arg user_debug)"/>
-  
+
   <!-- 加入风机叶片后就取消注释 -->
   <!-- <node name="model" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -z 2.2 -x 1 -model spibot -param robot_description -unpause" /> -->
-  
+
   <node name="model" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -z 0.28 -model spibot -param robot_description -unpause" />
 
   <!-- Please add the following 2 lines in your own launch file -->
   <param name="robot_root" command="$(find xacro)/xacro --inorder '$(find sipder_robot)/xacro/root_.xacro'" />
   <node pkg="gazebo_ros" type="spawn_model" name="spawn_robotroot" args="-urdf -param /robot_root -model traj_base"/>
+
+  <node pkg="spibot_control" type="odom_pub" name="odom_publisher" />
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen"/>
+  <node name="rviz" pkg="rviz" type="rviz" respawn="false" output="screen" args="-d $(find sipder_robot)/config/spibot.rviz" />
 
 </launch>
 

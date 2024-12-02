@@ -24,11 +24,11 @@
   </link>
 
   <!--Note that the "topicName" is the topic name in launch file, it should be the same. 
-	Here, topicName is "Odometry" and so do it in the libgazebo_ros_p3d-->
+	Here, topicName is "odometry" and so do it in the libgazebo_ros_p3d-->
   <gazebo reference="root">
     <visual>
       <plugin filename="libdraw_traj.so" name="drawtrajPlugin">
-        <topicName>/Odometry</topicName>
+        <topicName>/odometry</topicName>
       </plugin>
     </visual>
   </gazebo>

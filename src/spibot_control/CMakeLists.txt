@@ -17,6 +17,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
   sensor_msgs  
+  tf
   tf2
   tf2_msgs
   tf2_geometry_msgs
@@ -73,4 +74,6 @@ target_include_directories(urdf_transformer PUBLIC ${catkin_INCLUDE_DIRS} ${CMAK
 add_executable(apply_body_wrench_force_node src/apply_body_wrench_force.cpp)
 target_link_libraries(apply_body_wrench_force_node ${catkin_LIBRARIES})
 
+add_executable(odom_pub src/odom_publisher.cpp)
+target_link_libraries(odom_pub ${catkin_LIBRARIES})
 

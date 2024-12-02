@@ -12,7 +12,7 @@
             <alwaysOn>true</alwaysOn>
             <updateRate>100.0</updateRate>
             <bodyName>base_link</bodyName>            <!-- 替换为你的基坐标系名称 -->
-            <topicName>/Odometry</topicName>            <!-- 自定义的话题名称 -->
+            <topicName>/odometry</topicName>            <!-- 自定义的话题名称 -->
             <gaussianNoise>0.01</gaussianNoise>            <!-- 可选，添加高斯噪声 -->
             <frameName>map</frameName>            <!-- 参考坐标系，通常为世界坐标系 -->
             <xyzOffsets>0 0 0</xyzOffsets>            <!-- 可选，偏移量 -->

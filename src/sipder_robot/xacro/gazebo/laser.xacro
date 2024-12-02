@@ -28,8 +28,8 @@
         </noise>
       </ray>
       <plugin name="gazebo_rplidar" filename="libgazebo_ros_laser.so">      
-        <topicName>/lidar/laser_scan</topicName>               <!-- 注意话题，需要订阅 -->
-        <frameName>laser</frameName>               <!-- 与自己雷达传感器名字相同 -->
+        <topicName>/spibot_gazebo/laser_scan</topicName>               <!-- 注意话题，需要订阅 -->
+        <frameName>lidar</frameName>               <!-- 与自己雷达传感器名字相同 -->
       </plugin>
     </sensor>
   </gazebo>
