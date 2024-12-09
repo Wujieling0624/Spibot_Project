@@ -1,0 +1,724 @@
+<?xml version="1.0"?>
+<robot name="spibot"
+    xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:arg name="DEBUG" default="false"/>
+
+    <xacro:include filename="$(find sipder_robot)/xacro/const.xacro"/>
+    <xacro:include filename="$(find sipder_robot)/xacro/gazebo.xacro"/>
+    <xacro:include filename="$(find sipder_robot)/xacro/transmission.xacro"/>
+
+    <xacro:leg_transmission name="1" />
+    <xacro:leg_transmission name="2" />
+    <xacro:leg_transmission name="3" />
+    <xacro:leg_transmission name="4" />
+
+    <xacro:include filename="$(find sipder_robot)/xacro/plugin.xacro"/>
+
+    <!-- Debug mode will hung up the robot, use "true" or "false" to switch it. -->
+    <xacro:if value="$(arg DEBUG)">
+        <link name="world"/>
+        <joint name="base_static_joint" type="fixed">
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <parent link="world"/>
+            <child link="dummy"/>
+        </joint>
+    </xacro:if>
+
+    <link name="dummy">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <box size="0.001 0.001 0.001"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <joint name="dummy_joint" type="fixed">
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <parent link="dummy"/>
+        <child link="base_link"/>
+    </joint>
+
+    <link name="base_link">
+        <inertial>
+            <origin xyz="${base_com_x} ${base_com_y} ${base_com_z}" rpy="0 0 0" />
+            <mass value="${base_mass}" />
+            <inertia ixx="${base_ixx}" ixy="${base_ixy}" ixz="${base_ixz}" iyy="${base_iyy}" iyz="${base_iyz}" izz="${base_izz}" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/base_link.STL" />
+            </geometry>
+            <material name="White">
+                <color rgba="1 1 1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/base_link.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="camera">
+        <inertial>
+            <inertia ixx="0" ixy = "0" ixz = "0" iyy="0" iyz= "0" izz="0" />
+            <mass value="0" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/camera.STL" />
+            </geometry>
+            <material name="DarkGrey">
+                <color rgba="0.4 0.4 0.4 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/camera.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="base2camera" type="fixed">
+        <origin xyz="0.00063297 0.17702 0.084" rpy="0 0 1.57" />
+        <parent link="base_link" />
+        <child link="camera" />
+    </joint>
+
+    <link name="lidar">
+        <inertial>
+            <origin xyz="${lidar_com_x} ${lidar_com_y} ${lidar_com_z}" rpy="0 0 0" />
+            <mass value="${lidar_mass}" />
+            <inertia ixx="${lidar_ixx}" ixy="${lidar_ixy}" ixz="${lidar_ixz}" iyy="${lidar_iyy}" iyz="${lidar_iyz}" izz="${lidar_izz}" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/lidar.STL" />
+            </geometry>
+            <material name="DarkSlateBlue">
+                <color rgba="0.28 0.23 0.55 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/lidar.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="base2lidar" type="fixed">
+        <origin xyz="8.7201E-05 0.038511 -0.000556" rpy="-3.1416 0 3.1416" />
+        <parent link="base_link" />
+        <child link="lidar" />
+        <axis xyz="0 0 0" />
+    </joint>
+    <!-- 0->BR Controllers -->
+    <link name="hip1">
+        <inertial>
+            <origin xyz="${hip1_com_x} ${hip1_com_y} ${hip1_com_z}" rpy="0 0 0" />
+            <mass value="${hip1_mass}" />
+            <inertia ixx="${hip1_ixx}" ixy="${hip1_ixy}" ixz="${hip1_ixz}" iyy="${hip1_iyy}" iyz="${hip1_iyz}" izz="${hip1_izz}" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/hip1.STL" />
+            </geometry>
+            <material name="IndianRed">
+                <color rgba="0.8 0.36 0.36 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/hip1.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="base2hip1" type="revolute">
+        <origin xyz="0.11 -0.11 0.112" rpy="0 0 0" />
+        <parent link="base_link" />
+        <child link="hip1" />
+        <axis xyz="0 0 1" />
+        <limit lower="-1.57" upper="1.57" effort="500" velocity="40" />
+    </joint>
+
+    <link name="thigh1">
+        <inertial>
+            <origin xyz="${thigh1_com_x} ${thigh1_com_y} ${thigh1_com_z}" rpy="0 0 0" />
+            <mass value="${thigh1_mass}" />
+            <inertia ixx="${thigh1_ixx}" ixy="${thigh1_ixy}" ixz="${thigh1_ixz}" iyy="${thigh1_iyy}" iyz="${thigh1_iyz}" izz="${thigh1_izz}" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/thigh1.STL" />
+            </geometry>
+            <material name="Green">
+                <color rgba="0 1 0 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/thigh1.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="hip2thigh1" type="revolute">
+        <origin xyz="0.07 -0.0015 0.03" rpy="-1.5708 0 0" />
+        <parent link="hip1" />
+        <child link="thigh1" />
+        <axis xyz="0 0 1" />
+        <limit lower="-3.14" upper="3.14" effort="500" velocity="40" />
+    </joint>
+
+    <link name="shank1">
+        <inertial>
+            <origin xyz="${shank1_com_x} ${shank1_com_y} ${shank1_com_z}" rpy="0 0 0" />
+            <mass value="${shank1_mass}" />
+            <inertia ixx="${shank1_ixx}" ixy="${shank1_ixy}" ixz="${shank1_ixz}" iyy="${shank1_iyy}" iyz="${shank1_iyz}" izz="${shank1_izz}" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/shank1.STL" />
+            </geometry>
+            <material name="Cyan">
+                <color rgba="0 1 1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/shank1.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="thigh2shank1" type="revolute">
+        <origin xyz="0.23 0 0" rpy="0 0 1.5708" />
+        <parent link="thigh1" />
+        <child link="shank1" />
+        <axis xyz="0 0 1" />
+        <limit lower="-3.14" upper="3.14" effort="500" velocity="40" />
+    </joint>
+
+    <!-- 圆形foot -->
+    <!-- <link name="foot1">
+        <inertial>
+            <origin xyz="${foot1_com_x} ${foot1_com_y} ${foot1_com_z}" rpy="0 0 0" />
+            <mass value="${foot1_mass}" />
+            <inertia ixx="${2/5 * foot1_mass * foot1_radius*foot1_radius}" ixy="0" ixz="0" iyy="${2/5 * foot1_mass * foot1_radius*foot1_radius}" iyz="0" izz="${2/5 * foot1_mass * foot1_radius*foot1_radius}" />
+        </inertial>
+        <visual>
+            <geometry>
+                <sphere radius="${foot1_radius}" />
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <material name="SkyBlue">
+                <color rgba="0.5 0.8 0.9 1" />
+            </material>
+        </visual>
+        <collision name="foot1_collision">
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <sphere radius="${foot1_radius}" />
+            </geometry>
+        </collision>
+    </link> -->
+
+    <link name="foot1">
+        <inertial>
+            <origin xyz="${foot1_com_x} ${foot1_com_y} ${foot1_com_z}" rpy="0 0 0" />
+            <mass value="${foot1_mass}" />
+            <inertia ixx="${foot1_ixx}" ixy="${foot1_ixy}" ixz="${foot1_ixz}" iyy="${foot1_iyy}" iyz="${foot1_iyz}" izz="${foot1_izz}" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/foot1.STL" />
+            </geometry>
+            <material name="SkyBlue">
+                <color rgba="0.5 0.8 0.9 1" />
+            </material>
+        </visual>
+        <collision name="foot1_collision">
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/foot1.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <!-- 1->FR Controllers -->
+    <link name="hip2">
+        <inertial>
+            <origin xyz="${hip2_com_x} ${hip2_com_y} ${hip2_com_z}" rpy="0 0 0" />
+            <mass value="${hip2_mass}" />
+            <inertia ixx="${hip2_ixx}" ixy="${hip2_ixy}" ixz="${hip2_ixz}" iyy="${hip2_iyy}" iyz="${hip2_iyz}" izz="${hip2_izz}" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/hip2.STL" />
+            </geometry>
+            <material name="IndianRed">
+                <color rgba="0.8 0.36 0.36 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/hip2.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="base2hip2" type="revolute">
+        <origin xyz="0.11 0.11 0.112" rpy="0 0 0" />
+        <parent link="base_link" />
+        <child link="hip2" />
+        <axis xyz="0 0 -1" />
+        <limit lower="-1.57" upper="1.57" effort="500" velocity="40" />
+    </joint>
+
+    <link name="thigh2">
+        <inertial>
+            <origin xyz="${thigh2_com_x} ${thigh2_com_y} ${thigh2_com_z}" rpy="0 0 0" />
+            <mass value="${thigh2_mass}" />
+            <inertia ixx="${thigh2_ixx}" ixy="${thigh2_ixy}" ixz="${thigh2_ixz}" iyy="${thigh2_iyy}" iyz="${thigh2_iyz}" izz="${thigh2_izz}" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/thigh2.STL" />
+            </geometry>
+            <material name="Green">
+                <color rgba="0 1 0 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/thigh2.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="hip2thigh2" type="revolute">
+        <origin xyz="0.07 -0.0015 0.03" rpy="-1.5708 0 0" />
+        <parent link="hip2" />
+        <child link="thigh2" />
+        <axis xyz="0 0 -1" />
+        <limit lower="-3.14" upper="3.14" effort="500" velocity="40" />
+    </joint>
+
+    <link name="shank2">
+        <inertial>
+            <origin xyz="${shank2_com_x} ${shank2_com_y} ${shank2_com_z}" rpy="0 0 0" />
+            <mass value="${shank2_mass}" />
+            <inertia ixx="${shank2_ixx}" ixy="${shank2_ixy}" ixz="${shank2_ixz}" iyy="${shank2_iyy}" iyz="${shank2_iyz}" izz="${shank2_izz}" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/shank2.STL" />
+            </geometry>
+            <material name="Cyan">
+                <color rgba="0 1 1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/shank2.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="thigh2shank2" type="revolute">
+        <origin xyz="0.23 0 0" rpy="0 0 1.5708" />
+        <parent link="thigh2" />
+        <child link="shank2" />
+        <axis xyz="0 0 1" />
+        <limit lower="-3.14" upper="3.14" effort="500" velocity="40" />
+    </joint>
+
+    <!-- 圆形foot -->
+    <!-- <link name="foot2">
+        <inertial>
+            <origin xyz="${foot2_com_x} ${foot2_com_y} ${foot2_com_z}" rpy="0 0 0" />
+            <mass value="${foot2_mass}" />
+            <inertia ixx="${2/5 * foot2_mass * foot2_radius * foot2_radius}" ixy="0" ixz="0" iyy="${2/5 * foot2_mass * foot2_radius * foot2_radius}" iyz="0" izz="${2/5 * foot2_mass * foot2_radius * foot2_radius}" />
+        </inertial>
+        <visual>
+            <geometry>
+                <sphere radius="${foot2_radius}" />
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <material name="SkyBlue">
+                <color rgba="0.5 0.8 0.9 1" />
+            </material>
+        </visual>
+        <collision name="foot2_collision">
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <sphere radius="${foot2_radius}" />
+            </geometry>
+        </collision>
+    </link> -->
+
+    <link name="foot2">
+        <inertial>
+            <origin xyz="${foot2_com_x} ${foot2_com_y} ${foot2_com_z}" rpy="0 0 0" />
+            <mass value="${foot2_mass}" />
+            <inertia ixx="${foot2_ixx}" ixy="${foot2_ixy}" ixz="${foot2_ixz}" iyy="${foot2_iyy}" iyz="${foot2_iyz}" izz="${foot2_izz}" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/foot2.STL" />
+            </geometry>
+            <material name="SkyBlue">
+                <color rgba="0.5 0.8 0.9 1" />
+            </material>
+        </visual>
+        <collision name="foot2_collision">
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/foot2.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="hip3">
+        <inertial>
+            <origin xyz="${hip3_com_x} ${hip3_com_y} ${hip3_com_z}" rpy="0 0 0" />
+            <mass value="${hip3_mass}" />
+            <inertia ixx="${hip3_ixx}" ixy="${hip3_ixy}" ixz="${hip3_ixz}" iyy="${hip3_iyy}" iyz="${hip3_iyz}" izz="${hip3_izz}" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/hip3.STL" />
+            </geometry>
+            <material name="IndianRed">
+                <color rgba="0.8 0.36 0.36 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/hip3.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="base2hip3" type="revolute">
+        <origin xyz="-0.11 0.11 0.112" rpy="0 0 -3.14159265358979" />
+        <parent link="base_link" />
+        <child link="hip3" />
+        <axis xyz="0 0 1" />
+        <limit lower="-1.57" upper="1.57" effort="500" velocity="40" />
+    </joint>
+
+    <link name="thigh3">
+        <inertial>
+            <origin xyz="${thigh3_com_x} ${thigh3_com_y} ${thigh3_com_z}" rpy="0 0 0" />
+            <mass value="${thigh3_mass}" />
+            <inertia ixx="${thigh3_ixx}" ixy="${thigh3_ixy}" ixz="${thigh3_ixz}" iyy="${thigh3_iyy}" iyz="${thigh3_iyz}" izz="${thigh3_izz}" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/thigh3.STL" />
+            </geometry>
+            <material name="Green">
+                <color rgba="0 1 0 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/thigh3.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="hip2thigh3" type="revolute">
+        <origin xyz="0.07 -0.0015 0.03" rpy="-1.5708 0 0" />
+        <parent link="hip3" />
+        <child link="thigh3" />
+        <axis xyz="0 0 -1" />
+        <limit lower="-3.14" upper="3.14" effort="500" velocity="40" />
+    </joint>
+
+    <link name="shank3">
+        <inertial>
+            <origin xyz="${shank3_com_x} ${shank3_com_y} ${shank3_com_z}" rpy="0 0 0" />
+            <mass value="${shank3_mass}" />
+            <inertia ixx="${shank3_ixx}" ixy="${shank3_ixy}" ixz="${shank3_ixz}" iyy="${shank3_iyy}" iyz="${shank3_iyz}" izz="${shank3_izz}" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/shank3.STL" />
+            </geometry>
+            <material name="Cyan">
+                <color rgba="0 1 1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/shank3.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="thigh2shank3" type="revolute">
+        <origin xyz="0.23 0 0" rpy="0 0 1.5708" />
+        <parent link="thigh3" />
+        <child link="shank3" />
+        <axis xyz="0 0 -1" />
+        <limit lower="-3.14" upper="3.14" effort="500" velocity="40" />
+    </joint>
+
+    <!-- 圆形foot -->
+    <!-- <link name="foot3">
+        <inertial>
+            <origin xyz="${foot3_com_x} ${foot3_com_y} ${foot3_com_z}" rpy="0 0 0" />
+            <mass value="${foot3_mass}" />
+            <inertia ixx="${2/5 * foot3_mass * foot3_radius * foot3_radius}" ixy="0" ixz="0" iyy="${2/5 * foot3_mass * foot3_radius * foot3_radius}" iyz="0" izz="${2/5 * foot3_mass * foot3_radius * foot3_radius}" />
+        </inertial>
+        <visual>
+            <geometry>
+                <sphere radius="${foot3_radius}" />
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <material name="SkyBlue">
+                <color rgba="0.5 0.8 0.9 1" />
+            </material>
+        </visual>
+        <collision name="foot3_collision">
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <sphere radius="${foot3_radius}" />
+            </geometry>
+        </collision>
+    </link> -->
+
+    <link name="foot3">
+        <inertial>
+            <origin xyz="${foot3_com_x} ${foot3_com_y} ${foot3_com_z}" rpy="0 0 0" />
+            <mass value="${foot3_mass}" />
+            <inertia ixx="${foot3_ixx}" ixy="${foot3_ixy}" ixz="${foot3_ixz}" iyy="${foot3_iyy}" iyz="${foot3_iyz}" izz="${foot3_izz}" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/foot3.STL" />
+            </geometry>
+            <material name="SkyBlue">
+                <color rgba="0.5 0.8 0.9 1" />
+            </material>
+        </visual>
+        <collision name="foot3_collision">
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/foot3.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="hip4">
+        <inertial>
+            <origin xyz="${hip4_com_x} ${hip4_com_y} ${hip4_com_z}" rpy="0 0 0" />
+            <mass value="${hip4_mass}" />
+            <inertia ixx="${hip4_ixx}" ixy="${hip4_ixy}" ixz="${hip4_ixz}" iyy="${hip4_iyy}" iyz="${hip4_iyz}" izz="${hip4_izz}" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/hip4.STL" />
+            </geometry>
+            <material name="IndianRed">
+                <color rgba="0.8 0.36 0.36 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/hip4.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="base2hip4" type="revolute">
+        <origin xyz="-0.11 -0.11 0.112" rpy="0 0 3.14159265358979" />
+        <parent link="base_link" />
+        <child link="hip4" />
+        <axis xyz="0 0 -1" />
+        <limit lower="-1.57" upper="1.57" effort="500" velocity="40" />
+    </joint>
+
+    <link name="thigh4">
+        <inertial>
+            <origin xyz="${thigh4_com_x} ${thigh4_com_y} ${thigh4_com_z}" rpy="0 0 0" />
+            <mass value="${thigh4_mass}" />
+            <inertia ixx="${thigh4_ixx}" ixy="${thigh4_ixy}" ixz="${thigh4_ixz}" iyy="${thigh4_iyy}" iyz="${thigh4_iyz}" izz="${thigh4_izz}" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/thigh4.STL" />
+            </geometry>
+            <material name="Green">
+                <color rgba="0 1 0 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/thigh4.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="hip2thigh4" type="revolute">
+        <origin xyz="0.07 -0.0015 0.03" rpy="-1.5708 0 0" />
+        <parent link="hip4" />
+        <child link="thigh4" />
+        <axis xyz="0 0 -1" />
+        <limit lower="-3.14" upper="3.14" effort="500" velocity="40" />
+    </joint>
+
+    <link name="shank4">
+        <inertial>
+            <origin xyz="${shank4_com_x} ${shank4_com_y} ${shank4_com_z}" rpy="0 0 0" />
+            <mass value="${shank4_mass}" />
+            <inertia ixx="${shank4_ixx}" ixy="${shank4_ixy}" ixz="${shank4_ixz}" iyy="${shank4_iyy}" iyz="${shank4_iyz}" izz="${shank4_izz}" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/shank4.STL" />
+            </geometry>
+            <material name="Cyan">
+                <color rgba="0 1 1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/shank4.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="thigh2shank4" type="revolute">
+        <origin xyz="0.23 0 0" rpy="0 0 1.5708" />
+        <parent link="thigh4" />
+        <child link="shank4" />
+        <axis xyz="0 0 -1" />
+        <limit lower="-3.14" upper="3.14" effort="500" velocity="40" />
+    </joint>
+
+    <!-- 圆形foot -->
+    <!-- <link name="foot4">
+        <inertial>
+            <origin xyz="${foot4_com_x} ${foot4_com_y} ${foot4_com_z}" rpy="0 0 0" />
+            <mass value="${foot4_mass}" />
+            <inertia ixx="${2/5 * foot4_mass * foot4_radius * foot4_radius}" ixy="0" ixz="0" iyy="${2/5 * foot4_mass * foot4_radius * foot4_radius}" iyz="0" izz="${2/5 * foot4_mass * foot4_radius * foot4_radius}" />
+        </inertial>
+        <visual>
+            <geometry>
+                <sphere radius="${foot4_radius}" />
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <material name="SkyBlue">
+                <color rgba="0.5 0.8 0.9 1" />
+            </material>
+        </visual>
+        <collision name="foot4_collision">
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <sphere radius="${foot4_radius}" />
+            </geometry>
+        </collision>
+    </link> -->
+
+    <link name="foot4">
+        <inertial>
+            <origin xyz="${foot4_com_x} ${foot4_com_y} ${foot4_com_z}" rpy="0 0 0" />
+            <mass value="${foot4_mass}" />
+            <inertia ixx="${foot4_ixx}" ixy="${foot4_ixy}" ixz="${foot4_ixz}" iyy="${foot4_iyy}" iyz="${foot4_iyz}" izz="${foot4_izz}" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/foot4.STL" />
+            </geometry>
+            <material name="SkyBlue">
+                <color rgba="0.5 0.8 0.9 1" />
+            </material>
+        </visual>
+        <collision name="foot4_collision">
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://sipder_robot/meshes/foot4.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <!-- type="revolute" : 发布连杆关系的话题就是在/tf -->
+    <!-- type="fixed" : 发布连杆关系的话题就是在/tf_static -->
+
+    <joint name="shank2foot1" type="revolute">
+        <origin xyz="0.36572 0 0.00075" rpy="-1.5818 -1.5708 -1.5598" />
+        <parent link="shank1" />
+        <child link="foot1" />
+        <axis xyz="0 0 -1" />
+        <limit effort="50" velocity="50" lower="0" upper="0" />
+        <dynamics damping="0.0" friction="10"/>
+    </joint>
+
+    <joint name="shank2foot2" type="revolute">
+        <origin xyz="0.36572 0 0.00075" rpy="-1.5718 -1.5708 -1.5698" />
+        <parent link="shank2" />
+        <child link="foot2" />
+        <axis xyz="0 0 -1" />
+        <limit effort="50" velocity="50" lower="0" upper="0" />
+        <dynamics damping="0.0" friction="10"/>
+    </joint>
+
+    <joint name="shank2foot3" type="revolute">
+        <origin xyz="0.36572 0 0.00075" rpy="0 1.5708 0" />
+        <parent link="shank3" />
+        <child link="foot3" />
+        <axis xyz="0 0 -1" />
+        <limit effort="50" velocity="50" lower="0" upper="0" />
+        <dynamics damping="0.0" friction="10"/>
+    </joint>
+
+    <joint name="shank2foot4" type="revolute">
+        <origin xyz="0.36572 0 0.00075" rpy="0 1.5708 0" />
+        <parent link="shank4" />
+        <child link="foot4" />
+        <axis xyz="0 0 -1" />
+        <limit effort="50" velocity="50" lower="0" upper="0" />
+        <dynamics damping="0.0" friction="10"/>
+    </joint>
+
+</robot>

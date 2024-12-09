@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<robot name="my_sensors" xmlns:xacro="http://wiki.ros.org/xacro">
+
+  <!-- 雷达 -->
+  <gazebo reference="lidar">                  <!--  修改成自己雷达的名字 -->
+    <sensor type="ray" name="rplidar">        <!-- 设置雷达类型 -->
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>true</visualize>
+      <update_rate>5</update_rate>              <!-- 雷达更新频率 -->
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>360</samples>                         <!-- 旋转一周所发出的射线 -->
+            <resolution>1</resolution>      <!-- 分辨率，每n个射线有一个测距，降低仿真环境压力 -->
+            <min_angle>-3.14</min_angle>     <!-- 雷达采样范围 ，向左转3个弧度 -->
+            <max_angle>3.14</max_angle>       <!-- 雷达采样范围 ，向右转3个弧度  -->
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.10</min>                   <!-- 采样距离小于0.1，采集不到 -->
+          <max>30.0</max>                    <!-- 大于30m，采样不到 -->
+          <resolution>0.01</resolution>       <!-- 精度，最多精确到1厘米 -->
+        </range> 
+        <noise>                            <!-- 增强仿真 -->
+          <type>gaussian</type>             <!-- 高斯噪音 -->
+          <mean>0.0</mean>                  <!-- 平均值 -->
+          <stddev>0.01</stddev>             <!-- 标准差 -->
+        </noise>
+      </ray>
+      <plugin name="gazebo_rplidar" filename="libgazebo_ros_laser.so">      
+        <topicName>/spibot_gazebo/laser_scan</topicName>               <!-- 注意话题，需要订阅 -->
+        <frameName>lidar</frameName>               <!-- 与自己雷达传感器名字相同 -->
+      </plugin>
+    </sensor>
+  </gazebo>
+</robot>

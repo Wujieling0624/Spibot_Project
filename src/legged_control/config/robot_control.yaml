@@ -1,0 +1,126 @@
+spibot_gazebo:
+    # Publish all joint states -----------------------------------
+    joint_state_controller:
+        type: joint_state_controller/JointStateController
+        publish_rate: 50  
+
+    # 1-->BR Controllers ---------------------------------------
+    hip1_controller: 
+        type: effort_controllers/JointPositionController
+        joint: base2hip1
+        pid: {p: 100.0, i: 5.0, d: 1.0}
+    thigh1_controller:
+        type: effort_controllers/JointPositionController
+        joint: hip2thigh1
+        pid: {p: 400.0, i: 0.0, d: 0.0}   
+    shank1_controller:
+        type: effort_controllers/JointPositionController
+        joint: thigh2shank1
+        pid: {p: 300.0, i: 0.0, d: 8.0}  
+
+    # 2-->FR Controllers ---------------------------------------
+    hip2_controller: 
+        type: effort_controllers/JointPositionController
+        joint: base2hip2
+        pid: {p: 100.0, i: 5.0, d: 1.0}
+    thigh2_controller:
+        type: effort_controllers/JointPositionController
+        joint: hip2thigh2
+        pid: {p: 400.0, i: 0.0, d: 0.0}   
+    shank2_controller:
+        type: effort_controllers/JointPositionController
+        joint: thigh2shank2
+        pid: {p: 300.0, i: 0.0, d: 8.0}  
+
+    # 3-->FL Controllers ---------------------------------------
+    hip3_controller: 
+        type: effort_controllers/JointPositionController
+        joint: base2hip3
+        pid: {p: 100.0, i: 5.0, d: 1.0}
+    thigh3_controller:
+        type: effort_controllers/JointPositionController
+        joint: hip2thigh3
+        pid: {p: 400.0, i: 0.0, d: 0.0}   
+    shank3_controller:
+        type: effort_controllers/JointPositionController
+        joint: thigh2shank3
+        pid: {p: 300.0, i: 0.0, d: 8.0}  
+
+    # 4-->BL Controllers ---------------------------------------
+    hip4_controller: 
+        type: effort_controllers/JointPositionController
+        joint: base2hip4
+        pid: {p: 100.0, i: 5.0, d: 1.0}
+    thigh4_controller:
+        type: effort_controllers/JointPositionController
+        joint: hip2thigh4
+        pid: {p: 400.0, i: 0.0, d: 0.0}   
+    shank4_controller:
+        type: effort_controllers/JointPositionController
+        joint: thigh2shank4
+        pid: {p: 300.0, i: 0.0, d: 8.0}  
+
+
+
+# # --------hang on mode--------------------------------------------
+# spibot_gazebo:
+#     # Publish all joint states -----------------------------------
+#     joint_state_controller:
+#         type: joint_state_controller/JointStateController
+#         publish_rate: 50  
+
+#     # 1-->BR Controllers ---------------------------------------
+#     hip1_controller: 
+#         type: effort_controllers/JointPositionController
+#         joint: base2hip1
+#         pid: {p: 100.0, i: 5.0, d: 1.0}
+#     thigh1_controller:
+#         type: effort_controllers/JointPositionController
+#         joint: hip2thigh1
+#         pid: {p: 400.0, i: 0.0, d: 0.0}
+#     shank1_controller:
+#         type: effort_controllers/JointPositionController
+#         joint: thigh2shank1
+#         pid: {p: 300.0, i: 0.0, d: 8.0}
+
+#     # 2-->FR Controllers ---------------------------------------
+#     hip2_controller: 
+#         type: effort_controllers/JointPositionController
+#         joint: base2hip2
+#         pid: {p: 100.0, i: 5.0, d: 1.0}
+#     thigh2_controller:
+#         type: effort_controllers/JointPositionController
+#         joint: hip2thigh2
+#         pid: {p: 400.0, i: 0.0, d: 0.0}
+#     shank2_controller:
+#         type: effort_controllers/JointPositionController
+#         joint: thigh2shank2
+#         pid: {p: 300.0, i: 0.0, d: 8.0}
+
+#     # 3-->FL Controllers ---------------------------------------
+#     hip3_controller: 
+#         type: effort_controllers/JointPositionController
+#         joint: base2hip3
+#         pid: {p: 100.0, i: 5.0, d: 1.0}
+#     thigh3_controller:
+#         type: effort_controllers/JointPositionController
+#         joint: hip2thigh3
+#         pid: {p: 400.0, i: 0.0, d: 0.0}
+#     shank3_controller:
+#         type: effort_controllers/JointPositionController
+#         joint: thigh2shank3
+#         pid: {p: 300.0, i: 0.0, d: 8.0}
+
+#     # 4-->BL Controllers ---------------------------------------
+#     hip4_controller: 
+#         type: effort_controllers/JointPositionController
+#         joint: base2hip4
+#         pid: {p: 100.0, i: 5.0, d: 1.0}
+#     thigh4_controller:
+#         type: effort_controllers/JointPositionController
+#         joint: hip2thigh4
+#         pid: {p: 400.0, i: 0.0, d: 0.0}
+#     shank4_controller:
+#         type: effort_controllers/JointPositionController
+#         joint: thigh2shank4
+#         pid: {p: 300.0, i: 0.0, d: 8.0}

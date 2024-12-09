@@ -1,0 +1,1 @@
+controller_joint_names: ['', 'base2hip1', 'hip2thigh1', 'thigh2shank1', 'shank2foot1', 'base2hip2', 'hip2thigh2', 'thigh2shank2', 'shank2foot2', 'base2hip3', 'hip2thigh3', 'thigh2shank3', 'shank2foot3', 'base2hip4', 'hip2thigh4', 'thigh2shank4', 'shank2foot4', ]

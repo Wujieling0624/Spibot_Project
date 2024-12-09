@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<robot name="spibot_with_sensors"
+    xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:include filename="spibot.xacro"/>
+    <!-- 集成运动控制 -->
+    <xacro:include filename="gazebo/kinect.xacro"/>
+    <xacro:include filename="$(find sipder_robot)/xacro/gazebo/velodyne.xacro"/>
+    <!-- <xacro:include filename="$(find sipder_robot)/xacro/gazebo/laser.xacro"/> -->
+    <xacro:include filename="gazebo/imu.xacro"/>
+    <xacro:include filename="gazebo/foot_add_grippers.xacro"/>
+</robot>
+

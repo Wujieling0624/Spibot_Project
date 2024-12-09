@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<robot>
+    <!-- ros_control plugin -->
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/spibot_gazebo</robotNamespace>
+            <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+        </plugin>
+    </gazebo>
+    <gazebo>
+        <plugin name="p3d_base_controller" filename="libgazebo_ros_p3d.so">
+            <alwaysOn>true</alwaysOn>
+            <updateRate>100.0</updateRate>
+            <bodyName>base_link</bodyName>            <!-- 替换为你的基坐标系名称 -->
+            <topicName>/spibot_gazebo/odometry</topicName>            <!-- 自定义的话题名称 -->
+            <gaussianNoise>0.01</gaussianNoise>            <!-- 可选，添加高斯噪声 -->
+            <frameName>map</frameName>            <!-- 参考坐标系，通常为世界坐标系 -->
+            <xyzOffsets>0 0 0</xyzOffsets>            <!-- 可选，偏移量 -->
+            <rpyOffsets>0 0 0</rpyOffsets>            <!-- 可选，旋转偏移量 -->
+        </plugin>
+    </gazebo>
+
+</robot>

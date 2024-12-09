@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="VLP-16">
+  <!-- 3D激光雷达：
+        参考链接：https://blog.csdn.net/qq_21043585/article/details/129807616 -->
+  <xacro:property name="M_PI" value="3.1415926535897931" />
+  <xacro:property name="samples" value="440" />
+  <!-- Gazebo requires the velodyne_gazebo_plugins package -->
+  <gazebo reference="lidar">
+    <!-- 3D雷达不允许使用gpu的定义，如果环境中有动态的障碍物最好使用gpu -->
+    <sensor type="ray" name="velodyne_laser">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>false</visualize>
+      <update_rate>8</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>${samples}</samples>
+            <resolution>1</resolution>
+            <min_angle>-${M_PI}</min_angle>
+            <max_angle>${M_PI}</max_angle>
+          </horizontal>
+          <vertical>
+            <samples>16</samples>
+            <resolution>1</resolution>
+            <min_angle>-${15.0*M_PI/180.0}</min_angle>
+            <max_angle> ${15.0*M_PI/180.0}</max_angle>
+          </vertical>
+        </scan>
+        <range>
+          <min>0.3</min>
+          <max>131.0</max>
+          <resolution>0.001</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.0</stddev>
+        </noise>
+      </ray>
+      <plugin name="gazebo_ros_laser_controller" filename="libgazebo_ros_velodyne_laser.so">
+        <topicName>/spibot_gazebo/velodyne_points</topicName>
+        <frameName>lidar</frameName>
+        <min_range>0.9</min_range>
+        <max_range>130.0</max_range>
+        <gaussianNoise>0.008</gaussianNoise>
+      </plugin>
+    </sensor>
+  </gazebo>
+</robot>
