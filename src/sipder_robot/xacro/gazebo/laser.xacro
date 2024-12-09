@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <robot name="my_sensors" xmlns:xacro="http://wiki.ros.org/xacro">
+<?xml version="1.0"?>
+<robot name="my_sensors" xmlns:xacro="http://wiki.ros.org/xacro">
 
   <!-- 雷达 -->
   <gazebo reference="lidar">                  <!--  修改成自己雷达的名字 -->

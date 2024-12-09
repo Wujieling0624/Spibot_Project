@@ -1,0 +1,2 @@
+legged_control:sipder_robot:spibot_control:spibot_plugin:velodyne_simulator/velodyne_description:velodyne_simulator/velodyne_gazebo_plugins:velodyne_simulator/velodyne_simulator
+-DCATKIN_DEVEL_PREFIX=/root/spibot_ws/devel -DCMAKE_INSTALL_PREFIX=/root/spibot_ws/install -G Unix Makefiles

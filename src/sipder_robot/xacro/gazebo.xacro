@@ -94,32 +94,32 @@
     </gazebo>
 
     <gazebo reference="foot1">
-        <!-- <mu1>1.0</mu1>        静摩擦系数 -->
-        <!-- <mu2>1.0</mu2>        动摩擦系数 -->
+        <mu1>1.0</mu1>        <!-- 静摩擦系数 -->
+        <mu2>1.0</mu2>        <!-- 动摩擦系数 -->
         <!-- <minDepth>0.003</minDepth> -->
         <self_collide>1</self_collide>
         <material>Gazebo/SkyBlue</material>
     </gazebo>
 
     <gazebo reference="foot2">
-        <!-- <mu1>10.0</mu1>        静摩擦系数 -->
-        <!-- <mu2>1.0</mu2>        动摩擦系数 -->
+        <mu1>1.0</mu1>        <!-- 静摩擦系数 -->
+        <mu2>1.0</mu2>        <!-- 动摩擦系数 -->
         <!-- <minDepth>0.003</minDepth> -->
         <self_collide>1</self_collide>
         <material>Gazebo/SkyBlue</material>
     </gazebo>
 
     <gazebo reference="foot3">
-        <!-- <mu1>1.0</mu1>        静摩擦系数 -->
-        <!-- <mu2>1.0</mu2>        动摩擦系数 -->
+        <mu1>1.0</mu1>        <!-- 静摩擦系数 -->
+        <mu2>1.0</mu2>        <!-- 动摩擦系数 -->
         <!-- <minDepth>0.003</minDepth> -->
         <self_collide>1</self_collide>
         <material>Gazebo/SkyBlue</material>
     </gazebo>
 
     <gazebo reference="foot4">
-        <!-- <mu1>1.0</mu1>        静摩擦系数 -->
-        <!-- <mu2>1.0</mu2>        动摩擦系数 -->
+        <mu1>1.0</mu1>        <!-- 静摩擦系数 -->
+        <mu2>1.0</mu2>        <!-- 动摩擦系数 -->
         <!-- <minDepth>0.003</minDepth> -->
         <self_collide>1</self_collide>
         <material>Gazebo/SkyBlue</material>
