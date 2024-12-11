@@ -1,0 +1,925 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot name="SpibotRl">
+  <link name="base">
+    <inertial>
+      <origin xyz="-0.0053069 -9.5983E-05 0.024681" rpy="0 0 0" />
+      <mass value="8.956765" />
+      <inertia ixx="0.109196" ixy="0.0" ixz="0.0" iyy="0.084796" iyz="0.0" izz="0.159461" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/SpibotRl/base.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.304 0.304 0.109" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RR_hip_joint" type="revolute">
+    <origin xyz="-0.11 -0.11 0.025" rpy="0 0 0" />
+    <parent link="base" />
+    <child link="RR_hip" />
+    <axis xyz="0 0 1" />
+    <limit lower="-0.25" upper="1.85" effort="100" velocity="30" />
+  </joint>
+  <link name="RR_hip">
+    <inertial>
+      <origin xyz="-0.030542 0.027829 0.05369" rpy="0 0 0" />
+      <mass value="0.030452" />
+      <inertia ixx="0.000224" ixy="0.000052" ixz="0.000091" iyy="0.000261" iyz="-0.000082" izz="0.000147" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/SpibotRl/RR_hip.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/SpibotRl/RR_hip.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <joint name="RR_hip_col_joint" type="fixed" dont_collapse="true">
+    <origin xyz="-0 -0 0" rpy="0 0 0" />
+    <parent link="RR_hip" />
+    <child link="RR_hip_col" />
+    <axis xyz="0 0 1" />
+    <limit lower="-0.25" upper="1.85" effort="100" velocity="30" />
+  </joint>
+  <link name="RR_hip_col">
+    <!-- <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.08" radius="0.031" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual> -->
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.08" radius="0.031" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="RR_thigh">
+    <inertial>
+      <origin xyz="-0.11489 0.0056875 -9.5378E-05" rpy="0 0 0" />
+      <mass value="0.60857" />
+      <inertia ixx="0.002300" ixy="0.003904" ixz="-0.000021" iyy="0.064706" iyz="-0.0" izz="0.064476" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/SpibotRl/RR_thigh.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/SpibotRl/RR_thigh.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <joint name="RR_thigh_joint" type="revolute">
+    <origin xyz="-0.07 0.0015 0.067" rpy="0 0 0" />
+    <parent link="RR_hip" />
+    <child link="RR_thigh" />
+    <axis xyz="0 -1 0" />
+    <limit lower="-2.0" upper="1.0" effort="100" velocity="30" />
+  </joint>
+  <link name="RR_thigh_col">
+    <!-- <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.31" radius="0.049" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual> -->
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.31" radius="0.049" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RR_thigh_col_joint" type="fixed" dont_collapse="true">
+    <origin xyz="-0.115 0 0" rpy="0 1.57 0" />
+    <parent link="RR_thigh" />
+    <child link="RR_thigh_col" />
+    <axis xyz="0 -1 0" />
+    <limit lower="-2.0" upper="1.0" effort="100" velocity="30" />
+  </joint>
+  <link name="RR_calf">
+    <inertial>
+      <origin xyz="-0.13117 0.010092 9.4369E-16" rpy="0 0 0" />
+      <mass value="0.081935" />
+      <inertia ixx="0.001142" ixy="-0.000178" ixz="-0.0" iyy="0.111728" iyz="-0.0" izz="0.111757" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/SpibotRl/RR_calf.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/SpibotRl/RR_calf.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <joint name="RR_calf_joint" type="revolute">
+    <origin xyz="-0.23 0 0" rpy="3.1416 -1.5708 0" />
+    <parent link="RR_thigh" />
+    <child link="RR_calf" />
+    <axis xyz="0 -1 0" />
+    <limit lower="-0.55" upper="2.0" effort="100" velocity="30" />
+  </joint>
+  <link name="RR_calf_col">
+    <!-- <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.29" radius="0.02" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual> -->
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.29" radius="0.02" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RR_calf_col_joint" type="fixed" dont_collapse="true">
+    <origin xyz="-0.183 0 0" rpy="3.1416 -1.5708 0" />
+    <parent link="RR_calf" />
+    <child link="RR_calf_col" />
+    <axis xyz="0 -1 0" />
+    <limit lower="-0.55" upper="2.0" effort="100" velocity="30" />
+  </joint>
+  <link name="RR_foot">
+    <inertial>
+      <origin xyz="-0.0058146 6.2104E-06 8.9794E-07" rpy="0 0 0" />
+      <mass value="0.15496" />
+      <inertia ixx="0.001143" ixy="0.000325" ixz="-0.000237" iyy="0.009828" iyz="0.000015" izz="0.009837" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/SpibotRl/RR_foot.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/SpibotRl/RR_foot.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <joint name="RR_foot_joint" type="fixed" dont_collapse="true">
+    <origin xyz="-0.36572 -0.00075 0" rpy="0 0 0" />
+    <parent link="RR_calf" />
+    <child link="RR_foot" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="RR_foot_col">
+    <!-- <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.09" radius="0.054" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual> -->
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.09" radius="0.054" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RR_foot_col_joint" type="fixed" dont_collapse="true">
+    <origin xyz="-0.007 -0 0" rpy="0 1.57 0" />
+    <parent link="RR_foot" />
+    <child link="RR_foot_col" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+  <link name="FR_hip">
+    <inertial>
+      <origin xyz="0.030542 -0.027829 0.05369" rpy="0 0 0" />
+      <mass value="0.030452" />
+      <inertia ixx="0.000224" ixy="0.000052" ixz="-0.000091" iyy="0.000261" iyz="0.000082" izz="0.000147" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/SpibotRl/FR_hip.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/SpibotRl/FR_hip.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <joint name="FR_hip_joint" type="revolute">
+    <origin xyz="0.11 -0.11 0.025" rpy="0 0 0" />
+    <parent link="base" />
+    <child link="FR_hip" />
+    <axis xyz="0 0 -1" />
+    <limit lower="-0.25" upper="1.85" effort="100" velocity="30" />
+  </joint>
+  <joint name="FR_hip_col_joint" type="fixed" dont_collapse="true">
+    <origin xyz="-0 -0 0" rpy="0 0 0" />
+    <parent link="FR_hip" />
+    <child link="FR_hip_col" />
+    <axis xyz="0 0 1" />
+    <limit lower="-0.25" upper="1.85" effort="100" velocity="30" />
+  </joint>
+  <link name="FR_hip_col">
+    <!-- <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.08" radius="0.031" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual> -->
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.08" radius="0.031" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="FR_thigh">
+    <inertial>
+      <origin xyz="0.11489 -0.0056875 -9.5378E-05" rpy="0 0 0" />
+      <mass value="0.60857" />
+      <inertia ixx="0.002300" ixy="0.003904" ixz="0.000021" iyy="0.064706" iyz="-0.0" izz="0.064476" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/SpibotRl/FR_thigh.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/SpibotRl/FR_thigh.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <joint name="FR_thigh_joint" type="revolute">
+    <origin xyz="0.07 -0.0015 0.067" rpy="0 0 0" />
+    <parent link="FR_hip" />
+    <child link="FR_thigh" />
+    <axis xyz="0 -1 0" />
+    <limit lower="-1.0" upper="2.0" effort="100" velocity="30" />
+  </joint>
+  <link name="FR_thigh_col">
+    <!-- <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.31" radius="0.049" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual> -->
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.31" radius="0.049" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="FR_thigh_col_joint" type="fixed" dont_collapse="true">
+    <origin xyz="0.115 0 0" rpy="0 1.57 0" />
+    <parent link="FR_thigh" />
+    <child link="FR_thigh_col" />
+    <axis xyz="0 -1 0" />
+    <limit lower="-2.0" upper="1.0" effort="100" velocity="30" />
+  </joint>
+  <link name="FR_calf">
+    <inertial>
+      <origin xyz="-0.13117 -0.010092 -8.3267E-16" rpy="0 0 0" />
+      <mass value="0.081935" />
+      <inertia ixx="0.001142" ixy="0.000178" ixz="-0.0" iyy="0.111728" iyz="-0.0" izz="0.111757" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/SpibotRl/FR_calf.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/SpibotRl/FR_calf.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <joint name="FR_calf_joint" type="revolute">
+    <origin xyz="0.23 0 0" rpy="3.1416 -1.5708 0" />
+    <parent link="FR_thigh" />
+    <child link="FR_calf" />
+    <axis xyz="0 1 0" />
+    <limit lower="-0.55" upper="2.0" effort="100" velocity="30" />
+  </joint>
+  <link name="FR_calf_col">
+    <!-- <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.29" radius="0.02" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual> -->
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.29" radius="0.02" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="FR_calf_col_joint" type="fixed" dont_collapse="true">
+    <origin xyz="-0.183 0 0" rpy="3.1416 -1.5708 0" />
+    <parent link="FR_calf" />
+    <child link="FR_calf_col" />
+    <axis xyz="0 -1 0" />
+    <limit lower="-0.55" upper="2.0" effort="100" velocity="30" />
+  </joint>
+  <link name="FR_foot">
+    <inertial>
+      <origin xyz="-0.0058163 -3.925E-06 4.9294E-06" rpy="0 0 0" />
+      <mass value="0.15495" />
+      <inertia ixx="0.001143" ixy="0.000042" ixz="0.000400" iyy="0.009848" iyz="-0.000003" izz="0.009818" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/SpibotRl/FR_foot.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/SpibotRl/FR_foot.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <joint name="FR_foot_joint" type="fixed" dont_collapse="true">
+    <origin xyz="-0.36572 0.00075 0" rpy="0 0 0" />
+    <parent link="FR_calf" />
+    <child link="FR_foot" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="FR_foot_col">
+    <!-- <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.09" radius="0.054" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual> -->
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.09" radius="0.054" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="FR_foot_col_joint" type="fixed" dont_collapse="true">
+    <origin xyz="-0.007 -0 0" rpy="0 1.57 0" />
+    <parent link="FR_foot" />
+    <child link="FR_foot_col" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+
+  <link name="FL_hip">
+    <inertial>
+      <origin xyz="0.030542 -0.027829 0.05369" rpy="0 0 0" />
+      <mass value="0.030452" />
+      <inertia ixx="0.000224" ixy="0.000052" ixz="-0.000091" iyy="0.000261" iyz="0.000082" izz="0.000147" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/SpibotRl/FL_hip.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/SpibotRl/FL_hip.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <joint name="FL_hip_joint" type="revolute">
+    <origin xyz="0.11 0.11 0.025" rpy="0 0 0" />
+    <parent link="base" />
+    <child link="FL_hip" />
+    <axis xyz="0 0 1" />
+    <limit lower="-0.25" upper="1.85" effort="100" velocity="30" />
+  </joint>
+  <joint name="FL_hip_col_joint" type="fixed" dont_collapse="true">
+    <origin xyz="-0 -0 0" rpy="0 0 0" />
+    <parent link="FL_hip" />
+    <child link="FL_hip_col" />
+    <axis xyz="0 0 1" />
+    <limit lower="-0.25" upper="1.85" effort="100" velocity="30" />
+  </joint>
+  <link name="FL_hip_col">
+    <!-- <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.08" radius="0.031" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual> -->
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.08" radius="0.031" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="FL_thigh">
+    <inertial>
+      <origin xyz="0.11489 -0.0056875 -9.5378E-05" rpy="0 0 0" />
+      <mass value="0.60857" />
+      <inertia ixx="0.002300" ixy="0.003904" ixz="0.000021" iyy="0.064706" iyz="-0.0" izz="0.064476" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/SpibotRl/FL_thigh.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/SpibotRl/FL_thigh.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <joint name="FL_thigh_joint" type="revolute">
+    <origin xyz="0.07 -0.0015 0.067" rpy="0 0 0" />
+    <parent link="FL_hip" />
+    <child link="FL_thigh" />
+    <axis xyz="0 -1 0" />
+    <limit lower="-1.0" upper="2.0" effort="100" velocity="30" />
+  </joint>
+  <link name="FL_thigh_col">
+    <!-- <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.31" radius="0.049" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual> -->
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.31" radius="0.049" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="FL_thigh_col_joint" type="fixed" dont_collapse="true">
+    <origin xyz="0.115 0 0" rpy="0 1.57 0" />
+    <parent link="FL_thigh" />
+    <child link="FL_thigh_col" />
+    <axis xyz="0 -1 0" />
+    <limit lower="-2.0" upper="1.0" effort="100" velocity="30" />
+  </joint>
+  <link name="FL_calf">
+    <inertial>
+      <origin xyz="-0.13117 -0.010092 -9.4369E-16" rpy="0 0 0" />
+      <mass value="0.081935" />
+      <inertia ixx="0.001142" ixy="0.000178" ixz="-0.0" iyy="0.111728" iyz="-0.0" izz="0.111757" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/SpibotRl/FL_calf.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/SpibotRl/FL_calf.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <joint name="FL_calf_joint" type="revolute">
+    <origin xyz="0.23 0 0" rpy="3.1416 -1.5708 0" />
+    <parent link="FL_thigh" />
+    <child link="FL_calf" />
+    <axis xyz="0 -1 0" />
+    <limit lower="-2.0" upper="0.55" effort="100" velocity="30" />
+  </joint>
+  <link name="FL_calf_col">
+    <!-- <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.29" radius="0.02" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual> -->
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.29" radius="0.02" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="FL_calf_col_joint" type="fixed" dont_collapse="true">
+    <origin xyz="-0.183 0 0" rpy="3.1416 -1.5708 0" />
+    <parent link="FL_calf" />
+    <child link="FL_calf_col" />
+    <axis xyz="0 -1 0" />
+    <limit lower="-0.55" upper="2.0" effort="100" velocity="30" />
+  </joint>
+  <link name="FL_foot">
+    <inertial>
+      <origin xyz="-0.0058152 -5.6504E-06 2.7691E-06" rpy="0 0 0" />
+      <mass value="0.15496" />
+      <inertia ixx="0.001143" ixy="-0.000134" ixz="0.000380" iyy="0.009844" iyz="0.000010" izz="0.009821" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/SpibotRl/FL_foot.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/SpibotRl/FL_foot.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <joint name="FL_foot_joint" type="fixed" dont_collapse="true">
+    <origin xyz="-0.36572 0.00075 0" rpy="0 0 0" />
+    <parent link="FL_calf" />
+    <child link="FL_foot" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="FL_foot_col">
+    <!-- <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.09" radius="0.054" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual> -->
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.09" radius="0.054" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="FL_foot_col_joint" type="fixed" dont_collapse="true">
+    <origin xyz="-0.007 -0 0" rpy="0 1.57 0" />
+    <parent link="FL_foot" />
+    <child link="FL_foot_col" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+
+
+  <link name="RL_hip">
+    <inertial>
+      <origin xyz="-0.030542 0.037829 0.05369" rpy="0 0 0" />
+      <mass value="0.030452" />
+      <inertia ixx="0.000260" ixy="0.000066" ixz="0.000091" iyy="0.000261" iyz="-0.000113" izz="0.000182" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/SpibotRl/RL_hip.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/SpibotRl/RL_hip.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <joint name="RL_hip_joint" type="revolute">
+    <origin xyz="-0.11 0.1 0.025" rpy="0 0 0" />
+    <parent link="base" />
+    <child link="RL_hip" />
+    <axis xyz="0 0 -1" />
+    <limit lower="-0.25" upper="1.85" effort="100" velocity="30" />
+  </joint>
+  <joint name="RL_hip_col_joint" type="fixed" dont_collapse="true">
+    <origin xyz="-0 -0 0" rpy="0 0 0" />
+    <parent link="RL_hip" />
+    <child link="RL_hip_col" />
+    <axis xyz="0 0 1" />
+    <limit lower="-0.25" upper="1.85" effort="100" velocity="30" />
+  </joint>
+  <link name="RL_hip_col">
+    <!-- <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.08" radius="0.031" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual> -->
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.08" radius="0.031" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="RL_thigh">
+    <inertial>
+      <origin xyz="-0.11511 0.0056875 9.5378E-05" rpy="0 0 0" />
+      <mass value="0.60857" />
+      <inertia ixx="0.002300" ixy="0.003899" ixz="0.000027" iyy="0.064754" iyz="-0.0" izz="0.064525" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/SpibotRl/RL_thigh.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/SpibotRl/RL_thigh.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <joint name="RL_thigh_joint" type="revolute">
+    <origin xyz="-0.07 0.0115 0.067" rpy="0 0 0" />
+    <parent link="RL_hip" />
+    <child link="RL_thigh" />
+    <axis xyz="0 1 0" />
+    <limit lower="-2.0" upper="1.0" effort="100" velocity="30" />
+  </joint>
+  <link name="RL_thigh_col">
+    <!-- <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.31" radius="0.049" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual> -->
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.31" radius="0.049" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RL_thigh_col_joint" type="fixed" dont_collapse="true">
+    <origin xyz="-0.115 0 0" rpy="0 1.57 0" />
+    <parent link="RL_thigh" />
+    <child link="RL_thigh_col" />
+    <axis xyz="0 -1 0" />
+    <limit lower="-2.0" upper="1.0" effort="100" velocity="30" />
+  </joint>
+  <link name="RL_calf">
+    <inertial>
+      <origin xyz="-0.13117 0.013092 1.6653E-16" rpy="0 0 0" />
+      <mass value="0.081935" />
+      <inertia ixx="0.001153" ixy="0.000713" ixz="-0.0" iyy="0.111728" iyz="-0.0" izz="0.111768" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/SpibotRl/RL_calf.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/SpibotRl/RL_calf.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <joint name="RL_calf_joint" type="revolute">
+    <origin xyz="-0.23 0 0" rpy="3.1416 -1.5708 0" />
+    <parent link="RL_thigh" />
+    <child link="RL_calf" />
+    <axis xyz="0 1 0" />
+    <limit lower="-2.0" upper="0.55" effort="100" velocity="30" />
+  </joint>
+  <link name="RL_calf_col">
+    <!-- <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.29" radius="0.02" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual> -->
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.29" radius="0.02" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RL_calf_col_joint" type="fixed" dont_collapse="true">
+    <origin xyz="-0.183 0 0" rpy="3.1416 -1.5708 0" />
+    <parent link="RL_calf" />
+    <child link="RL_calf_col" />
+    <axis xyz="0 -1 0" />
+    <limit lower="-0.55" upper="2.0" effort="100" velocity="30" />
+  </joint>
+  <link name="RL_foot">
+    <inertial>
+      <origin xyz="-0.0058146 -2.4605E-06 -5.7726E-06" rpy="0 0 0" />
+      <mass value="0.15496" />
+      <inertia ixx="0.001143" ixy="-0.000372" ixz="-0.000154" iyy="0.009822" iyz="-0.000011" izz="0.009843" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/SpibotRl/RL_foot.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/SpibotRl/RL_foot.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <joint name="RL_foot_joint" type="fixed" dont_collapse="true">
+    <origin xyz="-0.36572 0.00225 0" rpy="0 0 0" />
+    <parent link="RL_calf" />
+    <child link="RL_foot" />
+    <axis xyz="0 0 0" />
+  </joint>
+  <link name="RL_foot_col">
+    <!-- <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.09" radius="0.054" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual> -->
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.09" radius="0.054" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RL_foot_col_joint" type="fixed" dont_collapse="true">
+    <origin xyz="-0.007 -0 0" rpy="0 1.57 0" />
+    <parent link="RL_foot" />
+    <child link="RL_foot_col" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+  <link name="imu">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0" />
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/SpibotRl/imu.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+  </link>
+  <joint name="imu_joint" type="fixed">
+    <origin xyz="0.177016 -0.00063297229597438 0.0340000000000019" rpy="0 0 0" />
+    <parent link="base" />
+    <child link="imu" />
+    <axis xyz="0 0 0" />
+  </joint>
+  
+  <!-- <link name="imu_col">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.025 0.09 0.025" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.025 0.09 0.025" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="imu_col_joint" type="fixed" dont_collapse="true">
+    <origin xyz="-0.0125 0 0" rpy="0 0 0" />
+    <parent link="imu" />
+    <child link="imu_col" />
+    <axis xyz="0 -1 0" />
+    <limit lower="-2.0" upper="1.0" effort="100" velocity="30" />
+  </joint> -->
+
+</robot>
+
+

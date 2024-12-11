@@ -49,7 +49,7 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://sipder_robot/meshes/base_link.STL" />
+                <mesh filename="package://sipder_robot/meshes/spibot/base_link.STL" />
             </geometry>
             <material name="White">
                 <color rgba="1 1 1 1" />
@@ -58,7 +58,7 @@
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://sipder_robot/meshes/base_link.STL" />
+                <box size="0.304 0.304 0.109" />
             </geometry>
         </collision>
     </link>
@@ -71,18 +71,12 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://sipder_robot/meshes/camera.STL" />
+                <mesh filename="package://sipder_robot/meshes/spibot/camera.STL" />
             </geometry>
             <material name="DarkGrey">
                 <color rgba="0.4 0.4 0.4 1" />
             </material>
         </visual>
-        <collision>
-            <origin xyz="0 0 0" rpy="0 0 0" />
-            <geometry>
-                <mesh filename="package://sipder_robot/meshes/camera.STL" />
-            </geometry>
-        </collision>
     </link>
 
     <joint name="base2camera" type="fixed">
@@ -92,26 +86,15 @@
     </joint>
 
     <link name="lidar">
-        <inertial>
-            <origin xyz="${lidar_com_x} ${lidar_com_y} ${lidar_com_z}" rpy="0 0 0" />
-            <mass value="${lidar_mass}" />
-            <inertia ixx="${lidar_ixx}" ixy="${lidar_ixy}" ixz="${lidar_ixz}" iyy="${lidar_iyy}" iyz="${lidar_iyz}" izz="${lidar_izz}" />
-        </inertial>
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://sipder_robot/meshes/lidar.STL" />
+                <mesh filename="package://sipder_robot/meshes/spibot/lidar.STL" />
             </geometry>
             <material name="DarkSlateBlue">
                 <color rgba="0.28 0.23 0.55 1" />
             </material>
         </visual>
-        <collision>
-            <origin xyz="0 0 0" rpy="0 0 0" />
-            <geometry>
-                <mesh filename="package://sipder_robot/meshes/lidar.STL" />
-            </geometry>
-        </collision>
     </link>
 
     <joint name="base2lidar" type="fixed">
@@ -120,6 +103,7 @@
         <child link="lidar" />
         <axis xyz="0 0 0" />
     </joint>
+    
     <!-- 0->BR Controllers -->
     <link name="hip1">
         <inertial>
@@ -130,7 +114,7 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://sipder_robot/meshes/hip1.STL" />
+                <mesh filename="package://sipder_robot/meshes/spibot/hip1.STL" />
             </geometry>
             <material name="IndianRed">
                 <color rgba="0.8 0.36 0.36 1" />
@@ -139,7 +123,7 @@
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://sipder_robot/meshes/hip1.STL" />
+                <mesh filename="package://sipder_robot/meshes/spibot/hip1.STL" />
             </geometry>
         </collision>
     </link>
@@ -161,7 +145,7 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://sipder_robot/meshes/thigh1.STL" />
+                <mesh filename="package://sipder_robot/meshes/spibot/thigh1.STL" />
             </geometry>
             <material name="Green">
                 <color rgba="0 1 0 1" />
@@ -170,7 +154,7 @@
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://sipder_robot/meshes/thigh1.STL" />
+                <mesh filename="package://sipder_robot/meshes/spibot/thigh1.STL" />
             </geometry>
         </collision>
     </link>
@@ -192,7 +176,7 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://sipder_robot/meshes/shank1.STL" />
+                <mesh filename="package://sipder_robot/meshes/spibot/shank1.STL" />
             </geometry>
             <material name="Cyan">
                 <color rgba="0 1 1 1" />
@@ -201,7 +185,7 @@
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://sipder_robot/meshes/shank1.STL" />
+                <mesh filename="package://sipder_robot/meshes/spibot/shank1.STL" />
             </geometry>
         </collision>
     </link>
@@ -247,7 +231,7 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://sipder_robot/meshes/foot1.STL" />
+                <mesh filename="package://sipder_robot/meshes/spibot/foot1.STL" />
             </geometry>
             <material name="SkyBlue">
                 <color rgba="0.5 0.8 0.9 1" />
@@ -256,7 +240,7 @@
         <collision name="foot1_collision">
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://sipder_robot/meshes/foot1.STL" />
+                <mesh filename="package://sipder_robot/meshes/spibot/foot1.STL" />
             </geometry>
         </collision>
     </link>
@@ -271,7 +255,7 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://sipder_robot/meshes/hip2.STL" />
+                <mesh filename="package://sipder_robot/meshes/spibot/hip2.STL" />
             </geometry>
             <material name="IndianRed">
                 <color rgba="0.8 0.36 0.36 1" />
@@ -280,7 +264,7 @@
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://sipder_robot/meshes/hip2.STL" />
+                <mesh filename="package://sipder_robot/meshes/spibot/hip2.STL" />
             </geometry>
         </collision>
     </link>
@@ -302,7 +286,7 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://sipder_robot/meshes/thigh2.STL" />
+                <mesh filename="package://sipder_robot/meshes/spibot/thigh2.STL" />
             </geometry>
             <material name="Green">
                 <color rgba="0 1 0 1" />
@@ -311,7 +295,7 @@
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://sipder_robot/meshes/thigh2.STL" />
+                <mesh filename="package://sipder_robot/meshes/spibot/thigh2.STL" />
             </geometry>
         </collision>
     </link>
@@ -333,7 +317,7 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://sipder_robot/meshes/shank2.STL" />
+                <mesh filename="package://sipder_robot/meshes/spibot/shank2.STL" />
             </geometry>
             <material name="Cyan">
                 <color rgba="0 1 1 1" />
@@ -342,7 +326,7 @@
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://sipder_robot/meshes/shank2.STL" />
+                <mesh filename="package://sipder_robot/meshes/spibot/shank2.STL" />
             </geometry>
         </collision>
     </link>
@@ -388,7 +372,7 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://sipder_robot/meshes/foot2.STL" />
+                <mesh filename="package://sipder_robot/meshes/spibot/foot2.STL" />
             </geometry>
             <material name="SkyBlue">
                 <color rgba="0.5 0.8 0.9 1" />
@@ -397,7 +381,7 @@
         <collision name="foot2_collision">
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://sipder_robot/meshes/foot2.STL" />
+                <mesh filename="package://sipder_robot/meshes/spibot/foot2.STL" />
             </geometry>
         </collision>
     </link>
@@ -411,7 +395,7 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://sipder_robot/meshes/hip3.STL" />
+                <mesh filename="package://sipder_robot/meshes/spibot/hip3.STL" />
             </geometry>
             <material name="IndianRed">
                 <color rgba="0.8 0.36 0.36 1" />
@@ -420,7 +404,7 @@
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://sipder_robot/meshes/hip3.STL" />
+                <mesh filename="package://sipder_robot/meshes/spibot/hip3.STL" />
             </geometry>
         </collision>
     </link>
@@ -442,7 +426,7 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://sipder_robot/meshes/thigh3.STL" />
+                <mesh filename="package://sipder_robot/meshes/spibot/thigh3.STL" />
             </geometry>
             <material name="Green">
                 <color rgba="0 1 0 1" />
@@ -451,7 +435,7 @@
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://sipder_robot/meshes/thigh3.STL" />
+                <mesh filename="package://sipder_robot/meshes/spibot/thigh3.STL" />
             </geometry>
         </collision>
     </link>
@@ -473,7 +457,7 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://sipder_robot/meshes/shank3.STL" />
+                <mesh filename="package://sipder_robot/meshes/spibot/shank3.STL" />
             </geometry>
             <material name="Cyan">
                 <color rgba="0 1 1 1" />
@@ -482,7 +466,7 @@
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://sipder_robot/meshes/shank3.STL" />
+                <mesh filename="package://sipder_robot/meshes/spibot/shank3.STL" />
             </geometry>
         </collision>
     </link>
@@ -528,7 +512,7 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://sipder_robot/meshes/foot3.STL" />
+                <mesh filename="package://sipder_robot/meshes/spibot/foot3.STL" />
             </geometry>
             <material name="SkyBlue">
                 <color rgba="0.5 0.8 0.9 1" />
@@ -537,7 +521,7 @@
         <collision name="foot3_collision">
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://sipder_robot/meshes/foot3.STL" />
+                <mesh filename="package://sipder_robot/meshes/spibot/foot3.STL" />
             </geometry>
         </collision>
     </link>
@@ -551,7 +535,7 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://sipder_robot/meshes/hip4.STL" />
+                <mesh filename="package://sipder_robot/meshes/spibot/hip4.STL" />
             </geometry>
             <material name="IndianRed">
                 <color rgba="0.8 0.36 0.36 1" />
@@ -560,7 +544,7 @@
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://sipder_robot/meshes/hip4.STL" />
+                <mesh filename="package://sipder_robot/meshes/spibot/hip4.STL" />
             </geometry>
         </collision>
     </link>
@@ -582,7 +566,7 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://sipder_robot/meshes/thigh4.STL" />
+                <mesh filename="package://sipder_robot/meshes/spibot/thigh4.STL" />
             </geometry>
             <material name="Green">
                 <color rgba="0 1 0 1" />
@@ -591,7 +575,7 @@
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://sipder_robot/meshes/thigh4.STL" />
+                <mesh filename="package://sipder_robot/meshes/spibot/thigh4.STL" />
             </geometry>
         </collision>
     </link>
@@ -613,7 +597,7 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://sipder_robot/meshes/shank4.STL" />
+                <mesh filename="package://sipder_robot/meshes/spibot/shank4.STL" />
             </geometry>
             <material name="Cyan">
                 <color rgba="0 1 1 1" />
@@ -622,7 +606,7 @@
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://sipder_robot/meshes/shank4.STL" />
+                <mesh filename="package://sipder_robot/meshes/spibot/shank4.STL" />
             </geometry>
         </collision>
     </link>
@@ -668,7 +652,7 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://sipder_robot/meshes/foot4.STL" />
+                <mesh filename="package://sipder_robot/meshes/spibot/foot4.STL" />
             </geometry>
             <material name="SkyBlue">
                 <color rgba="0.5 0.8 0.9 1" />
@@ -677,7 +661,7 @@
         <collision name="foot4_collision">
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://sipder_robot/meshes/foot4.STL" />
+                <mesh filename="package://sipder_robot/meshes/spibot/foot4.STL" />
             </geometry>
         </collision>
     </link>
