@@ -4,7 +4,7 @@
 
 #### sipder_robot：
 
-由solidworks导出的功能包，内有生成的urdf和meshes、launch文件，自己转成的xacro文件，增加各种如三维雷达、imu、深度相机的gazebo仿真文件。
+由solidworks导出的功能包，内有生成的urdf和meshes、launch文件，自己转成的xacro文件，增加各种如三维雷达、imu、深度相机的gazebo仿真文件
 
 #### legged_control：
 
@@ -20,7 +20,7 @@
 
 ### 启动机器人仿真
 
-从SW导出的urdf文件，位于src/sipder_robot文件夹内，展示机器人命令：
+从SW导出的urdf文件，位于src/sipder_robot文件夹内，展示机器人命令
 
     roslaunch sipder_robot display.launch 
 
@@ -32,6 +32,8 @@
 
     roslaunch spibot_control set_pub.launch 
 
-launch文件不包含python文件，而键盘发布信息节点是用python写的，需要另外启动(可以单独启动，但是需要roscore，已经启动了launch文件就不需要)
+launch文件不包含python文件，而键盘发布信息节点是用python写的，需要另外启动
+
+(可以单独启动，但是需要roscore，已经启动了launch文件就不需要)
 
     rosrun spibot_control teleop_keyboard.py
