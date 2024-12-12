@@ -1,10 +1,19 @@
+/***************************************************************************************************************************************
+ * 
+ * 实现功能：（在plugin.xacro文件中使用p3d_base_controller这个插件定义的/spibot_gazebo/odometry话题，可以显示机器人绝对位置的实时变化）
+ * 监听/spibot_gazebo/odometry话题，并发布到rviz的tf树中，确保rviz能订阅到这个话题，并在rviz中实时运动
+ * 
+ * ps: 
+ * odom_trans.child_frame_id = "dummy"  运行后会显示没有dummy这个坐标系，但是似乎不妨碍效果 
+ * 
+***************************************************************************************************************************************/
+
+
 #include <ros/ros.h>
 #include <tf/transform_broadcaster.h>
 #include <tf/transform_datatypes.h>
 #include <nav_msgs/Odometry.h>
-/*
-任务：监听/spibot_gazebo/odometry话题，并发布到rviz的tf树中，确保rviz能订阅到这个话题
-*/
+
 // first, we'll publish the transform over tf
 geometry_msgs::TransformStamped odom_trans;
 

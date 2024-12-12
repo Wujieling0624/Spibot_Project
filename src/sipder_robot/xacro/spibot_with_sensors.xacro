@@ -3,10 +3,14 @@
     xmlns:xacro="http://www.ros.org/wiki/xacro">
     <xacro:include filename="spibot.xacro"/>
     <!-- 集成运动控制 -->
+    <!-- 给机器人的camera增加深度相机以生成深度图像 -->
     <xacro:include filename="gazebo/kinect.xacro"/>
+    <!-- 给机器人的lidar增加三维激光雷达以生成点云数据，laser雷达是生成二维点云数据，二者选其一 -->
     <xacro:include filename="$(find sipder_robot)/xacro/gazebo/velodyne.xacro"/>
     <!-- <xacro:include filename="$(find sipder_robot)/xacro/gazebo/laser.xacro"/> -->
+    <!-- 给机器人的camera增加imu以显示自身状态 -->
     <xacro:include filename="gazebo/imu.xacro"/>
+    <!-- 在foot下增加一个小圆柱体 -->
     <xacro:include filename="gazebo/foot_add_grippers.xacro"/>
 </robot>
 

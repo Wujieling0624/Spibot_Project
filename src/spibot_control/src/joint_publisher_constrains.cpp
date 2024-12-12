@@ -1,5 +1,17 @@
-// 发布节点的文件，用于发布机器人模型的状态：joint_publisher_constrains，以在Gazebo仿真环境中控制机器人模型的位置和姿态。
-// # 0-->BR Controllers/1-->FR Controllers/2-->FL Controllers/3-->BL Controllers
+/***************************************************************************************************************************************
+ *
+ * 最关键的文件，实现功能：
+ * 1、调用在move_trajectory_constraints.cpp文件定义的各种函数得到相应的关节角度，并实时发布出去，以在Gazebo仿真环境中控制机器人模型的位置和姿态
+ * 2、发布摆动腿的实时状态和吸盘的需求状态
+ * 3、发布/joint_states话题，实现在rviz中对应关节的摆动显示（sw的导出文件增加了关节控制器，发布关节角度也无法在rviz中表示出来）
+ * 
+ * 
+ * 0-->BR Controllers/1-->FR Controllers/2-->FL Controllers/3-->BL Controllers
+ *
+ ***************************************************************************************************************************************/
+
+
+
 #include <ros/ros.h>
 #include "std_msgs/Float64.h"
 #include "sensor_msgs/JointState.h"

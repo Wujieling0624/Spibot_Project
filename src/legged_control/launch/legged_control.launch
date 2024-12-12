@@ -1,5 +1,11 @@
 <launch>
 
+    <!-- 在这个launch文件中
+         1、包含了之前sw导出urdf得到并修改过的display.launch
+         2、加载legged_control功能包的config文件夹的robot_control.yaml，内有机器人12个转动电机关节的PID力矩转位置参数和PID控制器加载频率，这个怎么调我也不太清楚 
+         3、生成控制器节点，注意参数传入的控制器名称需要跟yaml文件的控制器名称一致
+         -->
+
     <include file="$(find sipder_robot)/launch/display.launch" />
 
     <!-- Load joint controller configurations from YAML file to parameter server -->

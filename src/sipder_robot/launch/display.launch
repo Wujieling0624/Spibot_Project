@@ -1,6 +1,6 @@
 <launch>
 
-  <!-- 添加点云坐标系到kinect坐标系的变换 -->
+  <!-- 添加点云坐标系到相机坐标系的变换 -->
   <node pkg="tf2_ros" type="static_transform_publisher" name="static_transform_publisher" args="0 0 0 -1.57 0 -1.57 /camera /camera_depth" />
   <node name="rviz" pkg="rviz" type="rviz" respawn="false" output="screen" args="-d $(find sipder_robot)/config/spibot.rviz" />
   <!-- 机器人状态发布节点 -->
@@ -13,7 +13,7 @@
   <!-- <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" /> -->
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <!-- 用box_house1.world会造成机器人无法接触悬挂状态 -->
+    <!-- 注意gazebo定义世界不能增加机器人文件，增加了后再运行launch文件就会出现两个机器人情况 -->
     <arg name="world_name" value="$(find sipder_robot)/worlds/box_house.world"/>
     <arg name="debug" value="false" />
     <arg name="gui" value="true"/>
@@ -22,15 +22,21 @@
     <arg name="headless" value="false"/>
   </include>
 
+  <!-- 载入xacro文件，参数user_debug可以看spibot.xacro，false表示将机器人放下来，true表示机器人悬挂 -->
+  <!-- 悬挂和放下的机器人需要的pid参数不一样，现在的pid参数是机器人放下时候调试的，悬挂机器人会出现腿部运动抖动的情况，需要另外调参 -->
   <arg name="user_debug" default="false"/>
   <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find sipder_robot)/xacro/spibot_with_sensors.xacro' DEBUG:=$(arg user_debug)"/>
 
   <!-- 加入风机叶片后就取消注释 -->
   <!-- <node name="model" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -z 2.2 -x 1 -model spibot -param robot_description -unpause" /> -->
 
+  <!-- 将机器人模型文件导入gazebo -->
   <node name="model" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -z 0.28 -model spibot -param robot_description -unpause" />
 
   <!-- Please add the following 2 lines in your own launch file -->
+  <!-- 在xacro文件夹中有root_.xacro文件，实现自定义插件功能 （可视化插件借鉴unitree的plugin，插件的定义位于spibot_plugin功能包内）
+       1、实现机器人base_link躯干的运动轨迹可视化，具体可以看 轨迹显示.md文件
+       2、机器人运动时刻只有一条腿在摆动，其余腿末端位于地面，实现位于地面三条腿的支撑面绘制 -->
   <param name="robot_root" command="$(find xacro)/xacro --inorder '$(find sipder_robot)/xacro/root_.xacro'" />
   <node pkg="gazebo_ros" type="spawn_model" name="spawn_robotroot" args="-urdf -param /robot_root -model traj_base"/>
 

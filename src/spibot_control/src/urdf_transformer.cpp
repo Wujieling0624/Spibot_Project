@@ -1,3 +1,17 @@
+
+/***************************************************************************************************************************************
+ *
+ * 实现一些数据的发布和接收：
+ * 订阅机器人rviz节点发布的/tf和/tf_static话题，处理成各个机器人关节间的矩阵
+ * 订阅由插件发布的/spibot_gazebo/odometry话题，处理成机器人绝对位姿的矩阵
+ * 根据这些矩阵得到仿真环境原点相对于机器人末端坐标系的位置x,y,z
+ * 将静止非摆动的三条腿末端的x,y,z点发送到/spibot_gazebo/draw/triangle_points话题中
+ *
+ * ps:
+ * 自定义的绘制三角形插件需要接收/spibot_gazebo/draw/triangle_points话题才能绘制
+ *
+ ***************************************************************************************************************************************/
+
 #include "urdf_transformer.h" // 包含头文件
 
 // 声明全局变量
@@ -98,7 +112,8 @@ void tfCallback(const tf2_msgs::TFMessage::ConstPtr &msg)
     shank2foot3_matrix = findTransform("shank3", "foot3");
     shank2foot4_matrix = findTransform("shank4", "foot4");
     // 使用 matrix 进行进一步处理
-    std::cout << "shank2foot2_matrix transform:\n" << shank2foot2_matrix << std::endl;
+    std::cout << "shank2foot2_matrix transform:\n"
+              << shank2foot2_matrix << std::endl;
 }
 
 void tfstatic_Callback(const tf2_msgs::TFMessage::ConstPtr &msg)

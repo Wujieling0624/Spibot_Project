@@ -1,16 +1,19 @@
 <launch>
 
+    <!-- 包含之前定义的launch文件 -->
     <include file="$(find legged_control)/launch/legged_control.launch" />
+
+    <!-- 发布关节角度节点启动 -->
     <node pkg="spibot_control" type="spibot_move_noetic" name="spibot_move_noetic" />
     <!-- <node pkg="spibot_control" type="spibot_joint_move_noetic" name="spibot_joint_move_noetic" /> -->
 
-    <!-- 数据处理节点 -->
+    <!-- 数据订阅处理节点启动 -->
     <node pkg="spibot_control" type="urdf_transformer" name="urdf_transformer" />
 
     <!-- 开启吸盘节点 -->
     <node pkg="spibot_control" type="apply_body_wrench_force_node" name="apply_body_force"/>
 
-
+    <!-- 发布给rviz数据节点 -->
     <node pkg="spibot_control" type="odom_pub" name="odom_publisher" />
 
 </launch>
