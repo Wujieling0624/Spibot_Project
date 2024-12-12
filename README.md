@@ -2,13 +2,21 @@
 
 ### 各个功能包介绍
 
-sipder_robot：由solidworks导出的功能包，内有生成的urdf和meshes、launch文件，自己转成的xacro文件，增加各种如三维雷达、imu、深度相机的gazebo仿真文件。
+sipder_robot：
 
-legged_control：关节控制器定义文件
+由solidworks导出的功能包，内有生成的urdf和meshes、launch文件，自己转成的xacro文件，增加各种如三维雷达、imu、深度相机的gazebo仿真文件。
 
-spibot_control：机器人控制主文件
+legged_control：
 
-spibot_plugin：自己定义的plugin插件，多是仿真绘图需要
+关节控制器定义文件
+
+spibot_control：
+
+机器人控制主文件
+
+spibot_plugin：
+
+修改的unitree机器人插件，仿真绘图需要
 
 ### 启动机器人仿真
 
