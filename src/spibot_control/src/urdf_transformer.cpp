@@ -5,10 +5,26 @@ ros::Publisher triangle_pub;
 // 三个点的坐标，回调函数legIsMovingCallback用
 std_msgs::Float32MultiArray triangle_points;
 
+// 查找特定 parent 和 child 之间的变换矩阵（示例函数）
+Eigen::Matrix4d findTransform(const std::string &parent, const std::string &child)
+{
+    auto it = transformMap.find({parent, child});
+    if (it != transformMap.end())
+    {
+        return it->second;
+    }
+    else
+    {
+        std::cerr << "Transform not found for: " << parent << " -> " << child << std::endl;
+        // return Eigen::Matrix4d::Identity(); // 返回单位矩阵
+    }
+}
+
 // 提取Odom2foot1_matrix\Odom2foot2_matrix\Odom2foot3_matrix\Odom2foot4_matrix第4列的前3行数据
 std_msgs::Float32MultiArray triangle_add_data(Eigen::Matrix4d matrix1, Eigen::Matrix4d matrix2, Eigen::Matrix4d matrix3)
 {
     std_msgs::Float32MultiArray points;
+    points.data.reserve(9); // 预留空间
     points.data.push_back(matrix1(0, 3));
     points.data.push_back(matrix1(1, 3));
     points.data.push_back(matrix1(2, 3));
@@ -49,21 +65,6 @@ Eigen::Matrix4d transformToEigenMatrix4d(const geometry_msgs::Transform &transfo
     return mat;
 }
 
-// 查找特定 parent 和 child 之间的变换矩阵（示例函数）
-Eigen::Matrix4d findTransform(const std::string &parent, const std::string &child)
-{
-    auto it = transformMap.find({parent, child});
-    if (it != transformMap.end())
-    {
-        Eigen::Matrix4d result = it->second;
-        return result;
-    }
-    else
-    {
-        std::cout << "Transform not found!" << std::endl;
-    }
-}
-
 // 使用变换矩阵
 Eigen::Matrix4d base2hip1_matrix, hip2thigh1_matrix, thigh2shank1_matrix;
 Eigen::Matrix4d base2hip2_matrix, hip2thigh2_matrix, thigh2shank2_matrix;
@@ -97,7 +98,7 @@ void tfCallback(const tf2_msgs::TFMessage::ConstPtr &msg)
     shank2foot3_matrix = findTransform("shank3", "foot3");
     shank2foot4_matrix = findTransform("shank4", "foot4");
     // 使用 matrix 进行进一步处理
-    // std::cout << "Found transform:\n" << base2hip1_matrix << std::endl;
+    std::cout << "shank2foot2_matrix transform:\n" << shank2foot2_matrix << std::endl;
 }
 
 void tfstatic_Callback(const tf2_msgs::TFMessage::ConstPtr &msg)
@@ -109,12 +110,12 @@ void tfstatic_Callback(const tf2_msgs::TFMessage::ConstPtr &msg)
         // 更新或插入变换关系
         transformMap[key] = transform_matrix;
     }
-    shank2foot1_matrix = findTransform("shank1", "foot1");
-    shank2foot2_matrix = findTransform("shank2", "foot2");
-    shank2foot3_matrix = findTransform("shank3", "foot3");
-    shank2foot4_matrix = findTransform("shank4", "foot4");
+    // shank2foot1_matrix = findTransform("shank1", "foot1");
+    // shank2foot2_matrix = findTransform("shank2", "foot2");
+    // shank2foot3_matrix = findTransform("shank3", "foot3");
+    // shank2foot4_matrix = findTransform("shank4", "foot4");
     // 使用 matrix 进行进一步处理
-    // std::cout << "Found transform:\n" << shank2foot4_matrix << std::endl;
+    // std::cout << "shank2foot4_matrix transform:\n" << shank2foot4_matrix << std::endl;
 }
 
 Eigen::Matrix4d Odom2base_matrix;
@@ -154,7 +155,8 @@ void odomCallback(const nav_msgs::Odometry::ConstPtr &odom)
     Odom2foot2_matrix = Odom2shank2_matrix * shank2foot2_matrix;
     Odom2foot3_matrix = Odom2shank3_matrix * shank2foot3_matrix;
     Odom2foot4_matrix = Odom2shank4_matrix * shank2foot4_matrix;
-    // std::cout << "Odom2foot1_matrix:\n" << Odom2foot1_matrix << std::endl;
+    std::cout << "Odom2foot1_matrix:\n"
+              << Odom2foot1_matrix << std::endl;
 }
 
 void legIsMovingCallback(const std_msgs::Int32::ConstPtr &msg)
@@ -178,9 +180,6 @@ void legIsMovingCallback(const std_msgs::Int32::ConstPtr &msg)
         // std::cout << "3\n" << std::endl;
         triangle_points = triangle_add_data(Odom2foot1_matrix, Odom2foot2_matrix, Odom2foot3_matrix);
         break;
-    default:
-        // std::cout << "4\n" << std::endl;
-        break;
     }
 }
 
@@ -188,16 +187,16 @@ int main(int argc, char *argv[])
 {
     ros::init(argc, argv, "matrix_creator");
     ros::NodeHandle nh;
-    ros::Rate loop_rate(100);
+    ros::Rate loop_rate(50);
     // 创建发布者，发布到话题：/spibot_gazebo/draw/triangle_points
     // 注意：发布信息的话题首字母需要小写，否则rostopic没有看到话题
-    triangle_pub = nh.advertise<std_msgs::Float32MultiArray>("/spibot_gazebo/draw/triangle_points", 10);
+    triangle_pub = nh.advertise<std_msgs::Float32MultiArray>("/spibot_gazebo/draw/triangle_points", 50);
     // 订阅 /tf 话题
-    ros::Subscriber robot_sub = nh.subscribe("/tf", 100, tfCallback);
-    // 订阅 /tf_static 话题
-    ros::Subscriber robot_static_sub = nh.subscribe("/tf_static", 100, tfstatic_Callback);
+    ros::Subscriber robot_sub = nh.subscribe("/tf", 50, tfCallback);
+    // 订阅 /tf_static 话题，即在urdf中关节定义为fixed的
+    // ros::Subscriber robot_static_sub = nh.subscribe("/tf_static", 50, tfstatic_Callback);
     // 订阅 /spibot_gazebo/odometry 话题，并传递回调函数指针
-    ros::Subscriber odom_sub = nh.subscribe("/spibot_gazebo/odometry", 100, odomCallback);
+    ros::Subscriber odom_sub = nh.subscribe("/spibot_gazebo/odometry", 50, odomCallback);
     // 订阅 /spibot_gazebo/states/leg_is_moving 话题,发布三个固定腿的位置
     ros::Subscriber leg_state_sub = nh.subscribe("/spibot_gazebo/states/leg_is_moving", 10, legIsMovingCallback);
     while (ros::ok())

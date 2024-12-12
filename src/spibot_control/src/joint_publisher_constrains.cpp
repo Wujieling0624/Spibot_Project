@@ -13,7 +13,7 @@ const int num_legs = 4;
 const int num_joint_topics = 12; // 关节主题的数量，每条腿3个关节，共4条腿
 std::array<float, 3> BR_rads, BL_rads, FR_rads, FL_rads;
 double Rot_t = 0.0, Backward_t = 0.0, Forward_t = 0.0;
-int Move_mode, RotCnt, BackwardCnt, ForwardCnt;
+int Move_mode = Stop, RotCnt, BackwardCnt, ForwardCnt;
 
 // 回调函数，当接收到新消息时会被调用
 void moveModeCallback(const std_msgs::Int32::ConstPtr &msg)
@@ -82,10 +82,10 @@ int main(int argc, char **argv)
         publishers[i] = nh.advertise<std_msgs::Float64>(joint_names[i], 1);
 
     ros::Rate loop_rate(50);
-    BR_rads = {-pi / 4, -pi / 6, pi / 6}; // 1
-    FR_rads = {-pi / 4, pi / 6, pi / 6};  // 2
-    FL_rads = {-pi / 4, pi / 6, -pi / 6}; // 3
-    BL_rads = {-pi / 4, pi / 6, -pi / 6}; // 4
+    BR_rads = {-pi / 4, -pi / 6, pi / 6.0}; // 1
+    FR_rads = {-pi / 4, pi / 6, pi / 6};    // 2
+    FL_rads = {-pi / 4, pi / 6, -pi / 6};   // 3
+    BL_rads = {-pi / 4, pi / 6, -pi / 6};   // 4
     while (ros::ok())
     {
         sucker1_switch.data = true; // 每次循环前吸盘开启
@@ -97,7 +97,7 @@ int main(int argc, char **argv)
         switch (Move_mode)
         {
         case Forward_mode:
-            Forward_t += 0.1;                                 // 计算经历时间
+            Forward_t += 0.1;                                  // 计算经历时间
             ForwardCnt = (int)(1.0 * Forward_t / swingPeriod); // 第0,1,2,.....周期
             // 下面代码要用时取消#include "move_trajectory_constraints.h"注释，在其中定义leg_is_moving变量
             BR_rads = _BR_Forward_Trajectory(Forward_t, ForwardCnt);
@@ -107,7 +107,7 @@ int main(int argc, char **argv)
             ROS_INFO("Forward passtime = %f", Forward_t);
             break;
         case Backward_mode:
-            Forward_t += 0.1;                                  // 计算经历时间
+            Forward_t += 0.1;                                   // 计算经历时间
             BackwardCnt = (int)(1.0 * Forward_t / swingPeriod); // 第0,1,2,.....周期
             BR_rads = _BR_Backward_Trajectory(Forward_t, BackwardCnt);
             FR_rads = _FR_Backward_Trajectory(Forward_t, BackwardCnt);
@@ -123,10 +123,10 @@ int main(int argc, char **argv)
             FR_rads = _FR_Rotation_Trajectory(Rot_t, RotCnt);
             FL_rads = _FL_Rotation_Trajectory(Rot_t, RotCnt);
             BL_rads = _BL_Rotation_Trajectory(Rot_t, RotCnt);
-            ROS_INFO("Left passtime = %f", Rot_t); 
+            ROS_INFO("Left passtime = %f", Rot_t);
             break;
         case Right_mode:
-            Rot_t += 0.1;                               // 计算经历时间
+            Rot_t += 0.1;                              // 计算经历时间
             RotCnt = (int)(1.0 * Rot_t / swingPeriod); // 第0,1,2,.....周期
             BR_rads = _BR_Rotation_Trajectory(Rot_t, RotCnt);
             FR_rads = _FR_Rotation_Trajectory(Rot_t, RotCnt);
@@ -135,26 +135,28 @@ int main(int argc, char **argv)
             ROS_INFO("Right passtime = %f", Rot_t);
             break;
         default:
-            // 临时处理，实际吸盘状态应该按照机器人情况定
-            sucker1_switch.data = false; // 每次循环前吸盘开启
-            sucker2_switch.data = false; // 每次循环前吸盘开启
-            sucker3_switch.data = false; // 每次循环前吸盘开启
-            sucker4_switch.data = false; // 每次循环前吸盘开启
+            leg_is_moving.data = BR_leg;
+            BR_rads = {-pi / 4, -pi / 6, pi / 6.0}; // 1
+            FR_rads = {-pi / 4, pi / 6, pi / 6};    // 2
+            FL_rads = {-pi / 4, pi / 6, -pi / 6};   // 3
+            BL_rads = {-pi / 4, pi / 6, -pi / 6};   // 4
+            sucker1_switch.data = true;             // 每次循环前吸盘开启
+            sucker2_switch.data = true;             // 每次循环前吸盘开启
+            sucker3_switch.data = true;             // 每次循环前吸盘开启
+            sucker4_switch.data = true;             // 每次循环前吸盘开启
             break;
         }
-
         // 下面代码要用时取消#include "baselink_twist.h"注释
         // BR_rads = base_trajectroy(passTime, periodCnt, BR_leg);
         // FR_rads = base_trajectroy(passTime, periodCnt, FR_leg);
         // FL_rads = base_trajectroy(passTime, periodCnt, FL_leg);
         // BL_rads = base_trajectroy(passTime, periodCnt, BL_leg);
-
         leg_state_pub.publish(leg_is_moving);
         sucker1_cmd_pub.publish(sucker1_switch);
         sucker2_cmd_pub.publish(sucker2_switch);
         sucker3_cmd_pub.publish(sucker3_switch);
         sucker4_cmd_pub.publish(sucker4_switch);
-        // ROS_INFO(" Published leg_is_moving: %d \nPublished sucker1_cmd: %d \nPublished sucker2_cmd: %d \nPublished sucker3_cmd: %d \nPublished sucker4_cmd: %d \n  ", leg_is_moving.data, sucker1_switch.data, sucker2_switch.data, sucker3_switch.data, sucker4_switch.data);
+        ROS_INFO(" Published leg_is_moving: %d \nPublished sucker1_cmd: %d \nPublished sucker2_cmd: %d \nPublished sucker3_cmd: %d \nPublished sucker4_cmd: %d \n  ", leg_is_moving.data, sucker1_switch.data, sucker2_switch.data, sucker3_switch.data, sucker4_switch.data);
 
         // Leg radian publish
         pubLegRadian(publishers, 0, BR_rads); // BR Controllers

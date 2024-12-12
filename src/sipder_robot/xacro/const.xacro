@@ -6,7 +6,7 @@
     <xacro:property name="base_com_x" value="9.5983E-05"/>
     <xacro:property name="base_com_y" value="-0.0053069"/>
     <xacro:property name="base_com_z" value="0.074681"/>
-    <xacro:property name="base_mass" value="2.8003"/>
+    <xacro:property name="base_mass" value="8.956765"/>
     <xacro:property name="base_ixx" value="0.0051964"/>
     <xacro:property name="base_ixy" value="1.4763E-06"/>
     <xacro:property name="base_ixz" value="-1.4439E-06"/>

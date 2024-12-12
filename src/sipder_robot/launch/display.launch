@@ -1,4 +1,11 @@
 <launch>
+
+  <!-- 添加点云坐标系到kinect坐标系的变换 -->
+  <node pkg="tf2_ros" type="static_transform_publisher" name="static_transform_publisher" args="0 0 0 -1.57 0 -1.57 /camera /camera_depth" />
+  <node name="rviz" pkg="rviz" type="rviz" respawn="false" output="screen" args="-d $(find sipder_robot)/config/spibot.rviz" />
+  <!-- 机器人状态发布节点 -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen"/>
+
   <!-- 需要自己移动拉条改变每个关节角度就解除注释 -->
   <!-- <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" /> -->
   <!-- 会发布一个/joint_states话题，由rviz的/robot_state_publisher节点订阅，但是只会发布0角度，
@@ -27,13 +34,6 @@
   <param name="robot_root" command="$(find xacro)/xacro --inorder '$(find sipder_robot)/xacro/root_.xacro'" />
   <node pkg="gazebo_ros" type="spawn_model" name="spawn_robotroot" args="-urdf -param /robot_root -model traj_base"/>
 
-  <node pkg="spibot_control" type="odom_pub" name="odom_publisher" />
-
-  <!-- 添加点云坐标系到kinect坐标系的变换 -->
-  <node pkg="tf2_ros" type="static_transform_publisher" name="static_transform_publisher" args="0 0 0 -1.57 0 -1.57 /camera /camera_depth" />
-  <node name="rviz" pkg="rviz" type="rviz" respawn="false" output="screen" args="-d $(find sipder_robot)/config/spibot.rviz" />
-  <!-- 机器人状态发布节点 -->
-  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen"/>
 
 </launch>
 

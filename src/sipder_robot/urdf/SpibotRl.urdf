@@ -3,6 +3,8 @@
      Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
      For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
 <robot name="SpibotRl">
+
+
   <link name="base">
     <inertial>
       <origin xyz="-0.0053069 -9.5983E-05 0.024681" rpy="0 0 0" />
@@ -12,7 +14,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://sipder_robot/meshes/SpibotRl/base.STL" />
+        <mesh filename="../meshes/base.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -25,6 +27,7 @@
       </geometry>
     </collision>
   </link>
+
   <joint name="RR_hip_joint" type="revolute">
     <origin xyz="-0.11 -0.11 0.025" rpy="0 0 0" />
     <parent link="base" />
@@ -41,7 +44,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://sipder_robot/meshes/SpibotRl/RR_hip.STL" />
+        <mesh filename="../meshes/RR_hip.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -50,7 +53,7 @@
     <!-- <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://sipder_robot/meshes/SpibotRl/RR_hip.STL" />
+        <mesh filename="../meshes/RR_hip.STL" />
       </geometry>
     </collision> -->
   </link>
@@ -87,7 +90,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://sipder_robot/meshes/SpibotRl/RR_thigh.STL" />
+        <mesh filename="../meshes/RR_thigh.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -96,7 +99,7 @@
     <!-- <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://sipder_robot/meshes/SpibotRl/RR_thigh.STL" />
+        <mesh filename="../meshes/RR_thigh.STL" />
       </geometry>
     </collision> -->
   </link>
@@ -140,7 +143,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://sipder_robot/meshes/SpibotRl/RR_calf.STL" />
+        <mesh filename="../meshes/RR_calf.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -149,7 +152,7 @@
     <!-- <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://sipder_robot/meshes/SpibotRl/RR_calf.STL" />
+        <mesh filename="../meshes/RR_calf.STL" />
       </geometry>
     </collision> -->
   </link>
@@ -193,7 +196,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://sipder_robot/meshes/SpibotRl/RR_foot.STL" />
+        <mesh filename="../meshes/RR_foot.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -202,11 +205,11 @@
     <!-- <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://sipder_robot/meshes/SpibotRl/RR_foot.STL" />
+        <mesh filename="../meshes/RR_foot.STL" />
       </geometry>
     </collision> -->
   </link>
-  <joint name="RR_foot_joint" type="fixed" dont_collapse="true">
+  <joint name="RR_foot_joint" type="fixed">
     <origin xyz="-0.36572 -0.00075 0" rpy="0 0 0" />
     <parent link="RR_calf" />
     <child link="RR_foot" />
@@ -245,7 +248,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://sipder_robot/meshes/SpibotRl/FR_hip.STL" />
+        <mesh filename="../meshes/FR_hip.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -254,7 +257,7 @@
     <!-- <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://sipder_robot/meshes/SpibotRl/FR_hip.STL" />
+        <mesh filename="../meshes/FR_hip.STL" />
       </geometry>
     </collision> -->
   </link>
@@ -298,7 +301,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://sipder_robot/meshes/SpibotRl/FR_thigh.STL" />
+        <mesh filename="../meshes/FR_thigh.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -307,7 +310,7 @@
     <!-- <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://sipder_robot/meshes/SpibotRl/FR_thigh.STL" />
+        <mesh filename="../meshes/FR_thigh.STL" />
       </geometry>
     </collision> -->
   </link>
@@ -351,7 +354,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://sipder_robot/meshes/SpibotRl/FR_calf.STL" />
+        <mesh filename="../meshes/FR_calf.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -360,7 +363,7 @@
     <!-- <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://sipder_robot/meshes/SpibotRl/FR_calf.STL" />
+        <mesh filename="../meshes/FR_calf.STL" />
       </geometry>
     </collision> -->
   </link>
@@ -404,7 +407,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://sipder_robot/meshes/SpibotRl/FR_foot.STL" />
+        <mesh filename="../meshes/FR_foot.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -413,11 +416,11 @@
     <!-- <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://sipder_robot/meshes/SpibotRl/FR_foot.STL" />
+        <mesh filename="../meshes/FR_foot.STL" />
       </geometry>
     </collision> -->
   </link>
-  <joint name="FR_foot_joint" type="fixed" dont_collapse="true">
+  <joint name="FR_foot_joint" type="fixed">
     <origin xyz="-0.36572 0.00075 0" rpy="0 0 0" />
     <parent link="FR_calf" />
     <child link="FR_foot" />
@@ -457,7 +460,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://sipder_robot/meshes/SpibotRl/FL_hip.STL" />
+        <mesh filename="../meshes/FL_hip.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -466,7 +469,7 @@
     <!-- <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://sipder_robot/meshes/SpibotRl/FL_hip.STL" />
+        <mesh filename="../meshes/FL_hip.STL" />
       </geometry>
     </collision> -->
   </link>
@@ -510,7 +513,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://sipder_robot/meshes/SpibotRl/FL_thigh.STL" />
+        <mesh filename="../meshes/FL_thigh.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -519,7 +522,7 @@
     <!-- <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://sipder_robot/meshes/SpibotRl/FL_thigh.STL" />
+        <mesh filename="../meshes/FL_thigh.STL" />
       </geometry>
     </collision> -->
   </link>
@@ -563,7 +566,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://sipder_robot/meshes/SpibotRl/FL_calf.STL" />
+        <mesh filename="../meshes/FL_calf.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -572,7 +575,7 @@
     <!-- <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://sipder_robot/meshes/SpibotRl/FL_calf.STL" />
+        <mesh filename="../meshes/FL_calf.STL" />
       </geometry>
     </collision> -->
   </link>
@@ -616,7 +619,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://sipder_robot/meshes/SpibotRl/FL_foot.STL" />
+        <mesh filename="../meshes/FL_foot.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -625,11 +628,11 @@
     <!-- <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://sipder_robot/meshes/SpibotRl/FL_foot.STL" />
+        <mesh filename="../meshes/FL_foot.STL" />
       </geometry>
     </collision> -->
   </link>
-  <joint name="FL_foot_joint" type="fixed" dont_collapse="true">
+  <joint name="FL_foot_joint" type="fixed">
     <origin xyz="-0.36572 0.00075 0" rpy="0 0 0" />
     <parent link="FL_calf" />
     <child link="FL_foot" />
@@ -670,7 +673,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://sipder_robot/meshes/SpibotRl/RL_hip.STL" />
+        <mesh filename="../meshes/RL_hip.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -679,7 +682,7 @@
     <!-- <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://sipder_robot/meshes/SpibotRl/RL_hip.STL" />
+        <mesh filename="../meshes/RL_hip.STL" />
       </geometry>
     </collision> -->
   </link>
@@ -723,7 +726,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://sipder_robot/meshes/SpibotRl/RL_thigh.STL" />
+        <mesh filename="../meshes/RL_thigh.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -732,7 +735,7 @@
     <!-- <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://sipder_robot/meshes/SpibotRl/RL_thigh.STL" />
+        <mesh filename="../meshes/RL_thigh.STL" />
       </geometry>
     </collision> -->
   </link>
@@ -776,7 +779,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://sipder_robot/meshes/SpibotRl/RL_calf.STL" />
+        <mesh filename="../meshes/RL_calf.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -785,7 +788,7 @@
     <!-- <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://sipder_robot/meshes/SpibotRl/RL_calf.STL" />
+        <mesh filename="../meshes/RL_calf.STL" />
       </geometry>
     </collision> -->
   </link>
@@ -829,7 +832,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://sipder_robot/meshes/SpibotRl/RL_foot.STL" />
+        <mesh filename="../meshes/RL_foot.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -838,11 +841,11 @@
     <!-- <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://sipder_robot/meshes/SpibotRl/RL_foot.STL" />
+        <mesh filename="../meshes/RL_foot.STL" />
       </geometry>
     </collision> -->
   </link>
-  <joint name="RL_foot_joint" type="fixed" dont_collapse="true">
+  <joint name="RL_foot_joint" type="fixed">
     <origin xyz="-0.36572 0.00225 0" rpy="0 0 0" />
     <parent link="RL_calf" />
     <child link="RL_foot" />
@@ -881,7 +884,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://sipder_robot/meshes/SpibotRl/imu.STL" />
+        <mesh filename="../meshes/imu.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -921,5 +924,8 @@
   </joint> -->
 
 </robot>
+
+
+
 
 

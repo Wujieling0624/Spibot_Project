@@ -27,14 +27,14 @@ int main(int argc, char *argv[])
     tf::TransformBroadcaster odom_broadcaster;
     ros::Time current_time;
     ros::Rate r(50);
+    odom_trans.header.frame_id = "map";
+    odom_trans.child_frame_id = "dummy";
     ros::Subscriber sub = nh.subscribe("/spibot_gazebo/odometry", 10, odometryCallback);
     while (nh.ok())
     {
         ros::spinOnce();
         current_time = ros::Time::now();
         odom_trans.header.stamp = current_time;
-        odom_trans.header.frame_id = "map";
-        odom_trans.child_frame_id = "dummy";
         odom_broadcaster.sendTransform(odom_trans);
         ROS_INFO("odom msg send.");
         r.sleep();
