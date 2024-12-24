@@ -69,6 +69,7 @@
     <child link="hip1" />
     <axis xyz="0 0 1" />
     <limit lower="-1.57" upper="1.57" effort="500" velocity="40" />
+    <dynamics damping="0.0" friction="0.0"/>
   </joint>
   <link name="thigh1">
     <inertial>

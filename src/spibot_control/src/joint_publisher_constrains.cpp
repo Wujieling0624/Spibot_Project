@@ -4,13 +4,11 @@
  * 1、调用在move_trajectory_constraints.cpp文件定义的各种函数得到相应的关节角度，并实时发布出去，以在Gazebo仿真环境中控制机器人模型的位置和姿态
  * 2、发布摆动腿的实时状态和吸盘的需求状态
  * 3、发布/joint_states话题，实现在rviz中对应关节的摆动显示（sw的导出文件增加了关节控制器，发布关节角度也无法在rviz中表示出来）
- * 
- * 
+ *
+ *
  * 0-->BR Controllers/1-->FR Controllers/2-->FL Controllers/3-->BL Controllers
  *
  ***************************************************************************************************************************************/
-
-
 
 #include <ros/ros.h>
 #include "std_msgs/Float64.h"
@@ -94,10 +92,10 @@ int main(int argc, char **argv)
         publishers[i] = nh.advertise<std_msgs::Float64>(joint_names[i], 1);
 
     ros::Rate loop_rate(50);
-    BR_rads = {-pi / 4, -pi / 6, pi / 6.0}; // 1
-    FR_rads = {-pi / 4, pi / 6, pi / 6};    // 2
+    BR_rads = {-pi / 4, pi / 6, -pi / 6.0}; // 1
+    FR_rads = {pi / 4, pi / 6, pi / 6};     // 2
     FL_rads = {-pi / 4, pi / 6, -pi / 6};   // 3
-    BL_rads = {-pi / 4, pi / 6, -pi / 6};   // 4
+    BL_rads = {pi / 4, pi / 6, pi / 6};     // 4
     while (ros::ok())
     {
         sucker1_switch.data = true; // 每次循环前吸盘开启
@@ -148,10 +146,10 @@ int main(int argc, char **argv)
             break;
         default:
             leg_is_moving.data = BR_leg;
-            BR_rads = {-pi / 4, -pi / 6, pi / 6.0}; // 1
-            FR_rads = {-pi / 4, pi / 6, pi / 6};    // 2
+            BR_rads = {-pi / 4, pi / 6, -pi / 6.0}; // 1
+            FR_rads = {pi / 4, pi / 6, pi / 6};     // 2
             FL_rads = {-pi / 4, pi / 6, -pi / 6};   // 3
-            BL_rads = {-pi / 4, pi / 6, -pi / 6};   // 4
+            BL_rads = {pi / 4, pi / 6, pi / 6};     // 4
             sucker1_switch.data = true;             // 每次循环前吸盘开启
             sucker2_switch.data = true;             // 每次循环前吸盘开启
             sucker3_switch.data = true;             // 每次循环前吸盘开启

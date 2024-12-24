@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot name="spibot_with_sensors"
     xmlns:xacro="http://www.ros.org/wiki/xacro">
-    <xacro:include filename="spibot.xacro"/>
+    <xacro:include filename="spibot_new.xacro"/>
     <!-- 集成运动控制 -->
     <!-- 给机器人的camera增加深度相机以生成深度图像 -->
     <xacro:include filename="gazebo/kinect.xacro"/>

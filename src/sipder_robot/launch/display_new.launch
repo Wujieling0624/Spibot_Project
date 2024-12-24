@@ -1,0 +1,31 @@
+<launch>
+
+  <node name="rviz" pkg="rviz" type="rviz" respawn="false" output="screen" args="-d $(find sipder_robot)/config/spibot.rviz" />
+  
+  <!-- 机器人状态发布节点 -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen"/>
+  <!-- 需要自己移动拉条改变每个关节角度就解除注释 -->
+  <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find sipder_robot)/worlds/box_house.world"/>
+    <arg name="debug" value="false" />
+    <arg name="gui" value="true"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="headless" value="false"/>
+  </include>
+
+  <!-- 载入xacro文件，参数user_debug可以看spibot.xacro，false表示将机器人放下来，true表示机器人悬挂 -->
+  <!-- 悬挂和放下的机器人需要的pid参数不一样，现在的pid参数是机器人放下时候调试的，悬挂机器人会出现腿部运动抖动的情况，需要另外调参 -->
+  <arg name="user_debug" default="true"/>
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find sipder_robot)/xacro/spibot_with_sensors.xacro' DEBUG:=$(arg user_debug)"/>
+
+  <!-- 将机器人模型文件导入gazebo -->
+  <node name="model" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -z 0.28 -model spibot -param robot_description -unpause" />
+
+</launch>
+
+
+
+

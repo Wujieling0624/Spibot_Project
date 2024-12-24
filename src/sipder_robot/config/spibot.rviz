@@ -4,6 +4,7 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
+        - /TF1
         - /DepthCloud1/Auto Size1
       Splitter Ratio: 0.5852941274642944
     Tree Height: 381
@@ -24,7 +25,7 @@ Panels:
   - Class: rviz/Time
     Name: Time
     SyncMode: 0
-    SyncSource: Image
+    SyncSource: ""
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -65,11 +66,6 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        camera:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         dummy:
           Alpha: 1
           Show Axes: false
@@ -115,11 +111,6 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        lidar:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         shank1:
           Alpha: 1
           Show Axes: false
@@ -156,26 +147,6 @@ Visualization Manager:
           Show Trail: false
           Value: true
         thigh4:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        vacuum_gripper1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        vacuum_gripper2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        vacuum_gripper3:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        vacuum_gripper4:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -195,10 +166,6 @@ Visualization Manager:
         All Enabled: true
         base_link:
           Value: true
-        camera:
-          Value: true
-        camera_depth:
-          Value: true
         dummy:
           Value: true
         foot1:
@@ -217,10 +184,6 @@ Visualization Manager:
           Value: true
         hip4:
           Value: true
-        lidar:
-          Value: true
-        map:
-          Value: true
         shank1:
           Value: true
         shank2:
@@ -238,40 +201,34 @@ Visualization Manager:
         thigh4:
           Value: true
       Marker Alpha: 1
-      Marker Scale: 0.10000000149011612
+      Marker Scale: 0.30000001192092896
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: true
       Tree:
-        map:
-          dummy:
-            base_link:
-              camera:
-                camera_depth:
-                  {}
-              hip1:
-                thigh1:
-                  shank1:
-                    foot1:
-                      {}
-              hip2:
-                thigh2:
-                  shank2:
-                    foot2:
-                      {}
-              hip3:
-                thigh3:
-                  shank3:
-                    foot3:
-                      {}
-              hip4:
-                thigh4:
-                  shank4:
-                    foot4:
-                      {}
-              lidar:
-                {}
+        dummy:
+          base_link:
+            hip1:
+              thigh1:
+                shank1:
+                  foot1:
+                    {}
+            hip2:
+              thigh2:
+                shank2:
+                  foot2:
+                    {}
+            hip3:
+              thigh3:
+                shank3:
+                  foot3:
+                    {}
+            hip4:
+              thigh4:
+                shank4:
+                  foot4:
+                    {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -479,7 +436,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 3.736574172973633
+      Distance: 0.9344178438186646
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -487,17 +444,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 0.2796713709831238
-        Y: 0.298673540353775
-        Z: -0.047574132680892944
+        X: 0.1550896167755127
+        Y: 0.04658789187669754
+        Z: -0.31205394864082336
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.4247965812683105
+      Pitch: 0.21979686617851257
       Target Frame: <Fixed Frame>
-      Yaw: 4.725406646728516
+      Yaw: 2.8104047775268555
     Saved: ~
 Window Geometry:
   Displays:

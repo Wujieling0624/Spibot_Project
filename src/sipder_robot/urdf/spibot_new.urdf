@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot name="spibot_new">
+
+  <link name="dummy">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="dummy_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="dummy"/>
+    <child link="base_link"/>
+  </joint>
+
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0.12286 -0.00031855 0.029647" rpy="0 0 0" />
+      <mass value="6.0594" />
+      <inertia ixx="0.024208" ixy="5.0879E-05" ixz="3.1829E-07" iyy="0.015823" iyz="1.2893E-06" izz="0.018498" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/spibot_new/base_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/spibot_new/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="hip4">
+    <inertial>
+      <origin xyz="0.0327578259031104 -0.0424813673076343 0.0456613574963897" rpy="0 0 0" />
+      <mass value="0.192660541070128" />
+      <inertia ixx="6.9186801683186E-05" ixy="6.85514694008028E-08" ixz="-1.72344308142681E-06" iyy="0.000103820364311008" iyz="8.72437771435145E-08" izz="7.24920879867499E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/spibot_new/hip4.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/spibot_new/hip4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="base2hip4" type="revolute">
+    <origin xyz="-0.0975 0.0975 0.059" rpy="0 0 1.5708" />
+    <parent link="base_link" />
+    <child link="hip4" />
+    <axis xyz="0 0 1" />
+    <limit lower="0" upper="0" effort="0" velocity="0" />
+  </joint>
+  <link name="thigh4">
+    <inertial>
+      <origin xyz="0.189662158014124 6.23203767014385E-05 0.0193991692126326" rpy="0 0 0" />
+      <mass value="0.2158302238501" />
+      <inertia ixx="7.27486209430672E-05" ixy="-3.58440055908111E-07" ixz="-4.75709753155983E-07" iyy="0.000120673019624553" iyz="3.03342398651781E-09" izz="0.000154581551010227" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/spibot_new/thigh4.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/spibot_new/thigh4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="hip2thigh4" type="revolute">
+    <origin xyz="0.035 -0.0185 0.048" rpy="1.5708 0 0" />
+    <parent link="hip4" />
+    <child link="thigh4" />
+    <axis xyz="0 0 1" />
+    <limit lower="0" upper="0" effort="0" velocity="0" />
+  </joint>
+  <link name="shank4">
+    <inertial>
+      <origin xyz="0.250456916156815 6.71951565500706E-08 -0.0183570248775157" rpy="0 0 0" />
+      <mass value="0.216923005928971" />
+      <inertia ixx="0.000176039354617097" ixy="-8.89913672848324E-10" ixz="-8.94411036736959E-10" iyy="0.000399584677836858" iyz="-2.80304455176751E-11" izz="0.00040101046730147" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/spibot_new/shank4.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/spibot_new/shank4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="thigh2shank4" type="revolute">
+    <origin xyz="0.2125 0 0" rpy="0 0 -1.5708" />
+    <parent link="thigh4" />
+    <child link="shank4" />
+    <axis xyz="0 0 -1" />
+    <limit lower="0" upper="0" effort="0" velocity="0" />
+  </joint>
+  <link name="hip3">
+    <inertial>
+      <origin xyz="0.032772550698228 0.0427066485953759 0.0456809869978135" rpy="0 0 0" />
+      <mass value="0.191665692794619" />
+      <inertia ixx="6.96236772056454E-05" ixy="-7.25381958067419E-08" ixz="-1.72344308142663E-06" iyy="0.000103806231526602" iyz="-9.12305035495634E-08" izz="7.20384498608164E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/spibot_new/hip3.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/spibot_new/hip3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="base2hip3" type="revolute">
+    <origin xyz="0.0975 0.0975 0.059" rpy="0 0 1.5708" />
+    <parent link="base_link" />
+    <child link="hip3" />
+    <axis xyz="0 0 1" />
+    <limit lower="0" upper="0" effort="0" velocity="0" />
+  </joint>
+  <link name="thigh3">
+    <inertial>
+      <origin xyz="0.189662158014123 6.23203767017022E-05 0.0193991692126335" rpy="0 0 0" />
+      <mass value="0.215830223850104" />
+      <inertia ixx="7.27486209430669E-05" ixy="-3.58440055908104E-07" ixz="-4.75709753156031E-07" iyy="0.000120673019624552" iyz="3.03342398654635E-09" izz="0.000154581551010226" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/spibot_new/thigh3.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/spibot_new/thigh3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="hip2thigh3" type="revolute">
+    <origin xyz="0.035 0.0185 0.048" rpy="-1.5708 0 0" />
+    <parent link="hip3" />
+    <child link="thigh3" />
+    <axis xyz="0 0 -1" />
+    <limit lower="0" upper="0" effort="0" velocity="0" />
+  </joint>
+  <link name="shank3">
+    <inertial>
+      <origin xyz="0.250456916156807 6.71951514430447E-08 -0.018357024877524" rpy="0 0 0" />
+      <mass value="0.216923005928878" />
+      <inertia ixx="0.000176039354617096" ixy="-8.89913683565727E-10" ixz="-8.94411055547596E-10" iyy="0.000399584677836863" iyz="-2.8030439500731E-11" izz="0.00040101046730146" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/spibot_new/shank3.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/spibot_new/shank3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="thigh2shank3" type="revolute">
+    <origin xyz="0.2125 0 0" rpy="0 0 1.5708" />
+    <parent link="thigh3" />
+    <child link="shank3" />
+    <axis xyz="0 0 -1" />
+    <limit lower="0" upper="0" effort="0" velocity="0" />
+  </joint>
+  <link name="hip2">
+    <inertial>
+      <origin xyz="0.0327578259031094 -0.042481367307634 0.0456613574963895" rpy="0 0 0" />
+      <mass value="0.192660541070126" />
+      <inertia ixx="6.91868016831854E-05" ixy="6.85514694008617E-08" ixz="-1.72344308142691E-06" iyy="0.000103820364311007" iyz="8.72437771435545E-08" izz="7.24920879867495E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/spibot_new/hip2.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/spibot_new/hip2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="base2hip2" type="revolute">
+    <origin xyz="0.0975 -0.0975 0.059" rpy="0 0 -1.5708" />
+    <parent link="base_link" />
+    <child link="hip2" />
+    <axis xyz="0 0 1" />
+    <limit lower="0" upper="0" effort="0" velocity="0" />
+  </joint>
+  <link name="thigh2">
+    <inertial>
+      <origin xyz="0.189662158014124 6.23203767022573E-05 0.019399169212634" rpy="0 0 0" />
+      <mass value="0.215830223850104" />
+      <inertia ixx="7.2748620943066E-05" ixy="-3.58440055908529E-07" ixz="-4.75709753155983E-07" iyy="0.000120673019624552" iyz="3.03342398638189E-09" izz="0.000154581551010224" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/spibot_new/thigh2.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/spibot_new/thigh2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="hip2thigh2" type="revolute">
+    <origin xyz="0.035 -0.0185 0.048" rpy="1.5708 0 0" />
+    <parent link="hip2" />
+    <child link="thigh2" />
+    <axis xyz="0 0 1" />
+    <limit lower="0" upper="0" effort="0" velocity="0" />
+  </joint>
+  <link name="shank2">
+    <inertial>
+      <origin xyz="0.250456916156772 6.71951356778777E-08 -0.0183570248775542" rpy="0 0 0" />
+      <mass value="0.216923005928577" />
+      <inertia ixx="0.000176039354617092" ixy="-8.899137163724E-10" ixz="-8.94411124126908E-10" iyy="0.000399584677836885" iyz="-2.80304188233295E-11" izz="0.000401010467301432" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/spibot_new/shank2.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/spibot_new/shank2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="thigh2shank2" type="revolute">
+    <origin xyz="0.2125 0 0" rpy="0 0 -1.5708" />
+    <parent link="thigh2" />
+    <child link="shank2" />
+    <axis xyz="0 0 -1" />
+    <limit lower="0" upper="0" effort="0" velocity="0" />
+  </joint>
+  <link name="hip1">
+    <inertial>
+      <origin xyz="0.0327725506982288 0.0427066485953773 0.0456809869978126" rpy="0 0 0" />
+      <mass value="0.191665692794623" />
+      <inertia ixx="6.96236772056445E-05" ixy="-7.25381958067844E-08" ixz="-1.72344308142751E-06" iyy="0.0001038062315266" iyz="-9.12305035494217E-08" izz="7.20384498608154E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/spibot_new/hip1.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/spibot_new/hip1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="base2hip1" type="revolute">
+    <origin xyz="-0.0975 -0.0975 0.059" rpy="0 0 -1.5708" />
+    <parent link="base_link" />
+    <child link="hip1" />
+    <axis xyz="0 0 1" />
+    <limit lower="0" upper="0" effort="0" velocity="0" />
+  </joint>
+  <link name="thigh1">
+    <inertial>
+      <origin xyz="0.189662158014123 6.23203767019659E-05 0.0193991692126337" rpy="0 0 0" />
+      <mass value="0.215830223850103" />
+      <inertia ixx="7.27486209430669E-05" ixy="-3.584400559076E-07" ixz="-4.75709753155998E-07" iyy="0.000120673019624553" iyz="3.0334239864579E-09" izz="0.000154581551010226" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/spibot_new/thigh1.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/spibot_new/thigh1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="hip2thigh1" type="revolute">
+    <origin xyz="0.035 0.0185 0.048" rpy="-1.5708 0 0" />
+    <parent link="hip1" />
+    <child link="thigh1" />
+    <axis xyz="0 0 -1" />
+    <limit lower="0" upper="0" effort="0" velocity="0" />
+  </joint>
+  <link name="shank1">
+    <inertial>
+      <origin xyz="0.250456916156802 6.71951481123756E-08 -0.0183570248775285" rpy="0 0 0" />
+      <mass value="0.216923005928831" />
+      <inertia ixx="0.000176039354617094" ixy="-8.89913689575034E-10" ixz="-8.94411065972622E-10" iyy="0.000399584677836865" iyz="-2.80304362120279E-11" izz="0.000401010467301455" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/spibot_new/shank1.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/spibot_new/shank1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="thigh2shank1" type="revolute">
+    <origin xyz="0.2125 0 0" rpy="0 0 1.5708" />
+    <parent link="thigh1" />
+    <child link="shank1" />
+    <axis xyz="0 0 -1" />
+    <limit lower="0" upper="0" effort="0" velocity="0" />
+  </joint>
+</robot>

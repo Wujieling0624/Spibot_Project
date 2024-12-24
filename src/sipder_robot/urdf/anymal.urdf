@@ -600,6 +600,8 @@
             </geometry>
         </visual>
     </link>
+
+<!-- ******************************************************************************************************** -->
     <!-- joint base HAA -->
     <joint name="base_LF_HAA" type="fixed">
         <parent link="base"/>
