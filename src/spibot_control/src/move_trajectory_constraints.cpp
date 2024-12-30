@@ -1,11 +1,11 @@
 /***************************************************************************************************************************************
- *
+ * 
  * 实现功能：
  * 机器人前向运动函数，返回三个关节发布角度
  * 机器人后向运动函数，返回三个关节发布角度
  * 机器人旋转运动函数，返回三个关节发布角度
- *
- ***************************************************************************************************************************************/
+ * 
+***************************************************************************************************************************************/
 
 #include "move_trajectory_constraints.h"
 // # 0-->BR Controllers/1-->FR Controllers/2-->FL Controllers/3-->BL Controllers
@@ -103,7 +103,7 @@ std::array<float, 3> _BR_Forward_Trajectory(double passTime, int periodCnt)
         BR_traj[2] = 0 + z_bias;
     }
     rad = PosToTheta(BR_traj[0], BR_traj[1], BR_traj[2]);
-    rad[2] *= -1;    
+    rad[1] = -rad[1];
     return rad;
 }
 
@@ -143,7 +143,7 @@ std::array<float, 3> _BR_Backward_Trajectory(double passTime, int periodCnt)
     }
     rad = PosToTheta(BR_traj[0], BR_traj[1], BR_traj[2]);
     rad[0] = -rad[0];
-    rad[2] *= -1;    
+    rad[1] = -rad[1];
     return rad;
 }
 
@@ -227,7 +227,7 @@ std::array<float, 3> _BL_Forward_Trajectory(double passTime, int periodCnt)
         BL_traj[2] = 0 + z_bias;
     }
     rad = PosToTheta(BL_traj[0], BL_traj[1], BL_traj[2]);
-    rad[0] *= -1;
+    rad[2] = -rad[2];
     return rad;
 }
 
@@ -265,6 +265,8 @@ std::array<float, 3> _BL_Backward_Trajectory(double passTime, int periodCnt)
         BL_traj[2] = 0 + z_bias;
     }
     rad = PosToTheta(BL_traj[0], BL_traj[1], BL_traj[2]);
+    rad[0] = -rad[0];
+    rad[2] = -rad[2];
     return rad;
 }
 
@@ -472,6 +474,7 @@ std::array<float, 3> _FR_Forward_Trajectory(double passTime, int periodCnt)
         FR_traj[2] = 0 + z_bias;
     }
     rad = PosToTheta(FR_traj[0], FR_traj[1], FR_traj[2]);
+    rad[0] = -rad[0];
     return rad;
 }
 
@@ -509,11 +512,8 @@ std::array<float, 3> _FR_Backward_Trajectory(double passTime, int periodCnt)
         FR_traj[2] = 0 + z_bias;
     }
     rad = PosToTheta(FR_traj[0], FR_traj[1], FR_traj[2]);
-    rad[0] *= -1;
     return rad;
 }
-
-
 
 std::array<float, 3> _BR_Rotation_Trajectory(double passTime, int periodCnt)
 {
@@ -533,7 +533,7 @@ std::array<float, 3> _BR_Rotation_Trajectory(double passTime, int periodCnt)
         BR_traj[2] = swingRaduis * sin(w2 * passTime) + z_bias;
     }
     rad = PosToTheta(BR_traj[0], BR_traj[1], BR_traj[2]);
-    rad[2] *= -1;    
+    rad[1] = -rad[1];
     return rad;
 }
 
@@ -560,7 +560,7 @@ std::array<float, 3> _BL_Rotation_Trajectory(double passTime, int periodCnt)
         BL_traj[2] = -swingRaduis * sin(w2 * passTime) + z_bias;
     }
     rad = PosToTheta(BL_traj[0], BL_traj[1], BL_traj[2]);
-    rad[0] *= -1;    
+    rad[2] = -rad[2];
     return rad;
 }
 
@@ -610,5 +610,10 @@ std::array<float, 3> _FR_Rotation_Trajectory(double passTime, int periodCnt)
         FR_traj[2] = -swingRaduis * sin(w2 * passTime) + z_bias;
     }
     rad = PosToTheta(FR_traj[0], FR_traj[1], FR_traj[2]);
+    rad[0] = -rad[0];
     return rad;
 }
+
+
+
+

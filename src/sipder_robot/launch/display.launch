@@ -24,7 +24,7 @@
 
   <!-- 载入xacro文件，参数user_debug可以看spibot.xacro，false表示将机器人放下来，true表示机器人悬挂 -->
   <!-- 悬挂和放下的机器人需要的pid参数不一样，现在的pid参数是机器人放下时候调试的，悬挂机器人会出现腿部运动抖动的情况，需要另外调参 -->
-  <arg name="user_debug" default="true"/>
+  <arg name="user_debug" default="false"/>
   <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find sipder_robot)/xacro/spibot_with_sensors.xacro' DEBUG:=$(arg user_debug)"/>
 
   <!-- 加入风机叶片后就取消注释 -->

@@ -24,6 +24,7 @@ const int num_joint_topics = 12; // 关节主题的数量，每条腿3个关节�
 std::array<float, 3> BR_rads, BL_rads, FR_rads, FL_rads;
 double Rot_t = 0.0, Backward_t = 0.0, Forward_t = 0.0;
 int Move_mode = Stop, RotCnt, BackwardCnt, ForwardCnt;
+bool isRobotNew = false; // 是否采用新设计的机器人
 
 // 回调函数，当接收到新消息时会被调用
 void moveModeCallback(const std_msgs::Int32::ConstPtr &msg)
@@ -92,10 +93,11 @@ int main(int argc, char **argv)
         publishers[i] = nh.advertise<std_msgs::Float64>(joint_names[i], 1);
 
     ros::Rate loop_rate(50);
-    BR_rads = {-pi / 4, pi / 6, -pi / 6.0}; // 1
-    FR_rads = {pi / 4, pi / 6, pi / 6};     // 2
-    FL_rads = {-pi / 4, pi / 6, -pi / 6};   // 3
-    BL_rads = {pi / 4, pi / 6, pi / 6};     // 4
+    BR_rads = {-pi / 4, -pi / 6, pi / 6}; // 1
+    FR_rads = {-pi / 4, pi / 6, pi / 6};  // 2
+    FL_rads = {-pi / 4, pi / 6, -pi / 6}; // 3
+    BL_rads = {-pi / 4, pi / 6, -pi / 6}; // 4
+
     while (ros::ok())
     {
         sucker1_switch.data = true; // 每次循环前吸盘开启
@@ -146,14 +148,14 @@ int main(int argc, char **argv)
             break;
         default:
             leg_is_moving.data = BR_leg;
-            BR_rads = {-pi / 4, pi / 6, -pi / 6.0}; // 1
-            FR_rads = {pi / 4, pi / 6, pi / 6};     // 2
-            FL_rads = {-pi / 4, pi / 6, -pi / 6};   // 3
-            BL_rads = {pi / 4, pi / 6, pi / 6};     // 4
-            sucker1_switch.data = true;             // 每次循环前吸盘开启
-            sucker2_switch.data = true;             // 每次循环前吸盘开启
-            sucker3_switch.data = true;             // 每次循环前吸盘开启
-            sucker4_switch.data = true;             // 每次循环前吸盘开启
+            BR_rads = {-pi / 4, -pi / 6, pi / 6}; // 1
+            FR_rads = {-pi / 4, pi / 6, pi / 6};  // 2
+            FL_rads = {-pi / 4, pi / 6, -pi / 6}; // 3
+            BL_rads = {-pi / 4, pi / 6, -pi / 6}; // 4
+            sucker1_switch.data = true;           // 每次循环前吸盘开启
+            sucker2_switch.data = true;           // 每次循环前吸盘开启
+            sucker3_switch.data = true;           // 每次循环前吸盘开启
+            sucker4_switch.data = true;           // 每次循环前吸盘开启
             break;
         }
         // 下面代码要用时取消#include "baselink_twist.h"注释
