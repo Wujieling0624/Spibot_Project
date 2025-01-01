@@ -25,7 +25,7 @@ Panels:
   - Class: rviz/Time
     Name: Time
     SyncMode: 0
-    SyncSource: ""
+    SyncSource: PointCloud2
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -61,7 +61,17 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
+        Wind_Turbine:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        camera:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -107,6 +117,11 @@ Visualization Manager:
           Show Trail: false
           Value: true
         hip4:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        lidar:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -151,6 +166,26 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        vacuum_gripper1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        vacuum_gripper2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        vacuum_gripper3:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        vacuum_gripper4:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
       Name: RobotModel
       Robot Description: robot_description
       TF Prefix: ""
@@ -164,7 +199,13 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
+        Wind_Turbine:
+          Value: true
         base_link:
+          Value: true
+        camera:
+          Value: true
+        camera_depth:
           Value: true
         dummy:
           Value: true
@@ -183,6 +224,8 @@ Visualization Manager:
         hip3:
           Value: true
         hip4:
+          Value: true
+        lidar:
           Value: true
         shank1:
           Value: true
@@ -208,7 +251,12 @@ Visualization Manager:
       Show Names: true
       Tree:
         dummy:
+          Wind_Turbine:
+            {}
           base_link:
+            camera:
+              camera_depth:
+                {}
             hip1:
               thigh1:
                 shank1:
@@ -229,6 +277,8 @@ Visualization Manager:
                 shank4:
                   foot4:
                     {}
+            lidar:
+              {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -436,7 +486,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 0.9344178438186646
+      Distance: 7.309550762176514
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -444,17 +494,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 0.1550896167755127
-        Y: 0.04658789187669754
-        Z: -0.31205394864082336
+        X: -3.487579345703125
+        Y: -1.1429784297943115
+        Z: 0.04709623381495476
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.21979686617851257
+      Pitch: 0.6097967624664307
       Target Frame: <Fixed Frame>
-      Yaw: 2.8104047775268555
+      Yaw: 4.920406818389893
     Saved: ~
 Window Geometry:
   Displays:

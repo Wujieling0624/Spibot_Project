@@ -87,72 +87,11 @@
       <elevation>0</elevation>
       <heading_deg>0</heading_deg>
     </spherical_coordinates>
-    <model name='WindTurbine_Blade'>
-      <link name='base_link'>
-        <inertial>
-          <pose>2.2e-05 -0.125 -0.000265 0 -0 0</pose>
-          <mass>1184.8</mass>
-          <inertia>
-            <ixx>452.989</ixx>
-            <ixy>-1.58845e-05</ixy>
-            <ixz>0.00263232</ixz>
-            <iyy>893.855</iyy>
-            <iyz>2.12594e-06</iyz>
-            <izz>453.079</izz>
-          </inertia>
-        </inertial>
-        <collision name='base_link_collision'>
-          <pose>0 0 0 0 -0 0</pose>
-          <geometry>
-            <mesh>
-              <scale>1 1 1</scale>
-              <uri>/root/spibot_ws/src/sipder_robot/meshes/WindTurbine_Blade.STL</uri>
-            </mesh>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-        </collision>
-        <visual name='base_link_visual'>
-          <pose>1 13 0 0 -0 0</pose>
-          <geometry>
-            <mesh>
-              <scale>1 1 1</scale>
-              <uri>/root/spibot_ws/src/sipder_robot/meshes/WindTurbine_Blade.STL</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>0 0 0 0 -0 0</pose>
-    </model>
     <state world_name='default'>
-      <sim_time>104 823000000</sim_time>
-      <real_time>105 386460299</real_time>
-      <wall_time>1731564526 664978120</wall_time>
-      <iterations>104823</iterations>
-      <model name='WindTurbine_Blade'>
-        <pose>-0.034159 0.015065 1.23236 -0.001853 -0.016147 0.108183</pose>
-        <scale>1 1 1</scale>
-        <link name='base_link'>
-          <pose>-0.034159 0.015065 1.23236 -0.001853 -0.016147 0.108183</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 -9.8 -0.000303 -3.1e-05 0.001076</acceleration>
-          <wrench>0 0 -11611 0 -0 0</wrench>
-        </link>
-      </model>
+      <sim_time>25 955000000</sim_time>
+      <real_time>26 73311128</real_time>
+      <wall_time>1735741315 284364505</wall_time>
+      <iterations>25955</iterations>
       <model name='ground_plane'>
         <pose>0 0 0 0 -0 0</pose>
         <scale>1 1 1</scale>
@@ -169,7 +108,7 @@
     </state>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose>14.7557 -18.3156 3.12488 -0 0.059643 2.50819</pose>
+        <pose>5 -5 2 0 0.275643 2.35619</pose>
         <view_controller>orbit</view_controller>
         <projection_type>perspective</projection_type>
       </camera>

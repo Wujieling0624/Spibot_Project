@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<robot name="add_Wind_Turbine"
+  xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <link name="world" />
+  <joint name="world_joint" type="fixed">
+    <parent link="world" />
+    <child link = "Wind_Turbine" />
+    <origin xyz="0.0 0.0 0.0" rpy="-1.57 1.57 0.0" />
+  </joint>
+
+  <!-- <joint name="wind2dummy" type="fixed">
+    <parent link="dummy" />
+    <child link = "Wind_Turbine" />
+    <origin xyz="0.0 0.0 1.2" rpy="-1.57 0.0 0.0" />
+  </joint> -->
+
+  <link name="Wind_Turbine">
+    <dynamic value="0"/> <!-- 设置为静态 -->
+    <inertial>
+      <origin xyz="-0.125000010503603 -2.15006788767957E-05 -0.000265233017206157" rpy="0 0 0" />
+      <mass value="1184.80083650931" />
+      <inertia ixx="893.855294681977" ixy="1.58845149610879E-05" ixz="2.12600994471626E-06" iyy="452.989065777246" iyz="-0.00263232244555471" izz="453.079003264147" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/spibot/WindTurbine_Blade.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision name = "wind_collision">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://sipder_robot/meshes/spibot/WindTurbine_Blade.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+</robot>

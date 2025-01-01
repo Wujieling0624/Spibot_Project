@@ -3,25 +3,25 @@
      Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
      For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
 <robot name="WindTurbine_Blade">
-  <link name="base_link">
+  <link name="Wind_Turbine">
     <inertial>
-      <origin xyz="2.15006788434613E-05 -0.125000010503683 -0.000265233016186528" rpy="0 0 0" />
-      <mass value="1184.80083650758" />
-      <inertia ixx="452.989065776454" ixy="-1.58845145740807E-05" ixz="0.00263232244345089" iyy="893.855294680402" iyz="2.12593762057867E-06" izz="453.079003263354" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0" />
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
     </inertial>
     <visual>
-      <origin xyz="1 13 0" rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://sipder_robot/meshes/spibot/WindTurbine_Blade.STL" />
+        <mesh filename="package://sipder_robot/meshes/spibot/Wind_Turbine.STL" />
       </geometry>
       <material name="">
-        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+        <color rgba="1 1 1 1" />
       </material>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://sipder_robot/meshes/spibot/WindTurbine_Blade.STL" />
+        <mesh filename="package://sipder_robot/meshes/spibot/Wind_Turbine.STL" />
       </geometry>
     </collision>
   </link>

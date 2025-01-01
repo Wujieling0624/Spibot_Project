@@ -5,7 +5,7 @@ spibot_gazebo:
         publish_rate: 50  
     # 注意：joint的参数必须要是urdf定义的转动关节名称，控制器类型可以自己查阅资料。
         # spibot_gazebo就是控制器的命名空间
-    # 1-->BR Controllers ---------------------------------------
+    # 1-->BR Controllers --------------------------------------- 
     hip1_controller: 
         type: effort_controllers/JointPositionController
         joint: base2hip1

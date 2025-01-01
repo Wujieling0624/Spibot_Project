@@ -35,7 +35,7 @@
     </link>
 
     <joint name="dummy_joint" type="fixed">
-        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <origin rpy="0 0 0" xyz="-2.0 -2.0 0.3"/>
         <parent link="dummy"/>
         <child link="base_link"/>
     </joint>

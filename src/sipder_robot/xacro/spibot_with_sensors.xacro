@@ -12,5 +12,6 @@
     <xacro:include filename="gazebo/imu.xacro"/>
     <!-- 在foot下增加一个小圆柱体 -->
     <xacro:include filename="gazebo/foot_add_grippers.xacro"/>
+    
 </robot>
 

@@ -21,7 +21,7 @@ void applyBodyWrenchClient(std::string body_name, bool flag)
     ros::ServiceClient client = nh.serviceClient<gazebo_msgs::ApplyBodyWrench>("/gazebo/apply_body_wrench");
     gazebo_msgs::ApplyBodyWrench srv;
     srv.request.body_name = body_name;
-    srv.request.reference_frame = "world";
+    srv.request.reference_frame = "map";
     if (flag)
     {
         srv.request.wrench.force.x = 0;
@@ -54,7 +54,7 @@ void applyBodyWrenchClient(std::string body_name, bool flag)
 
 void Sucker1CMDCallback(const std_msgs::Bool::ConstPtr &msg)
 {
-    std::string Sucker1_bodyname = "spibot::foot1";
+    std::string Sucker1_bodyname = "spibot::vacuum_gripper1";
     if (msg->data)
     {
         ROS_INFO("Sucker1 Received: True");
@@ -69,7 +69,7 @@ void Sucker1CMDCallback(const std_msgs::Bool::ConstPtr &msg)
 
 void Sucker2CMDCallback(const std_msgs::Bool::ConstPtr &msg)
 {
-    std::string Sucker2_bodyname = "spibot::foot2";
+    std::string Sucker2_bodyname = "spibot::vacuum_gripper2";
     if (msg->data)
     {
         ROS_INFO("Sucker2 Received: True");
@@ -84,7 +84,7 @@ void Sucker2CMDCallback(const std_msgs::Bool::ConstPtr &msg)
 
 void Sucker3CMDCallback(const std_msgs::Bool::ConstPtr &msg)
 {
-    std::string Sucker3_bodyname = "spibot::foot3";
+    std::string Sucker3_bodyname = "spibot::vacuum_gripper3";
     if (msg->data)
     {
         ROS_INFO("Sucker3 Received: True");
@@ -99,7 +99,7 @@ void Sucker3CMDCallback(const std_msgs::Bool::ConstPtr &msg)
 
 void Sucker4CMDCallback(const std_msgs::Bool::ConstPtr &msg)
 {
-    std::string Sucker4_bodyname = "spibot::foot4";
+    std::string Sucker4_bodyname = "spibot::vacuum_gripper4";
     if (msg->data)
     {
         ROS_INFO("Sucker4 Received: True");
