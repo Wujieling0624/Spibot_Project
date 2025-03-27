@@ -5,13 +5,17 @@ project(spibot_control)
 add_compile_options(-std=c++17)
 
 find_package(catkin REQUIRED COMPONENTS 
+  amcl
   controller_manager
   Eigen3
   genmsg
+  gmapping
   geometry_msgs
   gazebo_ros
   gazebo_msgs
   joint_state_controller
+  map_server
+  move_base
   nav_msgs
   robot_state_publisher
   roscpp

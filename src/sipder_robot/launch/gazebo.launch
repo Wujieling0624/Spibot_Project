@@ -1,12 +1,25 @@
 <launch>
-  <arg name="user_debug" default="true"/>
-  <!-- Load the URDF into the ROS Parameter Server -->
-  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find sipder_robot)/xacro/spibot_with_sensors.xacro' DEBUG:=$(arg user_debug)"/>
+
+  <node name="rviz" pkg="rviz" type="rviz" respawn="false" output="screen"/>
+  <!-- 机器人状态发布节点 -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen"/>
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name = "world_name" value = "$(find sipder_robot)/worlds/box_house.world"/>
+    <!-- 注意gazebo定义世界不能增加机器人文件，增加了后再运行launch文件就会出现两个机器人情况 -->
+    <arg name="world_name" value="$(find sipder_robot)/worlds/empty_world.world"/>
+    <arg name="debug" value="false" />
+    <arg name="gui" value="true"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="headless" value="false"/>
   </include>
-  <!-- 在 gazebo 中显示机器人模型 -->
-  <node pkg="gazebo_ros" type="spawn_model" name="model" respawn="false" output="screen" args="-urdf -z 0.3 -model spibot_gazebo -param robot_description -unpause" />
+
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find sipder_robot)/xacro/nanocarpro.xacro'"/>
+  <!-- 将机器人模型文件导入gazebo  -->
+  <node name="model" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -z 0.25 -model racebot -param robot_description -unpause " />
 
 </launch>
+
+
+
+

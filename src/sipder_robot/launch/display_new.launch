@@ -1,5 +1,6 @@
 <launch>
 
+  <!-- 增加风机叶片 -->
   <param name="wind_turbine" command="$(find xacro)/xacro --inorder '$(find sipder_robot)/xacro/add_wind_turbine.xacro'" />
   <node pkg="gazebo_ros" type="spawn_model" name="spawn_windturbine" args="-urdf -param /wind_turbine -model show_Wind_turbine"/>
 

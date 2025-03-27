@@ -4,7 +4,6 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
-        - /TF1
         - /DepthCloud1/Auto Size1
       Splitter Ratio: 0.5852941274642944
     Tree Height: 381
@@ -61,11 +60,6 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        Wind_Turbine:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         base_link:
           Alpha: 1
           Show Axes: false
@@ -199,8 +193,6 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        Wind_Turbine:
-          Value: true
         base_link:
           Value: true
         camera:
@@ -227,6 +219,8 @@ Visualization Manager:
           Value: true
         lidar:
           Value: true
+        map:
+          Value: true
         shank1:
           Value: true
         shank2:
@@ -250,35 +244,34 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        dummy:
-          Wind_Turbine:
-            {}
-          base_link:
-            camera:
-              camera_depth:
+        map:
+          dummy:
+            base_link:
+              camera:
+                camera_depth:
+                  {}
+              hip1:
+                thigh1:
+                  shank1:
+                    foot1:
+                      {}
+              hip2:
+                thigh2:
+                  shank2:
+                    foot2:
+                      {}
+              hip3:
+                thigh3:
+                  shank3:
+                    foot3:
+                      {}
+              hip4:
+                thigh4:
+                  shank4:
+                    foot4:
+                      {}
+              lidar:
                 {}
-            hip1:
-              thigh1:
-                shank1:
-                  foot1:
-                    {}
-            hip2:
-              thigh2:
-                shank2:
-                  foot2:
-                    {}
-            hip3:
-              thigh3:
-                shank3:
-                  foot3:
-                    {}
-            hip4:
-              thigh4:
-                shank4:
-                  foot4:
-                    {}
-            lidar:
-              {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -352,7 +345,7 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.05000000074505806
       Style: Flat Squares
-      Topic: /spibot_gazebo/laser_scan
+      Topic: /scan
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
@@ -458,6 +451,16 @@ Visualization Manager:
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
+    - Alpha: 0.699999988079071
+      Class: rviz/Map
+      Color Scheme: map
+      Draw Behind: false
+      Enabled: true
+      Name: Map
+      Topic: /map
+      Unreliable: false
+      Use Timestamp: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -502,9 +505,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.6097967624664307
+      Pitch: 0.7697967290878296
       Target Frame: <Fixed Frame>
-      Yaw: 4.920406818389893
+      Yaw: 5.150406360626221
     Saved: ~
 Window Geometry:
   Displays:
@@ -525,4 +528,4 @@ Window Geometry:
     collapsed: true
   Width: 1905
   X: -32
-  Y: 13
+  Y: -32

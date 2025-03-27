@@ -11,6 +11,10 @@
   <buildtool_depend>catkin</buildtool_depend>
   <buildtool_depend>genmsg</buildtool_depend>
 
+  <build_depend>amcl</build_depend>
+  <build_depend>gmapping</build_depend>
+  <build_depend>map_server</build_depend>
+  <build_depend>move_base</build_depend>
   <build_depend>controller_manager</build_depend>
   <build_depend>geometry_msgs</build_depend>
   <build_depend>gazebo_msgs</build_depend>
@@ -26,6 +30,10 @@
   <build_depend>tf2</build_depend>
   <build_depend>tf2_ros</build_depend>
   <build_depend>tf2_geometry_msgs</build_depend>
+  <build_export_depend>amcl</build_export_depend>
+  <build_export_depend>gmapping</build_export_depend>
+  <build_export_depend>map_server</build_export_depend>
+  <build_export_depend>move_base</build_export_depend>
   <build_export_depend>geometry_msgs</build_export_depend>
   <build_export_depend>nav_msgs</build_export_depend>
   <build_export_depend>roscpp</build_export_depend>
@@ -36,6 +44,10 @@
   <build_export_depend>tf2_geometry_msgs</build_export_depend>
   <build_export_depend>tf2_ros</build_export_depend>
   <build_export_depend>tf2_msgs</build_export_depend>
+  <exec_depend>amcl</exec_depend>
+  <exec_depend>gmapping</exec_depend>
+  <exec_depend>map_server</exec_depend>
+  <exec_depend>move_base</exec_depend>
   <exec_depend>controller_manager</exec_depend>
   <exec_depend>geometry_msgs</exec_depend>
   <exec_depend>gazebo_msgs</exec_depend>

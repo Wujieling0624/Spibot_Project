@@ -61,7 +61,7 @@
       <inertia ixx="0.000224" ixy="0.000052" ixz="0.000091" iyy="0.000261" iyz="-0.000082" izz="0.000147" />
     </inertial>
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="-1.57 0 0" />
       <geometry>
         <mesh filename="../meshes/RR_hip.STL" />
       </geometry>
@@ -161,7 +161,7 @@
       <inertia ixx="0.000224" ixy="0.000052" ixz="-0.000091" iyy="0.000261" iyz="0.000082" izz="0.000147" />
     </inertial>
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="-1.57 0 0" />
       <geometry>
         <mesh filename="../meshes/FR_hip.STL" />
       </geometry>
@@ -270,7 +270,7 @@
       <inertia ixx="0.000224" ixy="0.000052" ixz="-0.000091" iyy="0.000261" iyz="0.000082" izz="0.000147" />
     </inertial>
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="-1.57 0 0" />
       <geometry>
         <mesh filename="../meshes/FL_hip.STL" />
       </geometry>
@@ -378,7 +378,7 @@
       <inertia ixx="0.000260" ixy="0.000066" ixz="0.000091" iyy="0.000261" iyz="-0.000113" izz="0.000182" />
     </inertial>
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="-1.57 0 0" />
       <geometry>
         <mesh filename="../meshes/RL_hip.STL" />
       </geometry>
